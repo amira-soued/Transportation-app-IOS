@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
+		5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */; };
+		5291ABA12798214E000C8F2D /* DepartureStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA02798214E000C8F2D /* DepartureStationViewController.swift */; };
+		5291ABA527985F90000C8F2D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA427985F90000C8F2D /* Station.swift */; };
 		52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EDE2788464100D984E9 /* AppDelegate.swift */; };
 		52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EE02788464100D984E9 /* SceneDelegate.swift */; };
 		52A40EE62788464100D984E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A40EE42788464100D984E9 /* Main.storyboard */; };
@@ -16,10 +20,18 @@
 		52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EF627884A8000D984E9 /* NavigationManager.swift */; };
 		52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EF9278865E700D984E9 /* MainScreenViewController.swift */; };
 		52AE2531278EE352008D86E3 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2530278EE352008D86E3 /* StationViewModel.swift */; };
+		52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */; };
 		52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1A075278C31D800F9E57C /* StationViewController.swift */; };
+		B09005FD5BE76286C2F81ECD /* Pods_Transportation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Transportation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.debug.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.debug.xcconfig"; sourceTree = "<group>"; };
+		5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		5291ABA02798214E000C8F2D /* DepartureStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureStationViewController.swift; sourceTree = "<group>"; };
+		5291ABA427985F90000C8F2D /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		52A40EDB2788464100D984E9 /* Transportation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transportation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A40EDE2788464100D984E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52A40EE02788464100D984E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +43,9 @@
 		52A40EF627884A8000D984E9 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		52A40EF9278865E700D984E9 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		52AE2530278EE352008D86E3 /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
+		52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
 		52F1A075278C31D800F9E57C /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
+		6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.release.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +53,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09005FD5BE76286C2F81ECD /* Pods_Transportation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5291ABA327985F7C000C8F2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5291ABA427985F90000C8F2D /* Station.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		52A40ED22788464100D984E9 = {
 			isa = PBXGroup;
 			children = (
 				52A40EDD2788464100D984E9 /* Transportation */,
 				52A40EDC2788464100D984E9 /* Products */,
+				5505586A9B8F106386EC38D7 /* Pods */,
+				9141B243BEFC51FEFC750501 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +91,7 @@
 			children = (
 				52A40EDE2788464100D984E9 /* AppDelegate.swift */,
 				52A40EE02788464100D984E9 /* SceneDelegate.swift */,
+				5291ABA327985F7C000C8F2D /* Model */,
 				52A40EF527884A6600D984E9 /* Managers */,
 				52A40EF8278865C600D984E9 /* MainScreen */,
 				52F1A074278C31A000F9E57C /* StationScreen */,
@@ -73,6 +99,7 @@
 				52A40EE42788464100D984E9 /* Main.storyboard */,
 				52A40EEC2788464200D984E9 /* LaunchScreen.storyboard */,
 				52A40EEF2788464200D984E9 /* Info.plist */,
+				5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */,
 				52A40EE72788464100D984E9 /* Transportation.xcdatamodeld */,
 			);
 			path = Transportation;
@@ -82,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				52A40EF627884A8000D984E9 /* NavigationManager.swift */,
+				52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */,
+				5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -98,9 +127,27 @@
 			isa = PBXGroup;
 			children = (
 				52F1A075278C31D800F9E57C /* StationViewController.swift */,
+				5291ABA02798214E000C8F2D /* DepartureStationViewController.swift */,
 				52AE2530278EE352008D86E3 /* StationViewModel.swift */,
 			);
 			path = StationScreen;
+			sourceTree = "<group>";
+		};
+		5505586A9B8F106386EC38D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */,
+				6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9141B243BEFC51FEFC750501 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,9 +157,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52A40EF22788464200D984E9 /* Build configuration list for PBXNativeTarget "Transportation" */;
 			buildPhases = (
+				953A49EAEEE59B1C5FFE679A /* [CP] Check Pods Manifest.lock */,
 				52A40ED72788464100D984E9 /* Sources */,
 				52A40ED82788464100D984E9 /* Frameworks */,
 				52A40ED92788464100D984E9 /* Resources */,
+				57E37E59062306F76C9C0EA1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,12 +211,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A40EEE2788464200D984E9 /* LaunchScreen.storyboard in Resources */,
+				5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */,
 				52A40EEB2788464200D984E9 /* Assets.xcassets in Resources */,
 				52A40EE62788464100D984E9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		57E37E59062306F76C9C0EA1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Transportation/Pods-Transportation-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Transportation/Pods-Transportation-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Transportation/Pods-Transportation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		953A49EAEEE59B1C5FFE679A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Transportation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		52A40ED72788464100D984E9 /* Sources */ = {
@@ -176,11 +268,15 @@
 			files = (
 				52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */,
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
+				5291ABA12798214E000C8F2D /* DepartureStationViewController.swift in Sources */,
 				52A40EE92788464100D984E9 /* Transportation.xcdatamodeld in Sources */,
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,
 				52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */,
+				5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */,
 				52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */,
+				5291ABA527985F90000C8F2D /* Station.swift in Sources */,
 				52AE2531278EE352008D86E3 /* StationViewModel.swift in Sources */,
+				52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +420,7 @@
 		};
 		52A40EF32788464200D984E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -352,6 +449,7 @@
 		};
 		52A40EF42788464200D984E9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

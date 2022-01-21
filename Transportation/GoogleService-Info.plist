@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>942648534261-3fr8p6co4omi4tuo1qdfg423fjeseh61.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.942648534261-3fr8p6co4omi4tuo1qdfg423fjeseh61</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBH7BZuUIc_aH_e3YwliaSfadYHB5HSTPM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>942648534261</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.houcem.Transportation</string>
+	<key>PROJECT_ID</key>
+	<string>transportation-app-db773</string>
+	<key>STORAGE_BUCKET</key>
+	<string>transportation-app-db773.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:942648534261:ios:f2a57f3c79252f850811bc</string>
+	<key>DATABASE_URL</key>
+	<string>https://transportation-app-db773-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

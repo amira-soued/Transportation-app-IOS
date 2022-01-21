@@ -10,30 +10,26 @@ import UIKit
 class MainScreenViewController: UIViewController {
   
     @IBOutlet weak var homeScreenStackView: UIStackView!
-    @IBOutlet weak var FromButton: UIButton!
-    @IBOutlet weak var ToButton: UIButton!
-     
+    @IBOutlet weak var fromButton: UIButton!
+    @IBOutlet weak var toButton: UIButton!
+    
+    var mainScreenCoordinator : MainScreenCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-          
         homeScreenStackView.layer.cornerRadius = 10
-        // Do any additional setup after loading the view.
     }
-
-   
-    @IBAction func fromButtonClicked(_ sender: Any) {
+ 
+    @IBAction func fromButtonClicked(_ sender: UIButton) {
+        
         guard let trainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StationViewController") as? StationViewController else {
              return
          }
          trainViewController.modalPresentationStyle = .fullScreen
-         present(trainViewController, animated: true)
+        
+        trainViewController.isFromTo = (sender == toButton)
+        
+        present(trainViewController, animated: true)
     }
     
-    @IBAction func toButtonClicked(_ sender: Any) {
-        guard let trainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StationViewController") as? StationViewController else {
-             return
-         }
-         trainViewController.modalPresentationStyle = .fullScreen
-         present(trainViewController, animated: true)
-    }
 }
