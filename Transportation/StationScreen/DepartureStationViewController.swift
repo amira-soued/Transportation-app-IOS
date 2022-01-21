@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class DepartureStationViewController: UIViewController,UITableViewDataSource , UITableViewDelegate{
 
         @IBOutlet weak var tableView: UITableView!
