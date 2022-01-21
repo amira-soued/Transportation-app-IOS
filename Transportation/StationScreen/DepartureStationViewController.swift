@@ -34,7 +34,7 @@ class DepartureStationViewController: UIViewController,UITableViewDataSource , U
         tableView.reloadData()
         tableView.allowsSelection = true
         loadData()
-        tableView.isHidden = true
+        tableView.isHidden = false
     }
     func loadData() {
         firebaseClient.getStations{ stations in
