@@ -12,7 +12,6 @@ struct Station {
     var name : String?
     var city : String?
 }
-
 extension Station {
     static func build(from documents: [QueryDocumentSnapshot]) -> [Station] {
         var stations = [Station]()

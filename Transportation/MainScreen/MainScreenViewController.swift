@@ -26,9 +26,7 @@ class MainScreenViewController: UIViewController {
              return
          }
          trainViewController.modalPresentationStyle = .fullScreen
-        
         trainViewController.isFromTo = (sender == toButton)
-        
         present(trainViewController, animated: true)
     }
     
