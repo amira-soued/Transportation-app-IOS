@@ -119,26 +119,29 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1Ub-pK-kas">
                                                 <rect key="frame" x="40" y="0.0" width="344" height="80"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3V1-G1-QVy">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="From:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3V1-G1-QVy">
                                                         <rect key="frame" x="0.0" y="0.0" width="344" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="2kV-fj-UeE"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                                         <connections>
                                                             <action selector="tfEditing:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="DYW-Ag-qsM"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6F6-we-HDB">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6F6-we-HDB">
                                                         <rect key="frame" x="0.0" y="40" width="344" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="hHr-RI-KK1"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                                        <connections>
+                                                            <action selector="tfEditing:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="mgJ-45-TgK"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -187,20 +190,48 @@
                                     <constraint firstItem="6F6-we-HDB" firstAttribute="top" secondItem="Ij8-gp-0Xd" secondAttribute="bottom" id="kUJ-hv-9h1"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fms-hl-ddD">
+                                <rect key="frame" x="0.0" y="200" width="414" height="662"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stationNameCell" textLabel="jtg-kc-JWD" rowHeight="76" style="IBUITableViewCellStyleDefault" id="87Z-LH-FlM">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="76"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="87Z-LH-FlM" id="vIo-Hb-fAO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jtg-kc-JWD">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U5W-em-bV5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="U5W-em-bV5" firstAttribute="trailing" secondItem="W5A-m3-L4P" secondAttribute="trailing" id="1Iu-mU-aHV"/>
+                            <constraint firstItem="U5W-em-bV5" firstAttribute="bottom" secondItem="fms-hl-ddD" secondAttribute="bottom" id="Chi-DG-EEM"/>
                             <constraint firstItem="U5W-em-bV5" firstAttribute="top" secondItem="FCc-cg-MFz" secondAttribute="top" constant="5" id="Ed7-po-Lcb"/>
                             <constraint firstItem="W5A-m3-L4P" firstAttribute="top" secondItem="wSK-SE-uYl" secondAttribute="top" id="J74-Ah-yYH"/>
                             <constraint firstItem="W5A-m3-L4P" firstAttribute="leading" secondItem="U5W-em-bV5" secondAttribute="leading" id="LJz-cW-Oje"/>
+                            <constraint firstItem="U5W-em-bV5" firstAttribute="trailing" secondItem="fms-hl-ddD" secondAttribute="trailing" id="cIM-UU-SaG"/>
+                            <constraint firstItem="fms-hl-ddD" firstAttribute="top" secondItem="W5A-m3-L4P" secondAttribute="bottom" id="hWK-l2-N8R"/>
+                            <constraint firstItem="fms-hl-ddD" firstAttribute="leading" secondItem="U5W-em-bV5" secondAttribute="leading" id="kBD-aE-6WC"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="taY-aT-xIv" id="thv-DQ-sJj"/>
                         <outlet property="fromTextField" destination="3V1-G1-QVy" id="sB5-UE-HDK"/>
                         <outlet property="stationScreenStackView" destination="nXS-Fz-Rv1" id="1fI-lX-8mz"/>
+                        <outlet property="tableView" destination="fms-hl-ddD" id="I7L-Pc-e05"/>
                         <outlet property="toTextField" destination="6F6-we-HDB" id="Eog-19-NPg"/>
                     </connections>
                 </viewController>
