@@ -82,12 +82,8 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     
     func loadData() {
         firebaseClient.getStations{ stations in
-          self.allStations = stations
-//            for name in self.allStations{
-//                self.searchedArray.append(name.name!)
-//            }
-       }
-//        print(searchedArray)
+            self.allStations = stations
+        }
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         fromTextField.resignFirstResponder()
@@ -98,6 +94,7 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         tableView.reloadData()
         return true
     }
+        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if fromTextField.text?.count != 0{
             //self.searchedArray.removeAll()
@@ -119,16 +116,13 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-       //let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath)
+      
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "stationCell")
-        //cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = stations[indexPath.row].name
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
         cell.detailTextLabel?.text = stations[indexPath.row].city
         cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
-   
-    
+  
 }
