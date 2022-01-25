@@ -55,7 +55,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.allowsSelection = true
         loadData()
         tableView.isHidden = true
-        
         fromTextField.delegate = self
         toTextField.delegate = self
         
@@ -68,6 +67,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             searchedArray.append(name.name!)
         }
         print("search \(searchedArray)")
+        
     }
     
     @IBAction func backToMainScreen(_ sender: Any) {

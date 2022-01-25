@@ -125,7 +125,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="2kV-fj-UeE"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                                         <connections>
                                                             <action selector="tfEditing:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="DYW-Ag-qsM"/>
@@ -137,7 +137,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="hHr-RI-KK1"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                                         <connections>
                                                             <action selector="tfEditing:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="mgJ-45-TgK"/>
