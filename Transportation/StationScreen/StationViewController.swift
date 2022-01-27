@@ -29,6 +29,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+    var tableFilterData = [String]()
     var allStations = [Station]() {
         didSet {
             DispatchQueue.main.async {
@@ -36,7 +37,8 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    //var data = [String:Any]()
+    var stationsNamesTable : [String] = Array()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,10 +50,10 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         } else {
             fromTextField.becomeFirstResponder()
         }
-        
+       
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.reloadData()
+        tableView.reloadData()
         tableView.allowsSelection = true
         loadData()
         tableView.isHidden = true
@@ -61,13 +63,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func tfEditing(_ sender: Any) {
-
         tableView.isHidden = false
-        for name in stations{
-            searchedArray.append(name.name!)
-        }
-        print("search \(searchedArray)")
-        
     }
     
     @IBAction func backToMainScreen(_ sender: Any) {
@@ -83,33 +79,38 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     func loadData() {
         firebaseClient.getStations{ stations in
             self.allStations = stations
-        }
-    }
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        fromTextField.resignFirstResponder()
-        self.searchedArray.removeAll()
-        for name in stations{
-            searchedArray.append(name.name!)
-        }
-        tableView.reloadData()
-        return true
-    }
-        
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if fromTextField.text?.count != 0{
-            //self.searchedArray.removeAll()
+            
             for stationNames in stations{
-                let range = stationNames.name?.lowercased().range(of: fromTextField.text!, options: .caseInsensitive, range: nil, locale: nil)
-                if range != nil {
-                    self.searchedArray.append(stationNames.name!)
-                }
+                
+                self.stationsNamesTable.append(stationNames.name!)
             }
         }
-        tableView.reloadData()
+    }
+
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        
+        let searchText  = textField.text!
+        self.tableFilterData.removeAll()
+        if searchText.count > 0 {
+            tableView.isHidden = false
+            
+            tableFilterData = stationsNamesTable.filter({ (result) -> Bool in
+                return result.range(of: searchText, options: .caseInsensitive) != nil
+                
+            })
+            
+            tableView.reloadData()
+        }
+        else{
+            tableView.isHidden = true
+            tableFilterData = []
+        }
+        
         return true
     }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stations.count
+        return tableFilterData.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -118,11 +119,10 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "stationCell")
-        cell.textLabel?.text = stations[indexPath.row].name
+        cell.textLabel?.text = tableFilterData[indexPath.row]
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
         cell.detailTextLabel?.text = stations[indexPath.row].city
         cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
-  
 }
