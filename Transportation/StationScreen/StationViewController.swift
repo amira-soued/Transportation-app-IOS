@@ -30,6 +30,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     var tableFilterData = [String]()
+    var tableFilterCityData = [String]()
     var allStations = [Station]() {
         didSet {
             DispatchQueue.main.async {
@@ -38,7 +39,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     var stationsNamesTable : [String] = Array()
-
+    var stationsCityTable : [String] = Array()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,6 +85,10 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
                 
                 self.stationsNamesTable.append(stationNames.name!)
             }
+            for stationNames in stations{
+                
+                self.stationsCityTable.append(stationNames.city!)
+            }
         }
     }
 
@@ -95,6 +100,10 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             tableView.isHidden = false
             
             tableFilterData = stationsNamesTable.filter({ (result) -> Bool in
+                return result.range(of: searchText, options: .caseInsensitive) != nil
+                
+            })
+            tableFilterCityData = stationsCityTable.filter({ (result) -> Bool in
                 return result.range(of: searchText, options: .caseInsensitive) != nil
                 
             })
@@ -121,8 +130,8 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "stationCell")
         cell.textLabel?.text = tableFilterData[indexPath.row]
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-        cell.detailTextLabel?.text = stations[indexPath.row].city
-        cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
+//        cell.detailTextLabel?.text = tableFilterCityData[indexPath.row]
+//        cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
 }
