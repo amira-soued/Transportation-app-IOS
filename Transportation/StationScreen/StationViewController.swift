@@ -20,32 +20,24 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     var isFromTo: Bool = true
     let viewModel = StationViewModel()
     var firebaseClient = FirebaseClient()
-    let database = Firestore.firestore()
-    var searchedArray:[String] = Array()
-    var stations = [Station]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+
+    /// Represents al thel stations to be displayed
+    var stationsArray = [Station]()
+
+    /// Represents all the stations recieved by the Backend
+    var allStationsArray = [Station]() {
+        didSet{
+            stationsArray = allStationsArray
         }
     }
-    var tableFilterData = [String]()
-    var tableFilterCityData = [String]()
-    var allStations = [Station]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.stations = self.allStations
-            }
-        }
-    }
-    var stationsNamesTable : [String] = Array()
-    var stationsCityTable : [String] = Array()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         stationScreenStackView.layer.cornerRadius = 10
         viewModel.placeholderWhite(text: "From:", textField: fromTextField)
         viewModel.placeholderWhite(text: "To:", textField: toTextField)
+
         if isFromTo{
             toTextField.becomeFirstResponder()
         } else {
@@ -54,17 +46,15 @@ class StationViewController: UIViewController, UITextFieldDelegate {
        
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.reloadData()
         tableView.allowsSelection = true
-        loadData()
-        tableView.isHidden = true
+
         fromTextField.delegate = self
         toTextField.delegate = self
-        
+
+        loadData()
     }
     
     @IBAction func tfEditing(_ sender: Any) {
-        tableView.isHidden = false
     }
     
     @IBAction func backToMainScreen(_ sender: Any) {
@@ -75,48 +65,27 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     
     func loadData() {
         firebaseClient.getStations{ stations in
-            self.allStations = stations
-            
-            for stationNames in stations{
-                
-                self.stationsNamesTable.append(stationNames.name!)
-            }
-            for stationNames in stations{
-                
-                self.stationsCityTable.append(stationNames.city!)
-            }
+            self.allStationsArray = stations
+            self.tableView.reloadData()
         }
     }
 
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
         let searchText  = textField.text!
-        self.tableFilterData.removeAll()
-        if searchText.count > 0 {
-            tableView.isHidden = false
-            
-            tableFilterData = stationsNamesTable.filter({ (result) -> Bool in
-                return result.range(of: searchText, options: .caseInsensitive) != nil
-                
-            })
-            tableFilterCityData = stationsCityTable.filter({ (result) -> Bool in
-                return result.range(of: searchText, options: .caseInsensitive) != nil
-                
-            })
-            
-            tableView.reloadData()
-        }
-        else{
-            tableView.isHidden = true
-            tableFilterData = []
-        }
+        stationsArray = allStationsArray.filter({ (station) -> Bool in
+            return station.name?.range(of: searchText, options: .caseInsensitive) != nil
+        })
+
+        tableView.reloadData()
         
         return true
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableFilterData.count
+        return stationsArray.count
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -124,10 +93,8 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "stationCell")
-        cell.textLabel?.text = tableFilterData[indexPath.row]
+        cell.textLabel?.text = stationsArray[indexPath.row].name
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-//        cell.detailTextLabel?.text = tableFilterCityData[indexPath.row]
-//        cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
 }
