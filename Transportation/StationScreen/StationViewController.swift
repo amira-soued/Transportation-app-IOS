@@ -68,11 +68,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func backToMainScreen(_ sender: Any) {
-        guard let trainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
-            return
-        }
-        trainViewController.modalPresentationStyle = .fullScreen
-        present(trainViewController, animated: false)
+       dismiss(animated: true, completion: nil)
     }
 }
 extension StationViewController : UITableViewDelegate, UITableViewDataSource{
