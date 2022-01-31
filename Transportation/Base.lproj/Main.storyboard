@@ -128,7 +128,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                                         <connections>
-                                                            <action selector="tfEditing:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="DYW-Ag-qsM"/>
+                                                            <action selector="textFieldTyping:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="hq2-vN-tXz"/>
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="To:" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6F6-we-HDB">
@@ -140,7 +140,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                                         <connections>
-                                                            <action selector="tfEditing:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="mgJ-45-TgK"/>
+                                                            <action selector="textFieldTyping:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="gc8-ex-eee"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -149,10 +149,9 @@
                                         <color key="backgroundColor" name="Gray color"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taY-aT-xIv">
-                                        <rect key="frame" x="15" y="39" width="45" height="31"/>
+                                        <rect key="frame" x="15" y="39" width="64" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="BBV-5g-X0s"/>
-                                            <constraint firstAttribute="width" constant="45" id="l60-wl-mwz"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.backward" catalog="system">
@@ -171,7 +170,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where to ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCc-cg-MFz">
-                                        <rect key="frame" x="68" y="39" width="87" height="21.5"/>
+                                        <rect key="frame" x="87" y="39" width="87" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -179,6 +178,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FCc-cg-MFz" secondAttribute="trailing" constant="240" id="2IM-mi-fEM"/>
                                     <constraint firstAttribute="bottom" secondItem="nXS-Fz-Rv1" secondAttribute="bottom" constant="15" id="2IT-UA-Xlk"/>
                                     <constraint firstItem="nXS-Fz-Rv1" firstAttribute="leading" secondItem="W5A-m3-L4P" secondAttribute="leading" constant="15" id="6YS-qV-wS5"/>
                                     <constraint firstAttribute="trailing" secondItem="nXS-Fz-Rv1" secondAttribute="trailing" constant="15" id="8Xf-wb-Vg6"/>

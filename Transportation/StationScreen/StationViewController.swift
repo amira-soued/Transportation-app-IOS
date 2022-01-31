@@ -54,9 +54,15 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         loadData()
     }
     
-    @IBAction func tfEditing(_ sender: Any) {
+    @IBAction func textFieldTyping(_ sender: UITextField) {
+        let searchText  = sender.text!
+        stationsArray = allStationsArray.filter({ (station) -> Bool in
+            return station.name?.range(of: searchText, options: .caseInsensitive) != nil
+        })
+
+        tableView.reloadData()
+        
     }
-    
     @IBAction func backToMainScreen(_ sender: Any) {
        dismiss(animated: true, completion: nil)
     }
@@ -70,17 +76,17 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         }
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
-        
-        let searchText  = textField.text!
-        stationsArray = allStationsArray.filter({ (station) -> Bool in
-            return station.name?.range(of: searchText, options: .caseInsensitive) != nil
-        })
-
-        tableView.reloadData()
-        
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+//
+//        let searchText  = textField.text!+string
+//        stationsArray = allStationsArray.filter({ (station) -> Bool in
+//            return station.name?.range(of: searchText, options: .caseInsensitive) != nil
+//        })
+//
+//        tableView.reloadData()
+//
+//        return true
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stationsArray.count
