@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
 		5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */; };
-		5291ABA12798214E000C8F2D /* DepartureStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA02798214E000C8F2D /* DepartureStationViewController.swift */; };
 		5291ABA527985F90000C8F2D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA427985F90000C8F2D /* Station.swift */; };
 		52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EDE2788464100D984E9 /* AppDelegate.swift */; };
 		52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EE02788464100D984E9 /* SceneDelegate.swift */; };
@@ -30,7 +29,6 @@
 		2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.debug.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.debug.xcconfig"; sourceTree = "<group>"; };
 		5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
-		5291ABA02798214E000C8F2D /* DepartureStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureStationViewController.swift; sourceTree = "<group>"; };
 		5291ABA427985F90000C8F2D /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		52A40EDB2788464100D984E9 /* Transportation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transportation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A40EDE2788464100D984E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				52A40EF627884A8000D984E9 /* NavigationManager.swift */,
-				52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */,
 				5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */,
 			);
 			path = Managers;
@@ -119,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				52A40EF9278865E700D984E9 /* MainScreenViewController.swift */,
+				52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -127,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				52F1A075278C31D800F9E57C /* StationViewController.swift */,
-				5291ABA02798214E000C8F2D /* DepartureStationViewController.swift */,
 				52AE2530278EE352008D86E3 /* StationViewModel.swift */,
 			);
 			path = StationScreen;
@@ -268,7 +265,6 @@
 			files = (
 				52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */,
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
-				5291ABA12798214E000C8F2D /* DepartureStationViewController.swift in Sources */,
 				52A40EE92788464100D984E9 /* Transportation.xcdatamodeld in Sources */,
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,
 				52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */,

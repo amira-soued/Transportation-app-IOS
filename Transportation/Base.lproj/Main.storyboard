@@ -280,9 +280,6 @@
                             <constraint firstItem="vw1-er-gdg" firstAttribute="top" secondItem="iv0-YI-mQq" secondAttribute="top" id="rOW-ra-2ay"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="vw1-er-gdg" id="NNa-I2-2NV"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTs-OS-rgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

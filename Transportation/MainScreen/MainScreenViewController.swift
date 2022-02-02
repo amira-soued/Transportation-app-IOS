@@ -21,13 +21,6 @@ class MainScreenViewController: UIViewController {
     }
  
     @IBAction func fromButtonClicked(_ sender: UIButton) {
-        
-        guard let trainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StationViewController") as? StationViewController else {
-             return
-         }
-         trainViewController.modalPresentationStyle = .fullScreen
-        trainViewController.isFromTo = (sender == toButton)
-        present(trainViewController, animated: true)
+        mainScreenCoordinator?.start(buttonClicked: sender, toButton: toButton)
     }
-    
 }
