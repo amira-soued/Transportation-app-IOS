@@ -13,16 +13,16 @@ class MainScreenCoordinator{
         self.window = window
     }
     
-    func start(buttonClicked : UIButton, toButton : UIButton){
-        showStationScreen(button: buttonClicked, whichButton: toButton)
+    func start(buttonClicked : UIButton, whichButton : UIButton){
+        showStationScreen(button: buttonClicked, toButton: whichButton)
     }
      
-    func showStationScreen(button : UIButton, whichButton : UIButton){
+    func showStationScreen(button : UIButton, toButton : UIButton){
         guard let stationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StationViewController") as? StationViewController else {
              return
          }
         stationViewController.modalPresentationStyle = .fullScreen
-        stationViewController.isFromTo = (button == whichButton)
+        stationViewController.isFromTo = (button == toButton)
         window?.rootViewController?.present(stationViewController, animated: true)
     }
 }

@@ -20,7 +20,8 @@ class MainScreenViewController: UIViewController {
         homeScreenStackView.layer.cornerRadius = 10
     }
  
-    @IBAction func fromButtonClicked(_ sender: UIButton) {
-        mainScreenCoordinator?.start(buttonClicked: sender, toButton: toButton)
+    @IBAction func clickOnButton(_ sender: UIButton) {
+        mainScreenCoordinator?.start(buttonClicked: sender, whichButton: toButton)
     }
 }
+ 
