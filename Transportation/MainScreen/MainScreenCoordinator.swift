@@ -7,22 +7,23 @@
 
 import UIKit
 class MainScreenCoordinator{
-    let window : UIWindow?
-    
-    init(window: UIWindow?) {
-        self.window = window
+
+    var navigationController : UINavigationController
+    init(navigationController: UINavigationController){
+                self.navigationController = navigationController
+            }
+
+    func start(){
+        guard let viewController = UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
+                    return
+                }
+        self.navigationController.setViewControllers([viewController], animated: false)
     }
     
-    func start(buttonClicked : UIButton, whichButton : UIButton){
-        showStationScreen(button: buttonClicked, toButton: whichButton)
-    }
-     
-    func showStationScreen(button : UIButton, toButton : UIButton){
-        guard let stationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StationViewController") as? StationViewController else {
-             return
-         }
-        stationViewController.modalPresentationStyle = .fullScreen
-        stationViewController.isFromTo = (button == toButton)
-        window?.rootViewController?.present(stationViewController, animated: true)
+    func showStation(buttonClicked: UIButton, whichButton: UIButton){
+        let coordinator = StationCoordinator(navigationController: navigationController)
+        coordinator.start(buttonClicked: buttonClicked, whichButton: whichButton)
+        self.navigationController.isToolbarHidden = true
     }
 }

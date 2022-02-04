@@ -43,7 +43,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         } else {
             fromTextField.becomeFirstResponder()
         }
-       
+        //self.navigationItem.setHidesBackButton(true, animated: false)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = true
@@ -59,9 +59,9 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         stationsArray = allStationsArray.filter({ (station) -> Bool in
             return station.name?.range(of: searchText, options: .caseInsensitive) != nil
         })
-
         tableView.reloadData()
     }
+    
     @IBAction func backToMainScreen(_ sender: Any) {
        dismiss(animated: true, completion: nil)
     }
