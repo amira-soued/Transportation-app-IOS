@@ -43,7 +43,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         } else {
             fromTextField.becomeFirstResponder()
         }
-        //self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationController?.isNavigationBarHidden = true
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelection = true
@@ -63,8 +63,14 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func backToMainScreen(_ sender: Any) {
-       dismiss(animated: true, completion: nil)
+       //dismiss(animated: true, completion: nil)
+        guard let stationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
+             return
+         }
+        stationViewController.modalPresentationStyle = .fullScreen
+        self.navigationController!.pushViewController(stationViewController, animated: false)
     }
+    
 }
 extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     
