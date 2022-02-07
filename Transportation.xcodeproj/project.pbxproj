@@ -22,6 +22,8 @@
 		52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EF9278865E700D984E9 /* MainScreenViewController.swift */; };
 		52AE2531278EE352008D86E3 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2530278EE352008D86E3 /* StationViewModel.swift */; };
 		52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */; };
+		52D9D16D27B11A6B00F52418 /* TrainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9D16C27B11A6B00F52418 /* TrainListViewController.swift */; };
+		52D9D16F27B11C2B00F52418 /* TrainListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9D16E27B11C2B00F52418 /* TrainListCoordinator.swift */; };
 		52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1A075278C31D800F9E57C /* StationViewController.swift */; };
 		B09005FD5BE76286C2F81ECD /* Pods_Transportation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		52A40EF9278865E700D984E9 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		52AE2530278EE352008D86E3 /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
 		52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
+		52D9D16C27B11A6B00F52418 /* TrainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainListViewController.swift; sourceTree = "<group>"; };
+		52D9D16E27B11C2B00F52418 /* TrainListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainListCoordinator.swift; sourceTree = "<group>"; };
 		52F1A075278C31D800F9E57C /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.release.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,11 +99,12 @@
 				52A40EE02788464100D984E9 /* SceneDelegate.swift */,
 				5291ABA327985F7C000C8F2D /* Model */,
 				52A40EF527884A6600D984E9 /* Managers */,
-				52A40EF8278865C600D984E9 /* MainScreen */,
-				52F1A074278C31A000F9E57C /* StationScreen */,
-				52A40EEA2788464200D984E9 /* Assets.xcassets */,
+				52A40EF8278865C600D984E9 /* Main Screen */,
+				52F1A074278C31A000F9E57C /* Station Screen */,
+				52D9D16B27B1178700F52418 /* Train List Screen */,
 				52A40EE42788464100D984E9 /* Main.storyboard */,
 				52A40EEC2788464200D984E9 /* LaunchScreen.storyboard */,
+				52A40EEA2788464200D984E9 /* Assets.xcassets */,
 				52A40EEF2788464200D984E9 /* Info.plist */,
 				5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */,
 				52A40EE72788464100D984E9 /* Transportation.xcdatamodeld */,
@@ -116,24 +121,33 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		52A40EF8278865C600D984E9 /* MainScreen */ = {
+		52A40EF8278865C600D984E9 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
 				52A40EF9278865E700D984E9 /* MainScreenViewController.swift */,
 				52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */,
 				5239259727AAD40000E34480 /* MainScreenViewModel.swift */,
 			);
-			path = MainScreen;
+			path = "Main Screen";
 			sourceTree = "<group>";
 		};
-		52F1A074278C31A000F9E57C /* StationScreen */ = {
+		52D9D16B27B1178700F52418 /* Train List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				52D9D16C27B11A6B00F52418 /* TrainListViewController.swift */,
+				52D9D16E27B11C2B00F52418 /* TrainListCoordinator.swift */,
+			);
+			path = "Train List Screen";
+			sourceTree = "<group>";
+		};
+		52F1A074278C31A000F9E57C /* Station Screen */ = {
 			isa = PBXGroup;
 			children = (
 				52F1A075278C31D800F9E57C /* StationViewController.swift */,
 				5239259527AACA6800E34480 /* StationCoordinator.swift */,
 				52AE2530278EE352008D86E3 /* StationViewModel.swift */,
 			);
-			path = StationScreen;
+			path = "Station Screen";
 			sourceTree = "<group>";
 		};
 		5505586A9B8F106386EC38D7 /* Pods */ = {
@@ -272,6 +286,7 @@
 				52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */,
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
 				52A40EE92788464100D984E9 /* Transportation.xcdatamodeld in Sources */,
+				52D9D16D27B11A6B00F52418 /* TrainListViewController.swift in Sources */,
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,
 				52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */,
 				5239259827AAD40000E34480 /* MainScreenViewModel.swift in Sources */,
@@ -279,6 +294,7 @@
 				52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */,
 				5291ABA527985F90000C8F2D /* Station.swift in Sources */,
 				52AE2531278EE352008D86E3 /* StationViewModel.swift in Sources */,
+				52D9D16F27B11C2B00F52418 /* TrainListCoordinator.swift in Sources */,
 				5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */,
 				52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */,
 			);

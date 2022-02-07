@@ -22,6 +22,6 @@ class StationCoordinator {
          }
         stationViewController.modalPresentationStyle = .fullScreen
         stationViewController.isFromTo = (button == toButton)
-        self.navigationController!.pushViewController(stationViewController, animated: true)
+        self.navigationController?.pushViewController(stationViewController, animated: true)
     }
 }

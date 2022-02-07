@@ -13,7 +13,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
     var window: UIWindow?
-    var mainScreenCoordinator : MainScreenCoordinator?
+    //var mainScreenCoordinator : MainScreenCoordinator?
   
     override func viewDidLoad() {
         super.viewDidLoad()
