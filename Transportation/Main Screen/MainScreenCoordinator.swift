@@ -6,13 +6,14 @@
 //
 
 import UIKit
-class MainScreenCoordinator{
+class MainScreenCoordinator: Coordinator{
 
+    var childCoordinators: [Coordinator] = []
     var navigationController : UINavigationController
     init(navigationController: UINavigationController){
                 self.navigationController = navigationController
             }
-
+    
     func start(){
         guard let viewController = UIStoryboard(name: "Main", bundle: nil)
                 .instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
@@ -21,9 +22,10 @@ class MainScreenCoordinator{
         self.navigationController.setViewControllers([viewController], animated: false)
     }
     
-    func showStation(buttonClicked: UIButton, whichButton: UIButton){
+    func showStation(toButtonClicked : Bool){
         let coordinator = StationCoordinator(navigationController: navigationController)
-        coordinator.start(buttonClicked: buttonClicked, whichButton: whichButton)
+        coordinator.status = toButtonClicked
+        coordinator.start()
         self.navigationController.isToolbarHidden = true
     }
 }

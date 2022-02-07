@@ -6,22 +6,33 @@
 //
 
 import UIKit
-class StationCoordinator {
+class StationCoordinator : Coordinator{
     let navigationController : UINavigationController?
     init(navigationController : UINavigationController?) {
         self.navigationController = navigationController
     }
+    var status : Bool = true
+    var childCoordinators : [Coordinator] = []
     
-    func start(buttonClicked : UIButton, whichButton : UIButton){
-        showStationScreen(button: buttonClicked, toButton: whichButton)
+    func start(){
+        showStationScreen()
     }
      
-    func showStationScreen(button : UIButton, toButton : UIButton){
+    func showStationScreen(){
         guard let stationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StationViewController") as? StationViewController else {
              return
          }
         stationViewController.modalPresentationStyle = .fullScreen
-        stationViewController.isFromTo = (button == toButton)
+        stationViewController.isFromTo = status
         self.navigationController?.pushViewController(stationViewController, animated: true)
     }
+    
+    func dismissStationScreen(){
+        guard let stationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
+             return
+         }
+        stationViewController.modalPresentationStyle = .fullScreen
+        self.navigationController?.popViewController(animated: false)
+    }
 }
+

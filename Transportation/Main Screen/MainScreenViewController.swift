@@ -21,10 +21,8 @@ class MainScreenViewController: UIViewController {
     }
  
     @IBAction func clickOnButton(_ sender: UIButton) {
-       
         let mainScreenCoordinator = MainScreenCoordinator(navigationController: navigationController!)
-        mainScreenCoordinator.showStation(buttonClicked: sender, whichButton: toButton)
-        
+        mainScreenCoordinator.showStation(toButtonClicked: sender == toButton)
     }
 }
  

@@ -140,7 +140,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                                         <connections>
-                                                            <action selector="textFieldTyping:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="gc8-ex-eee"/>
+                                                            <action selector="textFieldTyping:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="nno-EE-n2T"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>

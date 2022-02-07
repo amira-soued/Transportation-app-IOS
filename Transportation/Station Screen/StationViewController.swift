@@ -19,6 +19,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
    
     var isFromTo: Bool = true
     let viewModel = StationViewModel()
+   
     var firebaseClient = FirebaseClient()
     var lastSelectedIndexPath = NSIndexPath(row: -1, section: 0)
     /// Represents al thel stations to be displayed
@@ -48,7 +49,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.dataSource = self
         tableView.allowsSelection = true
         tableView.isHidden = true
-        tableView.allowsMultipleSelection
         
         fromTextField.delegate = self
         toTextField.delegate = self
@@ -63,16 +63,15 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             return station.name?.range(of: searchText, options: .caseInsensitive) != nil
         })
         tableView.reloadData()
+        
     }
     
+
     
     @IBAction func backToMainScreen(_ sender: Any) {
        //dismiss(animated: true, completion: nil)
-        guard let stationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
-             return
-         }
-        stationViewController.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(stationViewController, animated: false)
+        let coordinator = StationCoordinator(navigationController: navigationController)
+        coordinator.dismissStationScreen()
     }
     
 }
@@ -101,34 +100,6 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         cell.detailTextLabel?.text = stationsArray[indexPath.row].city
         cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
-    }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//       let departureStation : String?
-//       let destinationStation : String?
-//        if stationsArray[indexPath.row] != nil {
-//            departureStation = stationsArray[indexPath.row].name
-//            fromTextField.text = departureStation
-//
-//        }
-//        if indexPath.row != lastSelectedIndexPath.row {
-//
-//            let newCell = tableView.cellForRow(at: indexPath)
-//            lastSelectedIndexPath = indexPath as NSIndexPath
-//            destinationStation  = newCell?.textLabel?.text
-//            toTextField.text = destinationStation
-//
-//        }
-//    }
-    func departureSelection(){
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            fromTextField.text = stationsArray[indexPath.row].name
-        }
-    }
-    func destinationSelection(){
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            toTextField.text = stationsArray[indexPath.row].name
-        }
     }
     
 }
