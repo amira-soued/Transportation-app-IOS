@@ -32,7 +32,7 @@ class StationCoordinator : Coordinator{
              return
          }
         stationViewController.modalPresentationStyle = .fullScreen
-        self.navigationController?.popViewController(animated: false)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

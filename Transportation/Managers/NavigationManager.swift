@@ -17,7 +17,6 @@ class NavigationManager{
     }
     
     func start(){
-        //showMainScreen()
         navigationController = UINavigationController()
         let mainScreenCoordinator = MainScreenCoordinator(navigationController: navigationController!)
         mainScreenCoordinator.start()

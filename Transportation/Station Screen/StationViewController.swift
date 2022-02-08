@@ -21,7 +21,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     let viewModel = StationViewModel()
    
     var firebaseClient = FirebaseClient()
-    var lastSelectedIndexPath = NSIndexPath(row: -1, section: 0)
+  
     /// Represents al thel stations to be displayed
     var stationsArray = [Station]()
 
@@ -49,7 +49,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.dataSource = self
         tableView.allowsSelection = true
         tableView.isHidden = true
-        
         fromTextField.delegate = self
         toTextField.delegate = self
         
@@ -63,13 +62,9 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             return station.name?.range(of: searchText, options: .caseInsensitive) != nil
         })
         tableView.reloadData()
-        
     }
-    
-
-    
+   
     @IBAction func backToMainScreen(_ sender: Any) {
-       //dismiss(animated: true, completion: nil)
         let coordinator = StationCoordinator(navigationController: navigationController)
         coordinator.dismissStationScreen()
     }

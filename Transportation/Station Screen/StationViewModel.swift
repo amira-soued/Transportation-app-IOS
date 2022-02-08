@@ -14,7 +14,4 @@ class StationViewModel{
         let placeholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white] )
         textField.attributedPlaceholder = placeholder
     }
-    
-    
-    
-}
+ }
