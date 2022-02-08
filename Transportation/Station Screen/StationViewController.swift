@@ -14,17 +14,14 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var fromTextField: UITextField!
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
-    
     @IBOutlet weak var tableView: UITableView!
    
     var isFromTo: Bool = true
     let viewModel = StationViewModel()
-   
     var firebaseClient = FirebaseClient()
-  
+    var selectedStation : Station?
     /// Represents al thel stations to be displayed
     var stationsArray = [Station]()
-
     /// Represents all the stations recieved by the Backend
     var allStationsArray = [Station]() {
         didSet{
@@ -51,7 +48,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.isHidden = true
         fromTextField.delegate = self
         toTextField.delegate = self
-        
         loadData()
     }
     
@@ -63,12 +59,11 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         })
         tableView.reloadData()
     }
-   
+  
     @IBAction func backToMainScreen(_ sender: Any) {
         let coordinator = StationCoordinator(navigationController: navigationController)
         coordinator.dismissStationScreen()
     }
-    
 }
 extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     
@@ -95,6 +90,15 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         cell.detailTextLabel?.text = stationsArray[indexPath.row].city
         cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedStation = stationsArray[indexPath.row]
+        if fromTextField.isFirstResponder {
+            fromTextField.text = selectedStation!.name
+        } else {
+            toTextField.text = selectedStation!.name
+        }
     }
     
 }
