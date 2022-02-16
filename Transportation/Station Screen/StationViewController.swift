@@ -20,6 +20,11 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     let viewModel = StationViewModel()
     var firebaseClient = FirebaseClient()
     var selectedStation : Station?
+    var depStationID :String?
+    var destStationID :String?
+    var departureSelect = false
+    var destinationSelect = false
+    
     /// Represents al thel stations to be displayed
     var stationsArray = [Station]()
     /// Represents all the stations recieved by the Backend
@@ -35,7 +40,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         stationScreenStackView.layer.cornerRadius = 10
         viewModel.placeholderWhite(text: "From:", textField: fromTextField)
         viewModel.placeholderWhite(text: "To:", textField: toTextField)
-
         if isFromTo{
             toTextField.becomeFirstResponder()
         } else {
@@ -96,8 +100,17 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         selectedStation = stationsArray[indexPath.row]
         if fromTextField.isFirstResponder {
             fromTextField.text = selectedStation!.name
+            depStationID = selectedStation?.ID
+            departureSelect = true
+            toTextField.becomeFirstResponder()
         } else {
             toTextField.text = selectedStation!.name
+            destStationID = selectedStation?.ID
+            destinationSelect = true
+        }
+        if departureSelect && destinationSelect {
+            let coordinator = StationCoordinator(navigationController: navigationController)
+            coordinator.showTrainList()
         }
     }
     

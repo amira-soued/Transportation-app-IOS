@@ -10,6 +10,7 @@ import UIKit
 class StationViewModel{
     
     var firebaseClient = FirebaseClient()
+    var destination, departure : String?
     func placeholderWhite(text: String, textField : UITextField){
         let placeholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white] )
         textField.attributedPlaceholder = placeholder

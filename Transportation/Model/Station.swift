@@ -11,13 +11,14 @@ import FirebaseFirestore
 struct Station {
     var name : String?
     var city : String?
+    var ID : String?
 }
 extension Station {
     static func build(from documents: [QueryDocumentSnapshot]) -> [Station] {
         var stations = [Station]()
         for document in documents {
             stations.append(Station(name: document["name"] as? String ?? "",
-                              city: document["city"] as? String ?? ""))
+                              city: document["city"] as? String ?? "", ID: document["ID"] as? String ?? ""))
         }
         return stations
     }

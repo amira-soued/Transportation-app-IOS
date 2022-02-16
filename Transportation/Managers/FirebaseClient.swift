@@ -10,7 +10,8 @@ import FirebaseFirestore
 import Firebase
 class FirebaseClient{
     let database = Firestore.firestore()
-
+    var results : [String : Any]?
+    
     func getStations(handler: @escaping ([Station]) -> Void) {
         database.collection("Stations").addSnapshotListener { querySnapshot, err in
                 if let error = err {
@@ -19,5 +20,15 @@ class FirebaseClient{
                     handler(Station.build(from: querySnapshot?.documents ?? []))
                 }
             }
+    }
+    func getTrips(documentID: String){
+        let docRef = database.document(documentID)
+        docRef.getDocument { snapshot , error in
+            guard let data = snapshot?.data(), error == nil else {
+                return
+            }
+            self.results = data
+            
+        }
     }
 }

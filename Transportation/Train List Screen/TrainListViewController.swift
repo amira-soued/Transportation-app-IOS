@@ -8,22 +8,26 @@
 import UIKit
 
 class TrainListViewController: UIViewController {
-
+   
+    @IBOutlet weak var trainScreenStackView: UIStackView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var fromButton: UIButton!
+    @IBOutlet weak var toButton: UIButton!
+    
+    var viewModel = StationViewModel()
+    var configuration = UIButton.Configuration.filled()
+    var firebaseClient = FirebaseClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        trainScreenStackView.layer.cornerRadius = 10
+        fromButton.configuration?.title = "fromStation"
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func backToStationScreen(_ sender: Any) {
+        let coordinator = TrainListCoordinator(navigationController: navigationController)
+        coordinator.dismissTrainScreen()
     }
-    */
-
 }

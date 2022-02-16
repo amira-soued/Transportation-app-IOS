@@ -34,5 +34,10 @@ class StationCoordinator : Coordinator{
         stationViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.popViewController(animated: true)
     }
+    
+    func showTrainList(){
+        let coordinator = TrainListCoordinator(navigationController: navigationController)
+        coordinator.start()
+    }
 }
 
