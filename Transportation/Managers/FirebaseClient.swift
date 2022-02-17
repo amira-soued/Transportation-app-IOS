@@ -21,6 +21,7 @@ class FirebaseClient{
                 }
             }
     }
+    
     func getTrips(documentID: String){
         let docRef = database.document(documentID)
         docRef.getDocument { snapshot , error in

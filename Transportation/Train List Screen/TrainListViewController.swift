@@ -18,12 +18,14 @@ class TrainListViewController: UIViewController {
     var viewModel = StationViewModel()
     var configuration = UIButton.Configuration.filled()
     var firebaseClient = FirebaseClient()
+    var fromButtonName : String?
+    var toButtonName : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         trainScreenStackView.layer.cornerRadius = 10
-        fromButton.configuration?.title = "fromStation"
-        
+        fromButton.configuration?.title = fromButtonName
+        toButton.configuration?.title = toButtonName
     }
     
     @IBAction func backToStationScreen(_ sender: Any) {

@@ -13,7 +13,7 @@ class TrainListCoordinator : Coordinator{
     }
     var childCoordinators : [Coordinator] = []
     var departureStation : String?
-    
+    var fromButton: String = "" , toButton : String = ""
     func start(){
          showTrainListScreen()
     }
@@ -21,6 +21,9 @@ class TrainListCoordinator : Coordinator{
     func showTrainListScreen(){
         let trainViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TrainListViewController") as? TrainListViewController
         trainViewController?.modalPresentationStyle = .fullScreen
+        trainViewController?.fromButtonName = fromButton
+        trainViewController?.toButtonName = toButton
+
         self.navigationController?.pushViewController(trainViewController!, animated: true)
     }
     
@@ -30,5 +33,9 @@ class TrainListCoordinator : Coordinator{
          }
         stationViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.popViewController(animated: true)
+    }
+    func assignNames(from : String , to: String){
+        fromButton = from
+        toButton = to
     }
 }
