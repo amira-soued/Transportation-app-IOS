@@ -35,9 +35,10 @@ class StationCoordinator : Coordinator{
         self.navigationController?.popViewController(animated: true)
     }
     
-    func showTrainList(departure : String, destination : String){
+    func showTrainList(departure : String, destination : String, fromStationID : String, toStationID : String){
         let coordinator = TrainListCoordinator(navigationController: navigationController)
         coordinator.assignNames(from: departure, to: destination)
+        coordinator.getStationsID(departureID: fromStationID, destinationID: toStationID)
         coordinator.start()
     }
 }

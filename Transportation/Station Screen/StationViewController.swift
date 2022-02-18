@@ -110,7 +110,7 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         }
         if departureSelect && destinationSelect {
             let coordinator = StationCoordinator(navigationController: navigationController)
-            coordinator.showTrainList(departure: fromTextField.text!, destination: toTextField.text!)
+            coordinator.showTrainList(departure: fromTextField.text!, destination: toTextField.text!, fromStationID: depStationID!, toStationID: destStationID!)
          }
     }
     

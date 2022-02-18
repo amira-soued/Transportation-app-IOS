@@ -271,6 +271,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Button" cornerStyle="medium">
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="backToStationScreen:" destination="gdc-Ry-n3j" eventType="touchUpInside" id="5cI-Sc-O1d"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjF-65-KGU" userLabel="toButton">
                                                         <rect key="frame" x="0.0" y="40" width="344" height="40"/>
@@ -281,6 +284,9 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="Button" cornerStyle="medium">
                                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="backToStationScreen:" destination="gdc-Ry-n3j" eventType="touchUpInside" id="nNv-08-Feg"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="Gray color"/>
