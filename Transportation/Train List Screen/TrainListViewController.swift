@@ -24,6 +24,7 @@ class TrainListViewController: UIViewController {
     var destinationID : String?
     var availableTime = [String]()
     var availableTrip = [String]()
+    var availableResults = [String : Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class TrainListViewController: UIViewController {
 
 extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return availableTime.count
+        return availableResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,8 +50,8 @@ extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
-    
-    func getTimeAndTrip(results : [String : Any])-> (departureTime : [String], departureTrip : [String]){
+
+    func getTimeAndTrip(results : [String : Any])-> ([String : Any]){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let today = Date()
@@ -63,12 +64,12 @@ extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
             if dateFormatter.date(from: currentTime)! < dateFormatter.date(from: time)! {
                 availableTime.append(time)
                 availableTrip.append(trip as! String)
+                availableResults.updateValue(trip, forKey: time)
             }
         }
-        print(availableTime)
-        print(availableTrip)
+        print(availableResults)
         tableView.reloadData()
-        return(availableTime,availableTrip)
+        return(availableResults)
     }
     
     @IBAction func backToStationScreen(_ sender: Any) {

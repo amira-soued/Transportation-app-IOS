@@ -14,7 +14,7 @@ class FirebaseClient{
     var results : [String : Any]?
     var availableTime = [String]()
     var availableTrip = [String]()
-    var stationResults : (departureTime: [String], departureTrip: [String])?
+    var stationResults : [String : Any]?
     
     func getStations(handler: @escaping ([Station]) -> Void) {
         database.collection("Stations").addSnapshotListener { querySnapshot, err in
@@ -25,8 +25,8 @@ class FirebaseClient{
                 }
             }
     }
-    
-    func getDepartureTrips(documentID: String, operation: @escaping([String : Any])-> (departureTime : [String], departureTrip : [String])){
+
+    func getDepartureTrips(documentID: String, operation: @escaping([String : Any])-> ([String : Any])){
         let docRef = database.collection("Trip by station").document(documentID)
         docRef.getDocument { snapshot , error in
             guard let data = snapshot?.data(), error == nil else {
@@ -34,8 +34,6 @@ class FirebaseClient{
             }
             self.results = data
             self.stationResults = operation(self.results!)
-            self.availableTime = self.stationResults!.departureTime
-            self.availableTrip = self.stationResults!.departureTrip
         }
     }
     
