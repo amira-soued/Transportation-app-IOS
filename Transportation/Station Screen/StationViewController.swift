@@ -91,8 +91,6 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "stationCell")
         cell.textLabel?.text = stationsArray[indexPath.row].name
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-        cell.detailTextLabel?.text = stationsArray[indexPath.row].city
-        cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
     
