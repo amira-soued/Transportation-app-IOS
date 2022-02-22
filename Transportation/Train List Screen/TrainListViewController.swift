@@ -25,7 +25,7 @@ class TrainListViewController: UIViewController {
     var availableTime = [String]()
     var availableTrip = [String]()
     var availableResults = [String : Any]()
-    
+      
     override func viewDidLoad() {
         super.viewDidLoad()
         trainScreenStackView.layer.cornerRadius = 10
@@ -46,8 +46,6 @@ extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "trainCell")
         cell.textLabel?.text = availableTime[indexPath.row]
         cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-        cell.detailTextLabel?.text = availableTrip[indexPath.row]
-        cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
         return cell
     }
 
@@ -67,7 +65,6 @@ extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
                 availableResults.updateValue(trip, forKey: time)
             }
         }
-        print(availableResults)
         tableView.reloadData()
         return(availableResults)
     }
