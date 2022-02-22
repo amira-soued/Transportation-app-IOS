@@ -22,15 +22,53 @@ class TrainListViewController: UIViewController {
     var toButtonName : String?
     var departureID : String?
     var destinationID : String?
-    var results : [String : Any]?
+    var availableTime = [String]()
+    var availableTrip = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         trainScreenStackView.layer.cornerRadius = 10
         fromButton.configuration?.title = fromButtonName
         toButton.configuration?.title = toButtonName
-        firebaseClient.getDepartureTrips(documentID: departureID!)
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        firebaseClient.getDepartureTrips(documentID: departureID!, operation: getTimeAndTrip)
+    }
+}
+
+extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return availableTime.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "trainCell")
+        cell.textLabel?.text = availableTime[indexPath.row]
+        cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+        cell.detailTextLabel?.text = availableTrip[indexPath.row]
+        cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
+        return cell
+    }
+    
+    func getTimeAndTrip(results : [String : Any])-> (departureTime : [String], departureTrip : [String]){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let today = Date()
+        let hours   = (Calendar.current.component(.hour, from: today))
+        let minutes = (Calendar.current.component(.minute, from: today))
+        let currentTime = "\(hours):\(minutes)"
+        for result in results{
+            let time = result.key
+            let trip = result.value
+            if dateFormatter.date(from: currentTime)! < dateFormatter.date(from: time)! {
+                availableTime.append(time)
+                availableTrip.append(trip as! String)
+            }
+        }
+        print(availableTime)
+        print(availableTrip)
+        tableView.reloadData()
+        return(availableTime,availableTrip)
     }
     
     @IBAction func backToStationScreen(_ sender: Any) {
@@ -38,3 +76,4 @@ class TrainListViewController: UIViewController {
         coordinator.dismissTrainScreen()
     }
 }
+
