@@ -14,8 +14,13 @@ class TrainListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var toButton: UIButton!
-    
-    var viewModel = StationViewModel()
+    class Fruit {
+        var fruitName = ""
+ 
+        init(fruitName: String) { self.fruitName = fruitName }
+
+    }
+
     var configuration = UIButton.Configuration.filled()
     var firebaseClient = FirebaseClient()
     var fromButtonName : String?
@@ -25,7 +30,10 @@ class TrainListViewController: UIViewController {
     var availableTime = [String]()
     var availableTrip = [String]()
     var availableResults = [String : Any]()
-      
+    var timeArraySorted = [String]()
+    var destinationResults : [String : Any]?
+    var destinationTime : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         trainScreenStackView.layer.cornerRadius = 10
@@ -34,12 +42,14 @@ class TrainListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         firebaseClient.getDepartureTrips(documentID: departureID!, operation: getTimeAndTrip)
+//        let myResult = getTheNearestTrip(results: availableResults)
+//        print(myResult)
     }
 }
 
 extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return availableResults.count
+        return timeArraySorted.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,7 +59,7 @@ extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    func getTimeAndTrip(results : [String : Any])-> ([String : Any]){
+    func getTimeAndTrip(results : [String : Any])-> ([String]){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let today = Date()
@@ -65,10 +75,31 @@ extension TrainListViewController : UITableViewDelegate, UITableViewDataSource {
                 availableResults.updateValue(trip, forKey: time)
             }
         }
+        let sorted = availableResults.sorted { $0.key < $1.key }
+         timeArraySorted = Array(sorted.map({ $0.key }))
+        let tripArraySorted = Array(sorted.map({ $0.value }))
+        let nearestTrip = tripArraySorted[0] as! String
+        let db = firebaseClient.database
+        let docRef = db.collection("Time by trip").document(nearestTrip)
+        docRef.getDocument { snapshot , error in
+            guard let data = snapshot?.data(), error == nil else {
+                return
+            }
+            self.destinationResults = data
+            for result in self.destinationResults!{
+                let station = result.key
+                self.destinationTime = result.value as? String
+                if station == self.destinationID{
+                    let arrivalStationID = station
+                    print(arrivalStationID)
+                    print(self.destinationTime!)
+                }
+            }
+        }
         tableView.reloadData()
-        return(availableResults)
+        return(timeArraySorted)
     }
-    
+
     @IBAction func backToStationScreen(_ sender: Any) {
         let coordinator = TrainListCoordinator(navigationController: navigationController)
         coordinator.dismissTrainScreen()
