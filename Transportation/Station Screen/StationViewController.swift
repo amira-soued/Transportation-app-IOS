@@ -51,7 +51,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func textFieldTyping(_ sender: UITextField) {
-        let searchText  = sender.text!
+        let searchText  = sender.text ?? ""
         tableView.isHidden = false
         cells = allStationsArray.compactMap { station in
             if station.name?.range(of: searchText, options: .caseInsensitive) != nil {
@@ -67,6 +67,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         coordinator.dismissStationScreen()
     }
 }
+
 extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     
     func loadData() {
@@ -108,12 +109,16 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             if fromTextField.isFirstResponder {
                 fromTextField.text = station.name
                 startStation = station
-                toTextField.becomeFirstResponder()
+                if endStation == nil {
+                    toTextField.becomeFirstResponder()
+                    textFieldTyping(toTextField)
+                }
             } else {
                 toTextField.text = station.name
                 endStation = station
                 if startStation == nil {
                     fromTextField.becomeFirstResponder()
+                    textFieldTyping(fromTextField)
                 }
             }
         }
