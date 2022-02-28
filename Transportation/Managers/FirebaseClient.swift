@@ -11,10 +11,6 @@ import Firebase
 
 class FirebaseClient{
     let database = Firestore.firestore()
-    var results : [String : Any]?
-    var availableTime = [String]()
-    var availableTrip = [String]()
-    var stationResults : [String]?
     
     func getStations(handler: @escaping ([Station]) -> Void) {
         database.collection("Stations").addSnapshotListener { querySnapshot, err in
@@ -26,15 +22,38 @@ class FirebaseClient{
             }
     }
 
-    func getDepartureTrips(documentID: String, operation: @escaping([String : Any])-> ([String])){
+    func getDepartureTrips(documentID: String, operation: @escaping([Trip])-> Void){
+        var trips = [Trip]()
         let docRef = database.collection("Trip by station").document(documentID)
         docRef.getDocument { snapshot , error in
             guard let data = snapshot?.data(), error == nil else {
                 return
             }
-            self.results = data
-            self.stationResults = operation(self.results!)
+            for tripData in data{
+                let tripName = tripData.value
+                let tripTime = tripData.key
+                trips.append(Trip(tripTime: tripTime , tripID: tripName as? String ?? ""))
+            }
+            operation(trips)
         }
     }
     
+    func getArrivalTime(documentID : String){
+        let docRef = database.collection("Time by trip").document(documentID)
+        docRef.getDocument { snapshot , error in
+            guard let data = snapshot?.data(), error == nil else {
+                return
+            }
+            let destinationResults = data
+            for result in destinationResults{
+                let station = result.key
+                let destinationTime = result.value as? String
+                if station == documentID{
+                let arrivalStationID = station
+                let arrivalTime = destinationTime
+                }
+            }
+        }
+    }
+     
 }
