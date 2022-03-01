@@ -12,14 +12,10 @@ struct Station {
     var name : String?
     var city : String?
     var ID : String?
-}
-extension Station {
-    static func build(from documents: [QueryDocumentSnapshot]) -> [Station] {
-        var stations = [Station]()
-        for document in documents {
-            stations.append(Station(name: document["name"] as? String ?? "",
-                              city: document["city"] as? String ?? "", ID: document["ID"] as? String ?? ""))
-        }
-        return stations
+
+    init(ID : String?, name : String?, city : String?) {
+        self.ID = ID
+        self.name = name
+        self.city = city
     }
 }

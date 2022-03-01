@@ -12,12 +12,20 @@ import Firebase
 class FirebaseClient{
     let database = Firestore.firestore()
     
-    func getStations(handler: @escaping ([Station]) -> Void) {
+    func getStations(_ completion: @escaping ([Station]) -> Void) {
         database.collection("Stations").addSnapshotListener { querySnapshot, err in
                 if let error = err {
                     print(error)
+                    completion([])
                 } else {
-                    handler(Station.build(from: querySnapshot?.documents ?? []))
+                    let documents = querySnapshot?.documents ?? []
+                    let stations: [Station] = documents.map { document in
+                        let id = document["ID"] as? String
+                        let name = document["name"] as? String
+                        let city = document["city"] as? String
+                        return Station(ID: id, name: name, city: city)
+                    }
+                    completion(stations)
                 }
             }
     }
