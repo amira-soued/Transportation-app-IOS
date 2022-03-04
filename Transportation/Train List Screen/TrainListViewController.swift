@@ -64,7 +64,7 @@ class TrainListViewController: UIViewController {
             let station = trainTime.stationID
             if station == destinationID {
                 arrivalTime = time
-                print(arrivalTime!)
+                print(arrivalTime ?? "")
             }
         }
     }
