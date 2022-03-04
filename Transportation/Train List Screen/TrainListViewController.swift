@@ -23,6 +23,7 @@ class TrainListViewController: UIViewController {
     var destinationID : String = ""
     var availableResults = [String : Any]()
     var arrivalTime : String?
+    var nearestTrip : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class TrainListViewController: UIViewController {
         fromButton.configuration?.title = fromButtonName
         toButton.configuration?.title = toButtonName
         firebaseClient.getDepartureTrips(documentID: departureID, completion: getTimeAndTrip)
+        
     }
 
     func getTimeAndTrip(results : [Trip]){
@@ -48,9 +50,10 @@ class TrainListViewController: UIViewController {
             }
         }
         let sorted = availableResults.sorted { $0.key < $1.key }
-        let timeArraySorted = Array(sorted.map({ $0.key }))
-        //let tripArraySorted = Array(sorted.map({ $0.value }))
-        let nearestTrip = timeArraySorted[0]
+       // let timeArraySorted = Array(sorted.map({ $0.key }))
+        let tripArraySorted = Array(sorted.map({ $0.value }))
+        nearestTrip = tripArraySorted[0] as! String
+        print(nearestTrip)
         firebaseClient.getArrivalTrip(documentID: nearestTrip, completion: getArrivalTime)
         tableView.reloadData() 
     }
@@ -61,6 +64,7 @@ class TrainListViewController: UIViewController {
             let station = trainTime.stationID
             if station == destinationID {
                 arrivalTime = time
+                print(arrivalTime!)
             }
         }
     }

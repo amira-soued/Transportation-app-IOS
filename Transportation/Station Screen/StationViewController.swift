@@ -122,5 +122,9 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             }
         }
         tableView.reloadData()
+        if startStation != nil && endStation != nil{
+           let coordinator = StationCoordinator(navigationController: navigationController)
+            coordinator.showTrainList(departure: (startStation?.name)!, destination: (endStation?.name)!, fromStationID: (startStation?.ID)!, toStationID: (endStation?.ID)!)
+        }
     }
 }
