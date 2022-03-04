@@ -32,7 +32,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         stationScreenStackView.layer.cornerRadius = 10
         if isFromTo{
             toTextField.becomeFirstResponder()

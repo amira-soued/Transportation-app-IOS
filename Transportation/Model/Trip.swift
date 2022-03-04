@@ -7,7 +7,13 @@
 
 import Foundation
 struct Trip{
-    var tripTime : String?
-    var tripID: String?
+    let tripTime : String
+    let tripID: String
+    
+    init(tripTime: String , tripID : String){
+        self.tripTime = tripTime
+        self.tripID = tripID
+        
+    }
 }
 

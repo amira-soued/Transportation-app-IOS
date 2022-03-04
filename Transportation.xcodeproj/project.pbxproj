@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5208495827D2252600030D8B /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208495727D2252600030D8B /* Time.swift */; };
 		5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259527AACA6800E34480 /* StationCoordinator.swift */; };
 		5239259827AAD40000E34480 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259727AAD40000E34480 /* MainScreenViewModel.swift */; };
 		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Transportation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.debug.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.debug.xcconfig"; sourceTree = "<group>"; };
+		5208495727D2252600030D8B /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		5239259527AACA6800E34480 /* StationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCoordinator.swift; sourceTree = "<group>"; };
 		5239259727AAD40000E34480 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				5291ABA427985F90000C8F2D /* Station.swift */,
+				5208495727D2252600030D8B /* Time.swift */,
 				52DA0A9627C8F1F0008C2A83 /* Trip.swift */,
 			);
 			path = Model;
@@ -290,6 +293,7 @@
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
 				52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */,
 				52A40EE92788464100D984E9 /* Transportation.xcdatamodeld in Sources */,
+				5208495827D2252600030D8B /* Time.swift in Sources */,
 				52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */,
 				52D9D16D27B11A6B00F52418 /* TrainListViewController.swift in Sources */,
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,

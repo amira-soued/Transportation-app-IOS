@@ -30,37 +30,33 @@ class FirebaseClient{
             }
     }
 
-    func getDepartureTrips(documentID: String, operation: @escaping([Trip])-> Void){
-        var trips = [Trip]()
+    func getDepartureTrips(documentID: String, completion: @escaping([Trip])-> Void){
         let docRef = database.collection("Trip by station").document(documentID)
         docRef.getDocument { snapshot , error in
             guard let data = snapshot?.data(), error == nil else {
                 return
             }
-            for tripData in data{
-                let tripName = tripData.value
-                let tripTime = tripData.key
-                trips.append(Trip(tripTime: tripTime , tripID: tripName as? String ?? ""))
+            let trips : [Trip] = data.map { tripData in
+                let time = tripData.key
+                let id = tripData.value as? String
+                return Trip(tripTime: time, tripID: id!)
             }
-            operation(trips)
+            completion(trips)
         }
     }
     
-    func getArrivalTime(documentID : String){
+    func getArrivalTrip(documentID : String, completion: @escaping ([Time])-> Void){
         let docRef = database.collection("Time by trip").document(documentID)
         docRef.getDocument { snapshot , error in
             guard let data = snapshot?.data(), error == nil else {
                 return
             }
-            let destinationResults = data
-            for result in destinationResults{
-                let station = result.key
-                let destinationTime = result.value as? String
-                if station == documentID{
-                let arrivalStationID = station
-                let arrivalTime = destinationTime
-                }
+            let trainTimes : [Time] = data.map { trainData in
+                let id = trainData.key
+                let time = trainData.value as? String
+                return Time(stationID: id, time: time!)
             }
+            completion(trainTimes)
         }
     }
      

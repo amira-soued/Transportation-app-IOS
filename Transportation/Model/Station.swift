@@ -9,9 +9,9 @@ import Foundation
 import FirebaseFirestore
 
 struct Station {
-    var name : String?
-    var city : String?
-    var ID : String?
+    let name : String?
+    let city : String?
+    let ID : String?
 
     init(ID : String?, name : String?, city : String?) {
         self.ID = ID
