@@ -30,8 +30,8 @@ class FirebaseClient{
             }
     }
 
-    func getDepartureTrips(documentID: String, completion: @escaping([Trip])-> Void){
-        let docRef = database.collection("Trip by station").document(documentID)
+    func getTrips(stationID: String, completion: @escaping([Trip])-> Void){
+        let docRef = database.collection("Trip by station").document(stationID)
         docRef.getDocument { snapshot , error in
             guard let data = snapshot?.data(), error == nil else {
                 return
@@ -48,8 +48,8 @@ class FirebaseClient{
         }
     }
     
-    func getArrivalTrip(documentID : String, completion: @escaping ([Time])-> Void){
-        let docRef = database.collection("Time by trip").document(documentID)
+    func getTimes(by tripID : String, completion: @escaping ([Time])-> Void){
+        let docRef = database.collection("Time by trip").document(tripID)
         docRef.getDocument { snapshot , error in
             guard let data = snapshot?.data(), error == nil else {
                 return

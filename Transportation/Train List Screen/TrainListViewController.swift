@@ -30,7 +30,7 @@ class TrainListViewController: UIViewController {
         trainScreenStackView.layer.cornerRadius = 10
         fromButton.configuration?.title = fromButtonName
         toButton.configuration?.title = toButtonName
-        firebaseClient.getDepartureTrips(documentID: departureID, completion: getTimeAndTrip)
+        firebaseClient.getTrips(stationID: departureID, completion: getTimeAndTrip)
         
     }
 
@@ -54,7 +54,7 @@ class TrainListViewController: UIViewController {
         let tripArraySorted = Array(sorted.map({ $0.value }))
         nearestTrip = tripArraySorted[0] as! String
         print(nearestTrip)
-        firebaseClient.getArrivalTrip(documentID: nearestTrip, completion: getArrivalTime)
+        firebaseClient.getTimes(by: nearestTrip, completion: getArrivalTime)
         tableView.reloadData() 
     }
     

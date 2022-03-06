@@ -110,11 +110,19 @@ private extension StationViewController {
     }
 
     func getRecentSearchedTrips() {
-        firebaseClient.getDepartureTrips(documentID: startStation?.ID ?? "") { result in
+        firebaseClient.getTrips(stationID: startStation?.ID ?? "") { result in
             let date = Date(timeIntervalSince1970: 1_500_000)
             let nearestTrip = self.getNearestTrip(with: date, from: result)
             print(nearestTrip)
-            //TODO: ===+++
+
+            self.firebaseClient.getTimes(by: nearestTrip?.tripID ?? "") { times in
+                let endTimeIndex = times.firstIndex { time in
+                    time.stationID == self.endStation?.ID
+                }
+                if let index = endTimeIndex {
+                    print(times[index])
+                }
+            }
         }
     }
 }
