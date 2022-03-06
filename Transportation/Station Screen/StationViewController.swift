@@ -10,6 +10,7 @@ import FirebaseFirestore
 
 enum Cell {
     case stationCell(Station)
+    case searchResult(start: Date, end: Date)
 }
 
 class StationViewController: UIViewController, UITextFieldDelegate {
@@ -43,6 +44,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.dataSource = self
         tableView.allowsSelection = true
         tableView.isHidden = true
+        tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchResultTableViewCell")
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         fromTextField.delegate = self
         toTextField.delegate = self
@@ -111,8 +113,8 @@ private extension StationViewController {
 
     func getRecentSearchedTrips() {
         firebaseClient.getTrips(stationID: startStation?.ID ?? "") { result in
-            let date = Date(timeIntervalSince1970: 1_500_000)
-            let nearestTrip = self.getNearestTrip(with: date, from: result)
+            let startDate = Date(timeIntervalSince1970: 1_500_000)
+            let nearestTrip = self.getNearestTrip(with: startDate, from: result)
             print(nearestTrip)
 
             self.firebaseClient.getTimes(by: nearestTrip?.tripID ?? "") { times in
@@ -120,7 +122,12 @@ private extension StationViewController {
                     time.stationID == self.endStation?.ID
                 }
                 if let index = endTimeIndex {
-                    print(times[index])
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "HH:mm"
+                    if let endDate = dateFormatter.date(from: times[index].time) {
+                        self.cells = [Cell.searchResult(start: startDate, end: endDate)]
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
@@ -141,11 +148,14 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         let cellType = cells[indexPath.row]
         switch cellType {
         case .stationCell(let station) :
-            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "stationCell")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "stationNameCell", for: indexPath)
             cell.textLabel?.text = station.name
             cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
             cell.detailTextLabel?.text = station.city
             cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
+            return cell
+        case .searchResult:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
             return cell
         }
     }
@@ -159,8 +169,10 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             } else {
                 setEndStation(station)
             }
+            getRecentSearchedTrips()
+        case .searchResult:
+            break
         }
         tableView.reloadData()
-        getRecentSearchedTrips()
     }
 }
