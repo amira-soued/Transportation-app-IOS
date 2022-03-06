@@ -67,8 +67,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
-extension StationViewController : UITableViewDelegate, UITableViewDataSource{
-    
+private extension StationViewController {
     func loadData() {
         firebaseClient.getStations{ stations in
             self.allStationsArray = stations
@@ -79,6 +78,48 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             self.tableView.reloadData()
         }
     }
+
+    func getNearestTrip(with date: Date, from trips: [Trip]) -> Trip? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let timeString = dateFormatter.string(from: date)
+        for trip in trips {
+            if trip.tripTime > timeString {
+                return trip
+            }
+        }
+        return nil
+    }
+
+    func setStartStation(_ station: Station) {
+        fromTextField.text = station.name
+        startStation = station
+        if endStation == nil {
+            toTextField.becomeFirstResponder()
+            textFieldTyping(toTextField)
+        }
+    }
+
+    func setEndStation(_ station: Station) {
+        toTextField.text = station.name
+        endStation = station
+        if startStation == nil {
+            fromTextField.becomeFirstResponder()
+            textFieldTyping(fromTextField)
+        }
+    }
+
+    func getRecentSearchedTrips() {
+        firebaseClient.getDepartureTrips(documentID: startStation?.ID ?? "") { result in
+            let date = Date(timeIntervalSince1970: 1_500_000)
+            let nearestTrip = self.getNearestTrip(with: date, from: result)
+            print(nearestTrip)
+            //TODO: ===+++
+        }
+    }
+}
+
+extension StationViewController : UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
@@ -106,25 +147,12 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         switch cellType {
         case .stationCell(let station):
             if fromTextField.isFirstResponder {
-                fromTextField.text = station.name
-                startStation = station
-                if endStation == nil {
-                    toTextField.becomeFirstResponder()
-                    textFieldTyping(toTextField)
-                }
+                setStartStation(station)
             } else {
-                toTextField.text = station.name
-                endStation = station
-                if startStation == nil {
-                    fromTextField.becomeFirstResponder()
-                    textFieldTyping(fromTextField)
-                }
+                setEndStation(station)
             }
         }
         tableView.reloadData()
-        if startStation != nil && endStation != nil{
-           let coordinator = StationCoordinator(navigationController: navigationController)
-            coordinator.showTrainList(departure: (startStation?.name)!, destination: (endStation?.name)!, fromStationID: (startStation?.ID)!, toStationID: (endStation?.ID)!)
-        }
+        getRecentSearchedTrips()
     }
 }
