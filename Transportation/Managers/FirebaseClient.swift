@@ -41,7 +41,10 @@ class FirebaseClient{
                 let id = tripData.value as? String
                 return Trip(tripTime: time, tripID: id!)
             }
-            completion(trips)
+            let sortedTrips = trips.sorted {
+                $0.tripTime < $1.tripTime
+            }
+            completion(sortedTrips)
         }
     }
     
