@@ -112,21 +112,24 @@ private extension StationViewController {
     }
 
     func getRecentSearchedTrips() {
-        firebaseClient.getTrips(stationID: startStation?.ID ?? "") { result in
-            let startDate = Date(timeIntervalSince1970: 1_500_000)
-            let nearestTrip = self.getNearestTrip(with: startDate, from: result)
-            print(nearestTrip)
+        guard let startStation = startStation, let endStation = endStation else { return }
 
-            self.firebaseClient.getTimes(by: nearestTrip?.tripID ?? "") { times in
-                let endTimeIndex = times.firstIndex { time in
-                    time.stationID == self.endStation?.ID
-                }
-                if let index = endTimeIndex {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "HH:mm"
-                    if let endDate = dateFormatter.date(from: times[index].time) {
-                        self.cells = [Cell.searchResult(start: startDate, end: endDate)]
-                        self.tableView.reloadData()
+        firebaseClient.getTrips(stationID: startStation.ID ?? "") { result in
+            let startDate = Date()
+            if let nearestTrip = self.getNearestTrip(with: startDate, from: result) {
+
+                self.firebaseClient.getTimes(by: nearestTrip.tripID) { times in
+                    let endTimeIndex = times.firstIndex { time in
+                        time.stationID == endStation.ID
+                    }
+                    if let index = endTimeIndex {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm"
+                        if let endDate = dateFormatter.date(from: times[index].time),
+                           let nearestTripDate = dateFormatter.date(from: nearestTrip.tripTime) {
+                            self.cells = [Cell.searchResult(start: nearestTripDate, end: endDate)]
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
@@ -154,8 +157,9 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             cell.detailTextLabel?.text = station.city
             cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
             return cell
-        case .searchResult:
+        case .searchResult(let startTime, let endTime):
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
+            cell.setupCell(startTime: startTime, endTime: endTime)
             return cell
         }
     }

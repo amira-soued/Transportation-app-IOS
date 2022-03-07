@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,39 +16,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Nud-2v-R5m">
-                        <rect key="frame" x="16" y="7" width="27" height="66"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-Sw-pIg">
-                                <rect key="frame" x="0.0" y="0.0" width="27" height="31"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="train-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eL6-JZ-jph">
-                                <rect key="frame" x="0.0" y="39" width="27" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="eL6-JZ-jph" secondAttribute="height" id="AcX-Ot-uIb"/>
-                                    <constraint firstAttribute="width" constant="27" id="u0x-sZ-5Hz"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                    </stackView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="train-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eL6-JZ-jph">
+                        <rect key="frame" x="16" y="43" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="eL6-JZ-jph" secondAttribute="height" id="AcX-Ot-uIb"/>
+                            <constraint firstAttribute="width" constant="30" id="u0x-sZ-5Hz"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4xU-zV-QxS">
                         <rect key="frame" x="262.5" y="5" width="41.5" height="68"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-Sw-pIg">
+                        <rect key="frame" x="16" y="5" width="41.5" height="37"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Nud-2v-R5m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="0yT-US-6eU"/>
+                    <constraint firstItem="eL6-JZ-jph" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0qt-yt-IQi"/>
+                    <constraint firstItem="uZa-Sw-pIg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9TD-RL-k8f"/>
                     <constraint firstAttribute="trailing" secondItem="4xU-zV-QxS" secondAttribute="trailing" constant="16" id="IrQ-Pv-cpZ"/>
-                    <constraint firstItem="4xU-zV-QxS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nud-2v-R5m" secondAttribute="trailing" constant="20" id="NGR-SG-03d"/>
                     <constraint firstAttribute="bottom" secondItem="4xU-zV-QxS" secondAttribute="bottom" constant="5" id="O8b-SK-YnQ"/>
-                    <constraint firstItem="Nud-2v-R5m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PXK-mT-cOc"/>
-                    <constraint firstAttribute="bottom" secondItem="Nud-2v-R5m" secondAttribute="bottom" constant="5" id="Rj0-UU-3is"/>
                     <constraint firstItem="4xU-zV-QxS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="TLS-9U-Fst"/>
+                    <constraint firstAttribute="bottom" secondItem="eL6-JZ-jph" secondAttribute="bottom" constant="5" id="fRe-FG-5U5"/>
+                    <constraint firstItem="eL6-JZ-jph" firstAttribute="top" secondItem="uZa-Sw-pIg" secondAttribute="bottom" constant="1" id="h5X-Aj-ile"/>
+                    <constraint firstItem="4xU-zV-QxS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uZa-Sw-pIg" secondAttribute="trailing" constant="20" id="xIn-uu-dkp"/>
+                    <constraint firstItem="uZa-Sw-pIg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xw3-lB-U2t"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
