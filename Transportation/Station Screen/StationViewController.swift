@@ -22,7 +22,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     var cells: [Cell] = []
-
+ 
     var isFromTo: Bool = true
     var firebaseClient = FirebaseClient()
     var startStation: Station?
@@ -31,7 +31,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     /// Represents all the stations recieved by the Backend
     var allStationsArray = [Station]()
 
-    override func viewDidLoad() {
+    override func viewDidLoad() { 
         super.viewDidLoad()
         stationScreenStackView.layer.cornerRadius = 10
         if isFromTo{
