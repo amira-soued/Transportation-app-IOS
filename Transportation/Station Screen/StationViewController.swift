@@ -14,13 +14,14 @@ enum Cell {
 }
 
 class StationViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var stationScreenStackView: UIStackView!
     @IBOutlet weak var fromTextField: UITextField!
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
     var cells: [Cell] = []
  
     var isFromTo: Bool = true
@@ -44,11 +45,16 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.dataSource = self
         tableView.allowsSelection = true
         tableView.isHidden = true
+        tableView.register(UINib(nibName: "stationTableViewCell", bundle: nil), forCellReuseIdentifier: "stationTableViewCell")
         tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchResultTableViewCell")
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         fromTextField.delegate = self
         toTextField.delegate = self
         loadData()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        UIStatusBarStyle.lightContent
     }
     
     @IBAction func textFieldTyping(_ sender: UITextField) {
@@ -69,6 +75,19 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+extension StationViewController : UIScrollViewDelegate{
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y
+        if offset > 111 {
+            return
+        }
+        if offset <= 0 {
+            headerViewTopConstraint.constant = 0
+        }
+        headerViewTopConstraint.constant = -offset
+    }
+}
+
 private extension StationViewController {
     func loadData() {
         firebaseClient.getStations{ stations in
@@ -81,16 +100,17 @@ private extension StationViewController {
         }
     }
 
-    func getNearestTrip(with date: Date, from trips: [Trip]) -> Trip? {
+    func getNearestTrip(with date: Date, from trips: [Trip]) -> [Trip] {
         let dateFormatter = DateFormatter()
+        var availableTrips = [Trip]()
         dateFormatter.dateFormat = "HH:mm"
         let timeString = dateFormatter.string(from: date)
         for trip in trips {
             if trip.tripTime > timeString {
-                return trip
+                availableTrips.append(trip)
             }
         }
-        return nil
+        return availableTrips
     }
 
     func setStartStation(_ station: Station) {
@@ -112,13 +132,13 @@ private extension StationViewController {
     }
 
     func getRecentSearchedTrips() {
+        cells.removeAll(keepingCapacity: false)
         guard let startStation = startStation, let endStation = endStation else { return }
-
         firebaseClient.getTrips(stationID: startStation.ID ?? "") { result in
             let startDate = Date()
-            if let nearestTrip = self.getNearestTrip(with: startDate, from: result) {
-
-                self.firebaseClient.getTimes(by: nearestTrip.tripID) { times in
+            let nearestTrip = self.getNearestTrip(with: startDate, from: result)
+             for eachTrip in nearestTrip {
+                self.firebaseClient.getTimes(by: eachTrip.tripID) { times in
                     let endTimeIndex = times.firstIndex { time in
                         time.stationID == endStation.ID
                     }
@@ -126,8 +146,9 @@ private extension StationViewController {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "HH:mm"
                         if let endDate = dateFormatter.date(from: times[index].time),
-                           let nearestTripDate = dateFormatter.date(from: nearestTrip.tripTime) {
-                            self.cells = [Cell.searchResult(start: nearestTripDate, end: endDate)]
+                           let nearestTripDate = dateFormatter.date(from: eachTrip.tripTime) {
+                            let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
+                            self.cells.append(cell)
                             self.tableView.reloadData()
                         }
                     }
@@ -151,11 +172,8 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         let cellType = cells[indexPath.row]
         switch cellType {
         case .stationCell(let station) :
-            let cell = tableView.dequeueReusableCell(withIdentifier: "stationNameCell", for: indexPath)
-            cell.textLabel?.text = station.name
-            cell.textLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-            cell.detailTextLabel?.text = station.city
-            cell.detailTextLabel?.font = .systemFont(ofSize: 15, weight: .light)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "stationTableViewCell", for: indexPath) as! stationTableViewCell
+            cell.setCell(stationName: station.name, cityName: station.city)
             return cell
         case .searchResult(let startTime, let endTime):
             let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
