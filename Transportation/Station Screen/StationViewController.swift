@@ -20,7 +20,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
     var cells: [Cell] = []
  
