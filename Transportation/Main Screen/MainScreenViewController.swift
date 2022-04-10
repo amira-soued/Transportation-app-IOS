@@ -15,16 +15,25 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     
+    let historyManager = HistoryManager()
+
+    var recentTrips = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         homeScreenStackView.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 20))
-        tableView.tableHeaderView = header
-        tableView.separatorColor = .white
+        tableView.separatorColor = .clear
+        tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
         tableView.register(UINib(nibName: "searchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "searchHistoryTableViewCell")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        recentTrips = historyManager.getRecentTrips()
+        tableView.reloadData()
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         UIStatusBarStyle.lightContent
     }
@@ -35,35 +44,24 @@ class MainScreenViewController: UIViewController {
     }
 }
 
-extension MainScreenViewController : UIScrollViewDelegate{
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offset = scrollView.contentOffset.y
-        if offset > 0 {
-            headerTopConstraint.constant = -offset
-        }
-        if offset <= 0 {
-            headerTopConstraint.constant = 260
-        }
-        print(offset)
-    }
-}
-
 extension MainScreenViewController : UITableViewDataSource, UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Recent searches"
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 80
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        recentTrips.isEmpty ? 0 : 1
     }
-  
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        recentTrips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let text = "hello"
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchHistoryTableViewCell", for: indexPath) as! searchHistoryTableViewCell
-        cell.setupHistoryCell(from: text, to: text)
+        let text = recentTrips[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "searchHistoryTableViewCell", for: indexPath) as! SearchHistoryTableViewCell
+        cell.setupHistoryCell(from: text, to: "")
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

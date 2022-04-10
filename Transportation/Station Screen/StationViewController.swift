@@ -24,7 +24,8 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     var cells: [Cell] = []
  
     var isFromTo: Bool = true
-    var firebaseClient = FirebaseClient()
+    let firebaseClient = FirebaseClient()
+    let historyManager = HistoryManager()
     var startStation: Station?
     var endStation: Station?
 
@@ -131,8 +132,9 @@ private extension StationViewController {
     }
 
     func getRecentSearchedTrips() {
-        cells.removeAll(keepingCapacity: false)
+        cells.removeAll()
         guard let startStation = startStation, let endStation = endStation else { return }
+        historyManager.addTrip(trip: "\(startStation.name) - \(endStation.name)")
         firebaseClient.getTrips(stationID: startStation.ID ?? "") { result in
             let startDate = Date()
             let nearestTrip = self.getNearestTrip(with: startDate, from: result)
