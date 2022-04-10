@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="metro-4959523_1280" translatesAutoresizingMaskIntoConstraints="NO" id="wna-8K-5pJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="metro" translatesAutoresizingMaskIntoConstraints="NO" id="wna-8K-5pJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -252,7 +252,7 @@
     <resources>
         <image name="PIC" width="150" height="200"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
-        <image name="metro-4959523_1280" width="853" height="1280"/>
+        <image name="metro" width="853" height="1280"/>
         <namedColor name="Gray color">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
