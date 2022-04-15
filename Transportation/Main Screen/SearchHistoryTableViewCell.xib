@@ -9,33 +9,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchHistoryTableViewCell" rowHeight="100" id="KGk-i7-Jjw" customClass="SearchHistoryTableViewCell" customModule="Transportation" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="349" height="100"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchHistoryTableViewCell" rowHeight="85" id="KGk-i7-Jjw" customClass="SearchHistoryTableViewCell" customModule="Transportation" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="85"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="349" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="85"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-V1-dW1">
-                        <rect key="frame" x="4" y="4" width="341" height="100"/>
+                        <rect key="frame" x="4" y="4" width="347" height="80"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIC white" translatesAutoresizingMaskIntoConstraints="NO" id="xVs-qt-tao">
-                                <rect key="frame" x="0.0" y="0.0" width="40" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="mbo-EQ-rme"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KP7-t1-cX5">
-                                <rect key="frame" x="40" y="0.0" width="301" height="100"/>
+                                <rect key="frame" x="40" y="0.0" width="307" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSJ-iR-lcK">
-                                        <rect key="frame" x="10" y="0.0" width="281" height="50"/>
+                                        <rect key="frame" x="10" y="0.0" width="287" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIz-eh-K6l">
-                                        <rect key="frame" x="10" y="50" width="281" height="50"/>
+                                        <rect key="frame" x="10" y="40" width="287" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="gOs-p6-5tV"/>
+                            <constraint firstAttribute="height" constant="80" id="gOs-p6-5tV"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -70,7 +70,7 @@
                 <outlet property="fromHistorySearchLabel" destination="nSJ-iR-lcK" id="JZF-99-VXv"/>
                 <outlet property="toHistorySearchLabel" destination="UIz-eh-K6l" id="sZ4-ac-Mti"/>
             </connections>
-            <point key="canvasLocation" x="184.78260869565219" y="125.22321428571428"/>
+            <point key="canvasLocation" x="180.43478260869566" y="120.20089285714285"/>
         </tableViewCell>
     </objects>
     <resources>

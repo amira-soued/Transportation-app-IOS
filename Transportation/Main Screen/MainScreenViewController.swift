@@ -17,7 +17,8 @@ class MainScreenViewController: UIViewController {
     
     let historyManager = HistoryManager()
 
-    var recentTrips = [String]()
+    var recentDepartures = [String]()
+    var recentDestinations = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,13 @@ class MainScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorColor = .clear
         tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "searchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "searchHistoryTableViewCell")
+        tableView.register(UINib(nibName: "SearchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "searchHistoryTableViewCell")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        recentTrips = historyManager.getRecentTrips()
+        recentDepartures = historyManager.getRecentDepartures()
+        recentDestinations = historyManager.getRecentDestinations()
+
         tableView.reloadData()
     }
     
@@ -51,17 +54,18 @@ extension MainScreenViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        recentTrips.isEmpty ? 0 : 1
+        recentDepartures.isEmpty ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        recentTrips.count
+        recentDepartures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let text = recentTrips[indexPath.row]
+        let from = recentDepartures[indexPath.row]
+        let to = recentDestinations[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchHistoryTableViewCell", for: indexPath) as! SearchHistoryTableViewCell
-        cell.setupHistoryCell(from: text, to: "")
+        cell.setupHistoryCell(from: from, to: to)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

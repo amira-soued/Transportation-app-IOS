@@ -15,8 +15,8 @@
 		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
 		5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */; };
 		5291ABA527985F90000C8F2D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA427985F90000C8F2D /* Station.swift */; };
-		5297F57927FDA3E7001B9AF2 /* stationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5297F57727FDA3E7001B9AF2 /* stationTableViewCell.swift */; };
-		5297F57A27FDA3E7001B9AF2 /* stationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5297F57827FDA3E7001B9AF2 /* stationTableViewCell.xib */; };
+		5297F57927FDA3E7001B9AF2 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5297F57727FDA3E7001B9AF2 /* StationTableViewCell.swift */; };
+		5297F57A27FDA3E7001B9AF2 /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5297F57827FDA3E7001B9AF2 /* StationTableViewCell.xib */; };
 		52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EDE2788464100D984E9 /* AppDelegate.swift */; };
 		52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EE02788464100D984E9 /* SceneDelegate.swift */; };
 		52A40EE62788464100D984E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A40EE42788464100D984E9 /* Main.storyboard */; };
@@ -28,7 +28,7 @@
 		52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */; };
 		52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE3FFD27B16DE800777548 /* Coordinator.swift */; };
 		52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */; };
-		52C2082327FFBFD80030904B /* searchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C2082127FFBFD80030904B /* searchHistoryTableViewCell.xib */; };
+		52C2082327FFBFD80030904B /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */; };
 		52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DA0A9627C8F1F0008C2A83 /* Trip.swift */; };
 		52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1A075278C31D800F9E57C /* StationViewController.swift */; };
 		B09005FD5BE76286C2F81ECD /* Pods_Transportation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */; };
@@ -45,8 +45,8 @@
 		5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5291ABA427985F90000C8F2D /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		5297F57727FDA3E7001B9AF2 /* stationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stationTableViewCell.swift; sourceTree = "<group>"; };
-		5297F57827FDA3E7001B9AF2 /* stationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = stationTableViewCell.xib; sourceTree = "<group>"; };
+		5297F57727FDA3E7001B9AF2 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
+		5297F57827FDA3E7001B9AF2 /* StationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
 		52A40EDB2788464100D984E9 /* Transportation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transportation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A40EDE2788464100D984E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52A40EE02788464100D984E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 		52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
 		52BE3FFD27B16DE800777548 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
-		52C2082127FFBFD80030904B /* searchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		52DA0A9627C8F1F0008C2A83 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		52F1A075278C31D800F9E57C /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.release.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,8 +83,8 @@
 			children = (
 				2AD8093327D5599200ADA238 /* SearchResultTableViewCell.swift */,
 				2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */,
-				5297F57727FDA3E7001B9AF2 /* stationTableViewCell.swift */,
-				5297F57827FDA3E7001B9AF2 /* stationTableViewCell.xib */,
+				5297F57727FDA3E7001B9AF2 /* StationTableViewCell.swift */,
+				5297F57827FDA3E7001B9AF2 /* StationTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 				52A40EF9278865E700D984E9 /* MainScreenViewController.swift */,
 				52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */,
 				52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */,
-				52C2082127FFBFD80030904B /* searchHistoryTableViewCell.xib */,
+				52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -245,8 +245,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52C2082327FFBFD80030904B /* searchHistoryTableViewCell.xib in Resources */,
-				5297F57A27FDA3E7001B9AF2 /* stationTableViewCell.xib in Resources */,
+				52C2082327FFBFD80030904B /* SearchHistoryTableViewCell.xib in Resources */,
+				5297F57A27FDA3E7001B9AF2 /* StationTableViewCell.xib in Resources */,
 				52A40EEE2788464200D984E9 /* LaunchScreen.storyboard in Resources */,
 				2AD8093627D5599200ADA238 /* SearchResultTableViewCell.xib in Resources */,
 				5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */,
@@ -315,7 +315,7 @@
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,
 				52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */,
 				520DFDAE2802FCE5006BEF68 /* HistoryManager.swift in Sources */,
-				5297F57927FDA3E7001B9AF2 /* stationTableViewCell.swift in Sources */,
+				5297F57927FDA3E7001B9AF2 /* StationTableViewCell.swift in Sources */,
 				5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */,
 				52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */,
 				5291ABA527985F90000C8F2D /* Station.swift in Sources */,

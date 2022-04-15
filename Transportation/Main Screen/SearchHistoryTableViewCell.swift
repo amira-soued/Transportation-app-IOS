@@ -13,11 +13,11 @@ class SearchHistoryTableViewCell: UITableViewCell {
     @IBOutlet weak var fromHistorySearchLabel: UILabel!
     @IBOutlet weak var toHistorySearchLabel: UILabel!
 
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         containerStackView.layer.borderWidth = 1
         containerStackView.layer.borderColor = UIColor.lightGray.cgColor
+        containerStackView.layer.cornerRadius = 10
     }
     
     func setupHistoryCell(from: String, to: String){
@@ -25,4 +25,4 @@ class SearchHistoryTableViewCell: UITableViewCell {
         toHistorySearchLabel.text = to
     }
     
-}
+} 

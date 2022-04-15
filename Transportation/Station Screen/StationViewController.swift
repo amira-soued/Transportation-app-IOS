@@ -45,7 +45,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.dataSource = self
         tableView.allowsSelection = true
         tableView.isHidden = true
-        tableView.register(UINib(nibName: "stationTableViewCell", bundle: nil), forCellReuseIdentifier: "stationTableViewCell")
+        tableView.register(UINib(nibName: "StationTableViewCell", bundle: nil), forCellReuseIdentifier: "stationTableViewCell")
         tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchResultTableViewCell")
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         fromTextField.delegate = self
@@ -134,7 +134,7 @@ private extension StationViewController {
     func getRecentSearchedTrips() {
         cells.removeAll()
         guard let startStation = startStation, let endStation = endStation else { return }
-        historyManager.addTrip(trip: "\(startStation.name) - \(endStation.name)")
+        historyManager.addTrip(from: startStation.name ?? "", to: endStation.name ?? "")
         firebaseClient.getTrips(stationID: startStation.ID ?? "") { result in
             let startDate = Date()
             let nearestTrip = self.getNearestTrip(with: startDate, from: result)
@@ -173,7 +173,7 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         let cellType = cells[indexPath.row]
         switch cellType {
         case .stationCell(let station) :
-            let cell = tableView.dequeueReusableCell(withIdentifier: "stationTableViewCell", for: indexPath) as! stationTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "stationTableViewCell", for: indexPath) as! StationTableViewCell
             cell.setCell(stationName: station.name, cityName: station.city)
             return cell
         case .searchResult(let startTime, let endTime):
