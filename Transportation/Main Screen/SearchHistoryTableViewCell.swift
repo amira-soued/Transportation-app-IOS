@@ -20,9 +20,9 @@ class SearchHistoryTableViewCell: UITableViewCell {
         containerStackView.layer.cornerRadius = 10
     }
     
-    func setupHistoryCell(from: String, to: String){
-        fromHistorySearchLabel.text = from
-        toHistorySearchLabel.text = to
+    func setupHistoryCell(start: String, finish: String){
+        fromHistorySearchLabel.text = start
+        toHistorySearchLabel.text = finish
     }
     
 } 

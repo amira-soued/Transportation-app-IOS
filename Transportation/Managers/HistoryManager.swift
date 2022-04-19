@@ -9,32 +9,34 @@ import Foundation
 
 struct HistoryManager {
     private let capacity = 4
-    private let departureKey = "departures"
+    private let Key = "recent trips"
     private let destinationKey = "destinations"
+   
+    func addTrip(searchedTrip : RecentTrip) {
 
-    func addTrip(from: String, to: String) {
-        var recentFromSearches: [String] = (UserDefaults.standard.array(forKey: departureKey) as? [String]) ?? []
-        var recentToSearches: [String] = (UserDefaults.standard.array(forKey: destinationKey) as? [String]) ?? []
-
-        if recentFromSearches.count < capacity {
-            recentFromSearches.insert(from, at: 0)
-            recentToSearches.insert(to, at: 0)
-
+        var recentSearches: [RecentTrip] = (UserDefaults.standard.array(forKey: Key) as? [RecentTrip]) ?? []
+        
+        if recentSearches.count < capacity {
+            recentSearches.insert(searchedTrip, at: 0)
         } else {
-            recentFromSearches.removeLast()
-            recentToSearches.removeLast()
-            recentFromSearches.insert(from, at: 0)
-            recentToSearches.insert(to, at: 0)
-
+            recentSearches.removeLast()
+            recentSearches.insert(searchedTrip, at: 0)
         }
-        UserDefaults.standard.set(recentFromSearches, forKey: departureKey)
-        UserDefaults.standard.set(recentToSearches, forKey: destinationKey)
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(recentSearches), forKey: Key)
+
+//        UserDefaults.standard.set(recentFromSearches, forKey: departureKey)
+//        UserDefaults.standard.set(recentToSearches, forKey: destinationKey)
     }
     
-    func getRecentDepartures() -> [String] {
-       (UserDefaults.standard.array(forKey: departureKey) as? [String]) ?? []
+    func getRecentTrips() -> [RecentTrip] {
+//       (UserDefaults.standard.array(forKey: departureKey) as? [Station]) ?? []
+        var userData: [RecentTrip]?
+        if let data = UserDefaults.standard.value(forKey: Key) as? Data {
+                    userData = try? PropertyListDecoder().decode([RecentTrip].self , from: data)
+                    return userData ?? []
+                } else {
+                    return userData ?? []
+                }
     }
-    func getRecentDestinations() -> [String] {
-       (UserDefaults.standard.array(forKey: destinationKey) as? [String]) ?? []
-    }
+
 }

@@ -23,7 +23,7 @@ class FirebaseClient{
                         let id = document["ID"] as? String
                         let name = document["name"] as? String
                         let city = document["city"] as? String
-                        return Station(ID: id, name: name!, city: city!)
+                        return Station(ID: id!, name: name!, city: city!)
                     }
                     completion(stations)
                 }

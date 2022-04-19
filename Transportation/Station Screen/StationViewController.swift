@@ -24,11 +24,13 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     var cells: [Cell] = []
  
     var isFromTo: Bool = true
+    var historySearch : Bool = false
     let firebaseClient = FirebaseClient()
-    let historyManager = HistoryManager()
+    var historyManager = HistoryManager()
     var startStation: Station?
     var endStation: Station?
-
+    var recentSearchedDeparture : Station?
+    var recentSearchedDestination : Station?
     /// Represents all the stations recieved by the Backend
     var allStationsArray = [Station]()
 
@@ -50,7 +52,12 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         fromTextField.delegate = self
         toTextField.delegate = self
+        if historySearch == true {
+            getRecentSearchedTrips()
+        } else{
         loadData()
+        }
+        tableView.reloadData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -61,7 +68,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         let searchText  = sender.text ?? ""
         tableView.isHidden = false
         cells = allStationsArray.compactMap { station in
-            if station.name?.range(of: searchText, options: .caseInsensitive) != nil {
+            if station.name.range(of: searchText, options: .caseInsensitive) != nil {
                 return .stationCell(station)
             }
             return nil
@@ -100,7 +107,7 @@ private extension StationViewController {
         }
     }
 
-    func getNearestTrip(with date: Date, from trips: [Trip]) -> [Trip] {
+    func getPossibleTrips(with date: Date, from trips: [Trip]) -> [Trip] {
         let dateFormatter = DateFormatter()
         var availableTrips = [Trip]()
         dateFormatter.dateFormat = "HH:mm"
@@ -130,14 +137,45 @@ private extension StationViewController {
             textFieldTyping(fromTextField)
         }
     }
-
+    
     func getRecentSearchedTrips() {
+        tableView.isHidden = false
+         fromTextField.text = recentSearchedDeparture?.name
+        toTextField.text = recentSearchedDestination?.name
+        guard let startStation = recentSearchedDeparture, let endStation = recentSearchedDestination else { return }
+        let trip = RecentTrip(start: startStation, finish:endStation)
+        historyManager.addTrip(searchedTrip: trip)
+        firebaseClient.getTrips(stationID: startStation.ID) { result in
+            let startDate = Date()
+            let nearestTrip = self.getPossibleTrips(with: startDate, from: result)
+             for eachTrip in nearestTrip {
+                self.firebaseClient.getTimes(by: eachTrip.tripID) { times in
+                    let endTimeIndex = times.firstIndex { time in
+                        time.stationID == endStation.ID
+                    }
+                    if let index = endTimeIndex {
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "HH:mm"
+                        if let endDate = dateFormatter.date(from: times[index].time),
+                           let nearestTripDate = dateFormatter.date(from: eachTrip.tripTime) {
+                            let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
+                            self.cells.append(cell)
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func getAllAvailableTrips() {
         cells.removeAll()
         guard let startStation = startStation, let endStation = endStation else { return }
-        historyManager.addTrip(from: startStation.name ?? "", to: endStation.name ?? "")
-        firebaseClient.getTrips(stationID: startStation.ID ?? "") { result in
+        let trip = RecentTrip(start: startStation, finish:endStation)
+        historyManager.addTrip(searchedTrip: trip)
+        firebaseClient.getTrips(stationID: startStation.ID) { result in
             let startDate = Date()
-            let nearestTrip = self.getNearestTrip(with: startDate, from: result)
+            let nearestTrip = self.getPossibleTrips(with: startDate, from: result)
              for eachTrip in nearestTrip {
                 self.firebaseClient.getTimes(by: eachTrip.tripID) { times in
                     let endTimeIndex = times.firstIndex { time in
@@ -192,7 +230,7 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
             } else {
                 setEndStation(station)
             }
-            getRecentSearchedTrips()
+            getAllAvailableTrips()
         case .searchResult:
             break
         }

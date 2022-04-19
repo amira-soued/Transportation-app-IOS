@@ -16,9 +16,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     
     let historyManager = HistoryManager()
-
-    var recentDepartures = [String]()
-    var recentDestinations = [String]()
+    var recentSearchedTrips = [RecentTrip]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,13 +25,11 @@ class MainScreenViewController: UIViewController {
         tableView.delegate = self
         tableView.separatorColor = .clear
         tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
-        tableView.register(UINib(nibName: "SearchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "searchHistoryTableViewCell")
+        tableView.register(UINib(nibName: "SearchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchHistoryTableViewCell")
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        recentDepartures = historyManager.getRecentDepartures()
-        recentDestinations = historyManager.getRecentDestinations()
-
+        recentSearchedTrips = historyManager.getRecentTrips()
         tableView.reloadData()
     }
     
@@ -54,22 +50,26 @@ extension MainScreenViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        recentDepartures.isEmpty ? 0 : 1
+        recentSearchedTrips.isEmpty ? 0 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        recentDepartures.count
+        recentSearchedTrips.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let from = recentDepartures[indexPath.row]
-        let to = recentDestinations[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "searchHistoryTableViewCell", for: indexPath) as! SearchHistoryTableViewCell
-        cell.setupHistoryCell(from: from, to: to)
+        let recentDeparture = recentSearchedTrips[indexPath.row].start
+        let recentDestination = recentSearchedTrips[indexPath.row].finish
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchHistoryTableViewCell", for: indexPath) as! SearchHistoryTableViewCell
+        cell.setupHistoryCell(start: recentDeparture.name, finish: recentDestination.name)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let startStation = recentSearchedTrips[indexPath.row].start
+        let finishStation = recentSearchedTrips[indexPath.row].finish
+        let recentSearch = true
+        let mainScreenCoordinator = MainScreenCoordinator(navigationController: navigationController!)
+        mainScreenCoordinator.showHistorySearch(historySearch: recentSearch, start: startStation, finish: finishStation)
     }
   
 }

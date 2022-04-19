@@ -28,4 +28,14 @@ class MainScreenCoordinator: Coordinator{
         coordinator.start()
         self.navigationController.isToolbarHidden = true
     }
+    
+    func showHistorySearch(historySearch: Bool,start: Station , finish: Station){
+        let coordinator = StationCoordinator(navigationController: navigationController)
+        coordinator.recentSearch = historySearch
+        coordinator.recentDepartureStation = start
+        coordinator.recentDestinationStation = finish
+        coordinator.start()
+        
+        self.navigationController.isToolbarHidden = true
+    }
 }

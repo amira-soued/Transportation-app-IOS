@@ -12,6 +12,9 @@ class StationCoordinator : Coordinator{
         self.navigationController = navigationController
     }
     var status : Bool = true
+    var recentSearch : Bool = false
+    var recentDepartureStation : Station?
+    var recentDestinationStation: Station?
     var childCoordinators : [Coordinator] = []
     
     func start(){
@@ -24,7 +27,10 @@ class StationCoordinator : Coordinator{
          }
         stationViewController.modalPresentationStyle = .fullScreen
         stationViewController.isFromTo = status
+        stationViewController.historySearch = recentSearch
         self.navigationController?.pushViewController(stationViewController, animated: true)
+        stationViewController.recentSearchedDeparture = recentDepartureStation
+        stationViewController.recentSearchedDestination = recentDestinationStation
     }
     
     func dismissStationScreen(){
