@@ -52,12 +52,12 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
         fromTextField.delegate = self
         toTextField.delegate = self
+        loadData()
         if historySearch == true {
             getRecentSearchedTrips()
-        } else{
-        loadData()
         }
         tableView.reloadData()
+       
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -140,7 +140,7 @@ private extension StationViewController {
     
     func getRecentSearchedTrips() {
         tableView.isHidden = false
-         fromTextField.text = recentSearchedDeparture?.name
+        fromTextField.text = recentSearchedDeparture?.name
         toTextField.text = recentSearchedDestination?.name
         guard let startStation = recentSearchedDeparture, let endStation = recentSearchedDestination else { return }
         let trip = RecentTrip(start: startStation, finish:endStation)
@@ -166,6 +166,7 @@ private extension StationViewController {
                 }
             }
         }
+        
     }
 
     func getAllAvailableTrips() {

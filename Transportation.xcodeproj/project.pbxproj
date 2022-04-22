@@ -11,8 +11,10 @@
 		2AD8093627D5599200ADA238 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */; };
 		5208495827D2252600030D8B /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208495727D2252600030D8B /* Time.swift */; };
 		520DFDAE2802FCE5006BEF68 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DFDAD2802FCE5006BEF68 /* HistoryManager.swift */; };
-		5228BB28280EDDAC00F7CCBE /* recentTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228BB27280EDDAC00F7CCBE /* recentTrip.swift */; };
+		5228BB28280EDDAC00F7CCBE /* RecentTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */; };
 		5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259527AACA6800E34480 /* StationCoordinator.swift */; };
+		524CD9CF2812AC8400E78512 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9CE2812AC8400E78512 /* LoadingViewController.swift */; };
+		524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */; };
 		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
 		5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */; };
 		5291ABA527985F90000C8F2D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA427985F90000C8F2D /* Station.swift */; };
@@ -32,6 +34,7 @@
 		52C2082327FFBFD80030904B /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */; };
 		52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DA0A9627C8F1F0008C2A83 /* Trip.swift */; };
 		52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1A075278C31D800F9E57C /* StationViewController.swift */; };
+		52F6C0472811711400EE8F81 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6C0462811711400EE8F81 /* Loading.storyboard */; };
 		B09005FD5BE76286C2F81ECD /* Pods_Transportation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B7A199E63A15C9D4244F10 /* Pods_Transportation.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,8 +45,10 @@
 		2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.debug.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.debug.xcconfig"; sourceTree = "<group>"; };
 		5208495727D2252600030D8B /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		520DFDAD2802FCE5006BEF68 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
-		5228BB27280EDDAC00F7CCBE /* recentTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recentTrip.swift; sourceTree = "<group>"; };
+		5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTrip.swift; sourceTree = "<group>"; };
 		5239259527AACA6800E34480 /* StationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCoordinator.swift; sourceTree = "<group>"; };
+		524CD9CE2812AC8400E78512 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
 		5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5291ABA427985F90000C8F2D /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 		52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		52DA0A9627C8F1F0008C2A83 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		52F1A075278C31D800F9E57C /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
+		52F6C0462811711400EE8F81 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
 		6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.release.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,13 +97,32 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		524CD9CD2812AC1300E78512 /* Loading Screen */ = {
+			isa = PBXGroup;
+			children = (
+				524CD9CE2812AC8400E78512 /* LoadingViewController.swift */,
+				524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */,
+			);
+			path = "Loading Screen";
+			sourceTree = "<group>";
+		};
+		524CD9D22812AE9300E78512 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				52A40EEC2788464200D984E9 /* LaunchScreen.storyboard */,
+				52F6C0462811711400EE8F81 /* Loading.storyboard */,
+				52A40EE42788464100D984E9 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		5291ABA327985F7C000C8F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				5291ABA427985F90000C8F2D /* Station.swift */,
 				5208495727D2252600030D8B /* Time.swift */,
 				52DA0A9627C8F1F0008C2A83 /* Trip.swift */,
-				5228BB27280EDDAC00F7CCBE /* recentTrip.swift */,
+				5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,12 +150,12 @@
 			children = (
 				52A40EDE2788464100D984E9 /* AppDelegate.swift */,
 				52A40EE02788464100D984E9 /* SceneDelegate.swift */,
-				5291ABA327985F7C000C8F2D /* Model */,
 				52A40EF527884A6600D984E9 /* Managers */,
+				5291ABA327985F7C000C8F2D /* Model */,
+				524CD9CD2812AC1300E78512 /* Loading Screen */,
 				52A40EF8278865C600D984E9 /* Main Screen */,
 				52F1A074278C31A000F9E57C /* Station Screen */,
-				52A40EE42788464100D984E9 /* Main.storyboard */,
-				52A40EEC2788464200D984E9 /* LaunchScreen.storyboard */,
+				524CD9D22812AE9300E78512 /* Storyboards */,
 				52A40EEA2788464200D984E9 /* Assets.xcassets */,
 				52A40EEF2788464200D984E9 /* Info.plist */,
 				5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */,
@@ -255,6 +280,7 @@
 				5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */,
 				52A40EEB2788464200D984E9 /* Assets.xcassets in Resources */,
 				52A40EE62788464100D984E9 /* Main.storyboard in Resources */,
+				52F6C0472811711400EE8F81 /* Loading.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,7 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */,
-				5228BB28280EDDAC00F7CCBE /* recentTrip.swift in Sources */,
+				5228BB28280EDDAC00F7CCBE /* RecentTrip.swift in Sources */,
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
 				52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */,
 				52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */,
@@ -316,8 +342,10 @@
 				52A40EE92788464100D984E9 /* Transportation.xcdatamodeld in Sources */,
 				5208495827D2252600030D8B /* Time.swift in Sources */,
 				52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */,
+				524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */,
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,
 				52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */,
+				524CD9CF2812AC8400E78512 /* LoadingViewController.swift in Sources */,
 				520DFDAE2802FCE5006BEF68 /* HistoryManager.swift in Sources */,
 				5297F57927FDA3E7001B9AF2 /* StationTableViewCell.swift in Sources */,
 				5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */,
