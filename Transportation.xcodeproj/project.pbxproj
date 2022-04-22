@@ -15,6 +15,8 @@
 		5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259527AACA6800E34480 /* StationCoordinator.swift */; };
 		524CD9CF2812AC8400E78512 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9CE2812AC8400E78512 /* LoadingViewController.swift */; };
 		524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */; };
+		524CD9D52812C53C00E78512 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 524CD9D42812C53C00E78512 /* SDWebImage */; };
+		524CD9D82812EAF700E78512 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 524CD9D72812EAF700E78512 /* NVActivityIndicatorView */; };
 		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
 		5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */; };
 		5291ABA527985F90000C8F2D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA427985F90000C8F2D /* Station.swift */; };
@@ -79,7 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				524CD9D52812C53C00E78512 /* SDWebImage in Frameworks */,
 				B09005FD5BE76286C2F81ECD /* Pods_Transportation.framework in Frameworks */,
+				524CD9D82812EAF700E78512 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +235,10 @@
 			dependencies = (
 			);
 			name = Transportation;
+			packageProductDependencies = (
+				524CD9D42812C53C00E78512 /* SDWebImage */,
+				524CD9D72812EAF700E78512 /* NVActivityIndicatorView */,
+			);
 			productName = Transportation;
 			productReference = 52A40EDB2788464100D984E9 /* Transportation.app */;
 			productType = "com.apple.product-type.application";
@@ -259,6 +267,10 @@
 				Base,
 			);
 			mainGroup = 52A40ED22788464100D984E9;
+			packageReferences = (
+				524CD9D32812C53C00E78512 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				524CD9D62812EAF700E78512 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+			);
 			productRefGroup = 52A40EDC2788464100D984E9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -572,6 +584,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		524CD9D32812C53C00E78512 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		524CD9D62812EAF700E78512 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		524CD9D42812C53C00E78512 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 524CD9D32812C53C00E78512 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		524CD9D72812EAF700E78512 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 524CD9D62812EAF700E78512 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		52A40EE72788464100D984E9 /* Transportation.xcdatamodeld */ = {

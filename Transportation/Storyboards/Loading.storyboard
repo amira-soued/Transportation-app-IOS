@@ -29,6 +29,9 @@
                             <constraint firstAttribute="bottom" secondItem="Hme-bC-kEQ" secondAttribute="bottom" id="pOJ-bR-gsh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loadingImage" destination="Hme-bC-kEQ" id="cUV-iy-dgo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
