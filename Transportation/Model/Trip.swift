@@ -6,14 +6,9 @@
 //
 
 import Foundation
-struct Trip{
+
+struct Trip: Codable{
     let tripTime : String
     let tripID: String
-    
-    init(tripTime: String , tripID : String){
-        self.tripTime = tripTime
-        self.tripID = tripID
-        
-    }
 }
 

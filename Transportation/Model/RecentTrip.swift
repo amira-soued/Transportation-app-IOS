@@ -9,9 +9,4 @@ import Foundation
 struct RecentTrip : Codable{
     let start : Station
     let finish : Station
-    
-    init(start : Station, finish: Station){
-        self.start = start
-        self.finish = finish
-    }
 }
