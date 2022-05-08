@@ -43,7 +43,6 @@ namespace firebase {
 namespace firestore {
 namespace api {
 
-namespace util = firebase::firestore::util;
 using core::AsyncEventListener;
 using core::Bound;
 using core::Direction;
@@ -68,7 +67,7 @@ using util::Status;
 using util::StatusOr;
 using util::ThrowInvalidArgument;
 
-using Operator = Filter::Operator;
+using Operator = FieldFilter::Operator;
 
 namespace {
 /**

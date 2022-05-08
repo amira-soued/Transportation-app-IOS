@@ -6,12 +6,18 @@
 //
 
 import Foundation
-struct Time{
+
+struct Time: Codable{
    let stationID : String
    let time : String
-    
-    init(stationID : String, time: String){
-        self.stationID = stationID
-        self.time = time
-    }
+}
+
+struct TimeByTrip: Codable{
+    let tripId: String
+    let times: [Time]
+}
+
+struct TripByStations: Codable{
+    let id: String
+    let trips: [Trip]
 }
