@@ -16,8 +16,8 @@ enum Cell {
 class StationViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var stationScreenStackView: UIStackView!
-    @IBOutlet weak var fromTextField: UITextField!
-    @IBOutlet weak var toTextField: UITextField!
+    @IBOutlet weak var startTextField: UITextField!
+    @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
@@ -29,35 +29,17 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     var historyManager = HistoryManager()
     var startStation: Station?
     var endStation: Station?
-    var recentSearchedDeparture : Station?
-    var recentSearchedDestination : Station?
-    /// Represents all the stations recieved by the Backend
-    var allStationsArray = [Station]()
-
+    var searchedStartStation : Station?
+    var searchedEndStation : Station?
+    
+    let allStationsArray: [Station] = Current.stations
+    
     override func viewDidLoad() { 
         super.viewDidLoad()
-        stationScreenStackView.layer.cornerRadius = 10
-        if isFromTo{
-            toTextField.becomeFirstResponder()
-        } else {
-            fromTextField.becomeFirstResponder()
-        }
-        self.navigationController?.isNavigationBarHidden = true
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.allowsSelection = true
-        tableView.isHidden = true
-        tableView.register(UINib(nibName: "StationTableViewCell", bundle: nil), forCellReuseIdentifier: "stationTableViewCell")
-        tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchResultTableViewCell")
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
-        fromTextField.delegate = self
-        toTextField.delegate = self
-        loadData()
-//        if historySearch == true {
-//            getRecentSearchedTrips()
-//        }
-        tableView.reloadData()
-       
+        
+        setupView()
+        setupTableView()
+        setupHistorySearch()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -66,7 +48,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func textFieldTyping(_ sender: UITextField) {
         let searchText  = sender.text ?? ""
-        tableView.isHidden = false
         cells = allStationsArray.compactMap { station in
             if station.name.range(of: searchText, options: .caseInsensitive) != nil {
                 return .stationCell(station)
@@ -96,17 +77,40 @@ extension StationViewController : UIScrollViewDelegate{
 }
 
 private extension StationViewController {
-    func loadData() {
-        firebaseClient.getStations{ stations in
-            self.allStationsArray = stations
-            self.cells.removeAll()
-            for station in self.allStationsArray {
-                self.cells.append(.stationCell(station))
-            }
-            self.tableView.reloadData()
+    func setupView() {
+        navigationController?.isNavigationBarHidden = true
+        startTextField.delegate = self
+        endTextField.delegate = self
+        stationScreenStackView.layer.cornerRadius = 10
+        if isFromTo{
+            endTextField.becomeFirstResponder()
+        } else {
+            startTextField.becomeFirstResponder()
         }
     }
-
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = true
+        tableView.register(UINib(nibName: "StationTableViewCell", bundle: nil), forCellReuseIdentifier: "stationTableViewCell")
+        tableView.register(UINib(nibName: "SearchResultTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchResultTableViewCell")
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 300, right: 0)
+    }
+    
+    func setupHistorySearch() {
+        guard historySearch else {
+            return
+        }
+        startStation = searchedStartStation
+        endStation = searchedEndStation
+        startTextField.text = startStation?.name
+        startTextField.resignFirstResponder()
+        endTextField.text = endStation?.name
+        endTextField.resignFirstResponder()
+        getAllAvailableTrips()
+    }
+    
     func getPossibleTrips(with date: Date, from trips: [Trip]) -> [Trip] {
         let dateFormatter = DateFormatter()
         var availableTrips = [Trip]()
@@ -121,81 +125,58 @@ private extension StationViewController {
     }
 
     func setStartStation(_ station: Station) {
-        fromTextField.text = station.name
+        startTextField.text = station.name
         startStation = station
         if endStation == nil {
-            toTextField.becomeFirstResponder()
-            textFieldTyping(toTextField)
+            endTextField.becomeFirstResponder()
         }
     }
 
     func setEndStation(_ station: Station) {
-        toTextField.text = station.name
+        endTextField.text = station.name
         endStation = station
         if startStation == nil {
-            fromTextField.becomeFirstResponder()
-            textFieldTyping(fromTextField)
+            startTextField.becomeFirstResponder()
         }
     }
-    
-//    func getRecentSearchedTrips() {
-//        tableView.isHidden = false
-//        fromTextField.text = recentSearchedDeparture?.name
-//        toTextField.text = recentSearchedDestination?.name
-//        guard let startStation = recentSearchedDeparture, let endStation = recentSearchedDestination else { return }
-//        let trip = RecentTrip(start: startStation, finish:endStation)
-//        historyManager.addTrip(searchedTrip: trip)
-//        firebaseClient.getTrips(stationID: startStation.ID) { result in
-//            let startDate = Date()
-//            let nearestTrip = self.getPossibleTrips(with: startDate, from: result)
-//             for eachTrip in nearestTrip {
-//                self.firebaseClient.getTimes(by: eachTrip.tripID) { times in
-//                    let endTimeIndex = times.firstIndex { time in
-//                        time.stationID == endStation.ID
-//                    }
-//                    if let index = endTimeIndex {
-//                        let dateFormatter = DateFormatter()
-//                        dateFormatter.dateFormat = "HH:mm"
-//                        if let endDate = dateFormatter.date(from: times[index].time),
-//                           let nearestTripDate = dateFormatter.date(from: eachTrip.tripTime) {
-//                            let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
-//                            self.cells.append(cell)
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
-//
-//    func getAllAvailableTrips() {
-//        cells.removeAll()
-//        guard let startStation = startStation, let endStation = endStation else { return }
-//        let trip = RecentTrip(start: startStation, finish:endStation)
-//        historyManager.addTrip(searchedTrip: trip)
-//        firebaseClient.getTrips(stationID: startStation.ID) { result in
-//            let startDate = Date()
-//            let nearestTrip = self.getPossibleTrips(with: startDate, from: result)
-//             for eachTrip in nearestTrip {
-//                self.firebaseClient.getTimes(by: eachTrip.tripID) { times in
-//                    let endTimeIndex = times.firstIndex { time in
-//                        time.stationID == endStation.ID
-//                    }
-//                    if let index = endTimeIndex {
-//                        let dateFormatter = DateFormatter()
-//                        dateFormatter.dateFormat = "HH:mm"
-//                        if let endDate = dateFormatter.date(from: times[index].time),
-//                           let nearestTripDate = dateFormatter.date(from: eachTrip.tripTime) {
-//                            let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
-//                            self.cells.append(cell)
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
+
+    func getAllAvailableTrips() {
+        cells.removeAll()
+        guard let startStation = startStation, let endStation = endStation else { return }
+        var tripResults = [Trip]()
+        let trip = RecentTrip(start: startStation, finish:endStation)
+        historyManager.addTrip(searchedTrip: trip)
+        for trip in Current.tripByStations {
+            if trip.id == startStation.Id {
+                tripResults = trip.trips
+            }
+        }
+        let sortedTrips = tripResults.sorted {
+            $0.tripTime < $1.tripTime
+        }
+        let startDate = Date()
+        let nearestTrips = getPossibleTrips(with: startDate, from: sortedTrips)
+        for eachTrip in nearestTrips {
+            var timeResults = [Time]()
+            for time in Current.timeByTrips{
+                if eachTrip.tripId == time.tripId{
+                    timeResults = time.times
+                }
+            }
+            let endTimeIndex = timeResults.firstIndex { time in
+                time.stationId == endStation.Id
+            }
+            if let index = endTimeIndex {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "HH:mm"
+                if let endDate = dateFormatter.date(from: timeResults[index].time),
+                   let nearestTripDate = dateFormatter.date(from: eachTrip.tripTime) {
+                    let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
+                    cells.append(cell)
+                }
+            }
+        }
+    }
 }
 
 extension StationViewController : UITableViewDelegate, UITableViewDataSource{
@@ -226,12 +207,12 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
         let cellType = cells[indexPath.row]
         switch cellType {
         case .stationCell(let station):
-            if fromTextField.isFirstResponder {
+            if startTextField.isFirstResponder {
                 setStartStation(station)
             } else {
                 setEndStation(station)
             }
-//            getAllAvailableTrips()
+          getAllAvailableTrips()
         case .searchResult:
             break
         }

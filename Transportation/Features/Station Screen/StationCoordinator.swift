@@ -29,8 +29,8 @@ class StationCoordinator : Coordinator{
         stationViewController.isFromTo = status
         stationViewController.historySearch = recentSearch
         self.navigationController?.pushViewController(stationViewController, animated: true)
-        stationViewController.recentSearchedDeparture = recentDepartureStation
-        stationViewController.recentSearchedDestination = recentDestinationStation
+        stationViewController.searchedStartStation = recentDepartureStation
+        stationViewController.searchedEndStation = recentDestinationStation
     }
     
     func dismissStationScreen(){

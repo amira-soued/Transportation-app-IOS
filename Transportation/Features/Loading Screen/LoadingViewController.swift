@@ -25,6 +25,7 @@ class LoadingViewController: UIViewController {
         
         loadingImageView.setImage(url: "https://cdn.pixabay.com/photo/2020/03/23/06/11/metro-4959523_1280.jpg", placeholder: "metro")
         loadingIndicatorView.type = .ballClipRotatePulse
+        loadingIndicatorView.color = .black
         loadingIndicatorView.startAnimating()
         loadAllStations()
         loadAllTimesByTrip()
@@ -73,7 +74,6 @@ private extension LoadingViewController {
             }
             return
         }
-        
         dispatchGroup.enter()
         firebaseClient.getTimeByTrip { timeByTrips in
             Current.timeByTrips = timeByTrips
@@ -87,6 +87,7 @@ private extension LoadingViewController {
             self.dispatchGroup.leave()
         }
     }
+    
     func loadAllTripsByStation() {
         if let tripByStationsData = UserDefaults.standard.object(forKey: tripByStationKey) as? Data {
             let decoder = JSONDecoder()
@@ -94,7 +95,6 @@ private extension LoadingViewController {
                 Current.tripByStations = tripByStations
             }
             return        }
-
         dispatchGroup.enter()
         firebaseClient.getTripByStation{ tripByStations in
             Current.tripByStations = tripByStations

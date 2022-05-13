@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -142,9 +142,9 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                         <connections>
-                                                            <action selector="textFieldTyping:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="X2t-RX-DJT"/>
+                                                            <action selector="textFieldDidChange:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="Nt4-B9-NLs"/>
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmg-fM-OIa">
@@ -159,9 +159,9 @@
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                                         <connections>
-                                                            <action selector="textFieldTyping:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="nHj-bk-Jor"/>
+                                                            <action selector="textFieldDidChange:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="5JP-dH-CS1"/>
                                                         </connections>
                                                     </textField>
                                                 </subviews>
@@ -239,11 +239,11 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="taY-aT-xIv" id="thv-DQ-sJj"/>
-                        <outlet property="fromTextField" destination="jRf-CA-4Ie" id="4YG-zg-iBC"/>
+                        <outlet property="endTextField" destination="zqU-xv-g94" id="eB6-zR-tIk"/>
                         <outlet property="headerViewTopConstraint" destination="Cd1-YF-6HP" id="xGq-Sb-JAm"/>
+                        <outlet property="startTextField" destination="jRf-CA-4Ie" id="4YG-zg-iBC"/>
                         <outlet property="stationScreenStackView" destination="DqO-bh-6hQ" id="DOw-32-vDJ"/>
                         <outlet property="tableView" destination="fms-hl-ddD" id="I7L-Pc-e05"/>
-                        <outlet property="toTextField" destination="zqU-xv-g94" id="eB6-zR-tIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ioc-G4-0tc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,10 +13,6 @@ import UIKit
 class FirebaseClient{
     private let database = Firestore.firestore()
     private let remoteConfig = RemoteConfig.remoteConfig()
-//
-//    public var allStations = [Station]()
-//    public var timeByTrips = [TimeByTrip]()
-//    public var allTimes = [Time]()
 
     public static let shared = FirebaseClient()
     
@@ -50,7 +46,7 @@ class FirebaseClient{
                     if let id = document["ID"] as? String,
                        let name = document["name"] as? String,
                        let city = document["city"] as? String {
-                        return Station(ID: id, name: name, city: city)
+                        return Station(Id: id, name: name, city: city)
                     }
                     return nil
                 }
@@ -71,7 +67,7 @@ class FirebaseClient{
                     var trips = [Trip]()
                     if let documentsData = data as? [String: String] {
                         trips = documentsData.map { key, value -> Trip in
-                            let trip = Trip(tripTime: key, tripID: value)
+                            let trip = Trip(tripTime: key, tripId: value)
                             return trip
                         }
                     }
@@ -94,7 +90,7 @@ class FirebaseClient{
                 var times = [Time]()
                 if let documentsData = data as? [String: String?] {
                     times = documentsData.map { key, value -> Time in
-                        let time = Time(stationID: key, time: value ?? "")
+                        let time = Time(stationId: key, time: value ?? "")
                         return time
                     }
                 }
@@ -103,37 +99,4 @@ class FirebaseClient{
             completion(timeByTrips)
         }
     }
-    
-//    func getTrips(stationID: String, completion: @escaping([Trip])-> Void){
-//        let docRef = database.collection("Trip by station").document(stationID)
-//        docRef.getDocument { snapshot , error in
-//            guard let data = snapshot?.data(), error == nil else {
-//                return
-//            }
-//            let trips : [Trip] = data.map { tripData in
-//                let time = tripData.key
-//                let id = tripData.value as? String
-//                return Trip(tripTime: time, tripID: id!)
-//            }
-//            let sortedTrips = trips.sorted {
-//                $0.tripTime < $1.tripTime
-//            }
-//            completion(sortedTrips)
-//        }
-//    }
-    
-//    func getTimes(by tripID : String, completion: @escaping ([Time])-> Void){
-//        let docRef = database.collection("Time by trip").document(tripID)
-//        docRef.getDocument { snapshot , error in
-//            guard let data = snapshot?.data(), error == nil else {
-//                return
-//            }
-//            let trainTimes : [Time] = data.map { trainData in
-//                let id = trainData.key
-//                let time = trainData.value as? String
-//                return Time(stationID: id, time: time!)
-//            }
-//            completion(trainTimes)
-//        }
-//    }
 }

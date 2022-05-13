@@ -9,6 +9,10 @@ import Foundation
 
 struct Trip: Codable{
     let tripTime : String
-    let tripID: String
+    let tripId: String
 }
 
+struct TripByStations: Codable{
+    let id: String
+    let trips: [Trip]
+}

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Time: Codable{
-   let stationID : String
+   let stationId : String
    let time : String
 }
 
@@ -17,7 +17,3 @@ struct TimeByTrip: Codable{
     let times: [Time]
 }
 
-struct TripByStations: Codable{
-    let id: String
-    let trips: [Trip]
-}
