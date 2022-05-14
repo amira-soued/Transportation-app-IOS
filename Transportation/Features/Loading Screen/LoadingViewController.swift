@@ -23,7 +23,7 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingImageView.setImage(url: "https://cdn.pixabay.com/photo/2020/03/23/06/11/metro-4959523_1280.jpg", placeholder: "metro")
+        loadingImageView.setImage(url: "https://cdn.pixabay.com/photo/2019/12/28/20/12/trainrail-4725644_1280.jpg", placeholder: "metro")
         loadingIndicatorView.type = .ballClipRotatePulse
         loadingIndicatorView.color = .black
         loadingIndicatorView.startAnimating()
