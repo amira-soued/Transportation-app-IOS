@@ -14,7 +14,7 @@ class RemoteConfigure{
     private let remoteConfigure = RemoteConfig.remoteConfig()
     
       // fetch the url saved in remote config
-    func fetchLoadingImageUrl(completion: @escaping (String) -> Void){
+    func fetchLoadingImageUrl(completion: @escaping (String?) -> Void){
         self.remoteConfigure.fetch(withExpirationDuration: 0, completionHandler: { status , error in
             if status == .success, error == nil {
                 self.remoteConfigure.activate { _ , error in
@@ -26,6 +26,7 @@ class RemoteConfigure{
                 }
             } else {
                 print("Error fetching url")
+//                completion("")
             }
         })
     }

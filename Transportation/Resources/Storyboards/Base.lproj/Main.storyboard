@@ -103,6 +103,7 @@
                         <outlet property="fromButton" destination="Bnj-55-bJO" id="jbE-at-ml9"/>
                         <outlet property="headerTopConstraint" destination="Yfc-tM-wSv" id="g3v-CA-ZIw"/>
                         <outlet property="homeScreenStackView" destination="ynW-KB-9Mj" id="odx-Y1-kgw"/>
+                        <outlet property="mainScreenImageView" destination="wna-8K-5pJ" id="R2l-mh-pcF"/>
                         <outlet property="tableView" destination="K7T-dy-xQ4" id="xwE-mk-P9M"/>
                         <outlet property="toButton" destination="Hmz-ua-ahr" id="RIp-42-AGC"/>
                     </connections>

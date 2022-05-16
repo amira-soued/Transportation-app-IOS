@@ -15,7 +15,7 @@ class LoadingViewController: UIViewController {
     let stationKey = "stationKey"
     let timeByTripKey = "timeByTripKey"
     let tripByStationKey = "trpByStationKey"
-
+    let imageKey = "imageKey"
     let dispatchGroup = DispatchGroup()
     
     @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
@@ -24,26 +24,43 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingImageView.setImage(url: "https://cdn.pixabay.com/photo/2019/12/28/20/12/trainrail-4725644_1280.jpg", placeholder: "metro")
         loadingIndicatorView.type = .ballClipRotatePulse
         loadingIndicatorView.color = .black
         loadingIndicatorView.startAnimating()
         loadAllStations()
         loadAllTimesByTrip()
         loadAllTripsByStation()
-        
+        loadImageUrl()
+        loadingImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
+        print(Current.imageUrlString)
         dispatchGroup.notify(queue: .main) {
             self.didFinishLoadingData()
         }
-        
-        remoteConfig.fetchLoadingImageUrl { stringURL in
-            print(stringURL)
-        }
+//
+//        remoteConfig.fetchLoadingImageUrl { stringURL in
+//            print(stringURL)
+//            self.imageUrl = stringURL
+//        }
     }
 }
 
 private extension LoadingViewController {
 
+    func loadImageUrl(){
+        if let urlString = UserDefaults.standard.string(forKey: imageKey){
+            Current.imageUrlString = urlString
+            print(Current.imageUrlString)
+        }
+        dispatchGroup.enter()
+        remoteConfig.fetchLoadingImageUrl { stringURL in
+//            print(stringURL)
+//            Current.imageUrlString = stringURL
+            UserDefaults.standard.set(stringURL, forKey: self.imageKey)
+            self.dispatchGroup.leave()
+        }
+       
+    }
+    
     func loadAllStations() {
         if let stationsData = UserDefaults.standard.object(forKey: stationKey)  as? Data {
             let decoder = JSONDecoder()

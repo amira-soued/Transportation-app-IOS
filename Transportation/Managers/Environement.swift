@@ -11,6 +11,7 @@ struct Environement {
     var timeByTrips = [TimeByTrip]()
     var tripByStations = [TripByStations]()
     var stations = [Station]()
+    var imageUrlString = ""
 }
 
 var Current = Environement()

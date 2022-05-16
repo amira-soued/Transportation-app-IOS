@@ -9,6 +9,7 @@ import UIKit
 
 class MainScreenViewController: UIViewController {
   
+    @IBOutlet weak var mainScreenImageView: UIImageView!
     @IBOutlet weak var homeScreenStackView: UIStackView!
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var fromButton: UIButton!
@@ -20,6 +21,7 @@ class MainScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainScreenImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         homeScreenStackView.layer.cornerRadius = 10
         tableView.dataSource = self
         tableView.delegate = self
