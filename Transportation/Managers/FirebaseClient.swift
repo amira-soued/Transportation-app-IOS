@@ -7,33 +7,13 @@
 
 import Foundation
 import Firebase
-import FirebaseAnalytics
 import UIKit
 
 class FirebaseClient{
     private let database = Firestore.firestore()
-    private let remoteConfig = RemoteConfig.remoteConfig()
-
     public static let shared = FirebaseClient()
     
     private init() {}
-    
-      // fetch the url saved in remote config
-    func fetchLoadingImageUrl(completion: @escaping (String) -> Void){
-        self.remoteConfig.fetch(withExpirationDuration: 0, completionHandler: { status , error in
-            if status == .success, error == nil {
-                self.remoteConfig.activate { _ , error in
-                    guard error == nil else {
-                        return
-                    }
-                    let remoteConfigValue = self.remoteConfig.configValue(forKey: "urlString").stringValue ?? ""
-                    completion(remoteConfigValue)
-                }
-            } else {
-                print("Error fetching url")
-            }
-        })
-    }
     
     func getStations(_ completion: @escaping ([Station]) -> Void) {
         database.collection("Stations").addSnapshotListener { querySnapshot, err in

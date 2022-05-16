@@ -13,20 +13,26 @@ struct HistoryManager {
   
     func addTrip(searchedTrip : RecentTrip){
         var recentSearches: [RecentTrip] = getRecentTrips()
-        if recentSearches.count < capacity {
-            recentSearches.insert(searchedTrip, at: 0)
+        let lastSeartchedStart = recentSearches.last?.start
+        let lastSearchedFinish = recentSearches.last?.finish
+        if lastSeartchedStart?.Id == searchedTrip.start.Id, lastSearchedFinish?.Id == searchedTrip.finish.Id {
+          return
         } else {
-            recentSearches.removeLast()
-            recentSearches.insert(searchedTrip, at: 0)
-        }
-        do {
-            // Encode RecentTrip
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(recentSearches)
-            // Set Data
-            UserDefaults.standard.set(data, forKey: Key)
-        } catch {
-            print("Unable to Encode (\(error))")
+            if recentSearches.count < capacity {
+                recentSearches.insert(searchedTrip, at: 0)
+            } else {
+                recentSearches.removeLast()
+                recentSearches.insert(searchedTrip, at: 0)
+            }
+            do {
+                // Encode RecentTrip
+                let encoder = JSONEncoder()
+                let data = try encoder.encode(recentSearches)
+                // Set Data
+                UserDefaults.standard.set(data, forKey: Key)
+            } catch {
+                print("Unable to Encode (\(error))")
+            }
         }
     }
    

@@ -11,6 +11,7 @@ import FirebaseAnalytics
 
 class LoadingViewController: UIViewController {
     let firebaseClient = FirebaseClient.shared
+    let remoteConfig = RemoteConfigure()
     let stationKey = "stationKey"
     let timeByTripKey = "timeByTripKey"
     let tripByStationKey = "trpByStationKey"
@@ -35,7 +36,7 @@ class LoadingViewController: UIViewController {
             self.didFinishLoadingData()
         }
         
-        firebaseClient.fetchLoadingImageUrl { stringURL in
+        remoteConfig.fetchLoadingImageUrl { stringURL in
             print(stringURL)
         }
     }
@@ -51,7 +52,6 @@ private extension LoadingViewController {
             }
             return
         }
-        
         dispatchGroup.enter()
         firebaseClient.getStations{ stations in
             Current.stations = stations

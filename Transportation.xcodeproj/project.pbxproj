@@ -30,6 +30,7 @@
 		52A40EEE2788464200D984E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A40EEC2788464200D984E9 /* LaunchScreen.storyboard */; };
 		52A40EF727884A8000D984E9 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EF627884A8000D984E9 /* NavigationManager.swift */; };
 		52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EF9278865E700D984E9 /* MainScreenViewController.swift */; };
+		52A9DB95283264B000AC3827 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9DB94283264B000AC3827 /* RemoteConfig.swift */; };
 		52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */; };
 		52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE3FFD27B16DE800777548 /* Coordinator.swift */; };
 		52BE9BB32826DA5200923211 /* Environement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE9BB22826DA5200923211 /* Environement.swift */; };
@@ -66,6 +67,7 @@
 		52A40EEF2788464200D984E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52A40EF627884A8000D984E9 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		52A40EF9278865E700D984E9 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		52A9DB94283264B000AC3827 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
 		52BE3FFD27B16DE800777548 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		52BE9BB22826DA5200923211 /* Environement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environement.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				520DFDAD2802FCE5006BEF68 /* HistoryManager.swift */,
 				52BE3FFD27B16DE800777548 /* Coordinator.swift */,
 				52BE9BB22826DA5200923211 /* Environement.swift */,
+				52A9DB94283264B000AC3827 /* RemoteConfig.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */,
 				2AD8093527D5599200ADA238 /* SearchResultTableViewCell.swift in Sources */,
 				5208495827D2252600030D8B /* Time.swift in Sources */,
+				52A9DB95283264B000AC3827 /* RemoteConfig.swift in Sources */,
 				52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */,
 				524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */,
 				52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */,

@@ -46,7 +46,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         UIStatusBarStyle.lightContent
     }
     
-    @IBAction func textFieldTyping(_ sender: UITextField) {
+    @IBAction func textFieldDidChange(_ sender: UITextField) {
         let searchText  = sender.text ?? ""
         cells = allStationsArray.compactMap { station in
             if station.name.range(of: searchText, options: .caseInsensitive) != nil {
@@ -146,6 +146,7 @@ private extension StationViewController {
         var tripResults = [Trip]()
         let trip = RecentTrip(start: startStation, finish:endStation)
         historyManager.addTrip(searchedTrip: trip)
+        
         for trip in Current.tripByStations {
             if trip.id == startStation.Id {
                 tripResults = trip.trips
