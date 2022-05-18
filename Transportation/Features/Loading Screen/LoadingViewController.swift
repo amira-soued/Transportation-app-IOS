@@ -50,15 +50,13 @@ private extension LoadingViewController {
         if let urlString = UserDefaults.standard.string(forKey: imageKey){
             Current.imageUrlString = urlString
             print(Current.imageUrlString)
+            return
         }
         dispatchGroup.enter()
         remoteConfig.fetchLoadingImageUrl { stringURL in
-//            print(stringURL)
-//            Current.imageUrlString = stringURL
             UserDefaults.standard.set(stringURL, forKey: self.imageKey)
             self.dispatchGroup.leave()
         }
-       
     }
     
     func loadAllStations() {

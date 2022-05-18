@@ -97,6 +97,7 @@
 		2AD8093227D5597100ADA238 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				52A40EF8278865C600D984E9 /* Main Screen */,
 				2AD8093327D5599200ADA238 /* SearchResultTableViewCell.swift */,
 				2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */,
 				5297F57727FDA3E7001B9AF2 /* StationTableViewCell.swift */,
@@ -156,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				524CD9CD2812AC1300E78512 /* Loading Screen */,
-				52A40EF8278865C600D984E9 /* Main Screen */,
 				52F1A074278C31A000F9E57C /* Station Screen */,
 			);
 			path = Features;
