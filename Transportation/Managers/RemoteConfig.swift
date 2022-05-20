@@ -12,7 +12,7 @@ import Firebase
 
 class RemoteConfigure{
     private let remoteConfigure = RemoteConfig.remoteConfig()
-    
+    private let database = Firestore.firestore()
       // fetch the url saved in remote config
     func fetchLoadingImageUrl(completion: @escaping (String?) -> Void){
         self.remoteConfigure.fetch(withExpirationDuration: 0, completionHandler: { status , error in
@@ -26,8 +26,100 @@ class RemoteConfigure{
                 }
             } else {
                 print("Error fetching url")
-//                completion("")
             }
         })
+    }
+    
+    func checkImageUrlUpdate(completion: @escaping (Bool?) -> Void){
+        database.collection("updates").document("imageUrl")
+            .getDocument { (document, error) in
+                guard let document = document, document.exists else{
+                print("Error fetching document: \(error!)")
+                return
+              }
+                guard let data = document.data() as? [String: Bool] else {
+                print("Document data was empty.")
+                return
+              }
+                for (_, value) in data{
+                    let urlImageStatus = value
+                    print("firebase image value: \(urlImageStatus)")
+                    completion(urlImageStatus)
+                }
+            }
+    }
+    func resetImageUpdateStatus(){
+        let updateStatus = database.collection("updates").document("imageUrl")
+        updateStatus.updateData([
+            "urlUpdate": false
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func checkTimesUpdate(completion: @escaping (Bool?) -> Void){
+        database.collection("updates").document("times")
+            .getDocument { (document, error) in
+                guard let document = document, document.exists else{
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() as? [String: Bool] else {
+                    print("Document data was empty.")
+                    return
+                }
+                for (_, value) in data{
+                    let timeStatus = value
+                    print("firebase times value: \(timeStatus)")
+                    completion(timeStatus)
+                }
+            }
+    }
+    func resetTimesUpdateStatus(){
+        let updateStatus = database.collection("updates").document("times")
+        updateStatus.updateData([
+            "timesUpdate": false
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+    }
+    
+    func checkTripsUpdate(completion: @escaping (Bool?) -> Void){
+        database.collection("updates").document("trips")
+            .getDocument { (document, error) in
+                guard let document = document, document.exists else{
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() as? [String: Bool] else {
+                    print("Document data was empty.")
+                    return
+                }
+                for (_, value) in data{
+                    let tripStatus = value
+                    print("firebase value: \(tripStatus)")
+                    completion(tripStatus)
+                }
+            }
+    }
+    func resetTripsUpdateStatus(){
+        let updateStatus = database.collection("updates").document("trips")
+        updateStatus.updateData([
+            "tripsUpdate": false
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
 }

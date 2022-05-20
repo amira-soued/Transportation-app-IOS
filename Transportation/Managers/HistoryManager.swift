@@ -13,11 +13,6 @@ struct HistoryManager {
   
     func addTrip(searchedTrip : RecentTrip){
         var recentSearches: [RecentTrip] = getRecentTrips()
-//        let lastSeartchedStart = recentSearches.last?.start
-//        let lastSearchedFinish = recentSearches.last?.finish
-//        if lastSeartchedStart?.Id == searchedTrip.start.Id, lastSearchedFinish?.Id == searchedTrip.finish.Id {
-//          return
-//        } else {
             if recentSearches.count < capacity {
                 recentSearches.insert(searchedTrip, at: 0)
             } else {
@@ -33,7 +28,6 @@ struct HistoryManager {
             } catch {
                 print("Unable to Encode (\(error))")
             }
-//        }
     }
    
     func getRecentTrips() -> [RecentTrip] {

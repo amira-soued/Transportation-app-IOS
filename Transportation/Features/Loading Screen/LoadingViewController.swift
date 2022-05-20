@@ -23,7 +23,6 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadingIndicatorView.type = .ballClipRotatePulse
         loadingIndicatorView.color = .black
         loadingIndicatorView.startAnimating()
@@ -32,30 +31,34 @@ class LoadingViewController: UIViewController {
         loadAllTripsByStation()
         loadImageUrl()
         loadingImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
-        print(Current.imageUrlString)
         dispatchGroup.notify(queue: .main) {
             self.didFinishLoadingData()
         }
-//
-//        remoteConfig.fetchLoadingImageUrl { stringURL in
-//            print(stringURL)
-//            self.imageUrl = stringURL
-//        }
     }
 }
 
 private extension LoadingViewController {
 
     func loadImageUrl(){
-        if let urlString = UserDefaults.standard.string(forKey: imageKey){
+        if let urlString = UserDefaults.standard.string(forKey: self.imageKey){
             Current.imageUrlString = urlString
-            print(Current.imageUrlString)
-            return
+            print("image url\(Current.imageUrlString)")
+            remoteConfig.checkImageUrlUpdate { updateStatus in
+                if updateStatus == false{
+                    return
+                }
+            }
         }
         dispatchGroup.enter()
         remoteConfig.fetchLoadingImageUrl { stringURL in
             UserDefaults.standard.set(stringURL, forKey: self.imageKey)
+            Current.imageUrlString = UserDefaults.standard.string(forKey: self.imageKey) ?? ""
             self.dispatchGroup.leave()
+        }
+        remoteConfig.checkImageUrlUpdate { updateStatus in
+            if updateStatus == true{
+                self.remoteConfig.resetImageUpdateStatus()
+            }
         }
     }
     
@@ -82,12 +85,16 @@ private extension LoadingViewController {
     }
     
     func loadAllTimesByTrip() {
-        if let timeByTripsData = UserDefaults.standard.object(forKey: timeByTripKey) as? Data{
-            let decoder = JSONDecoder()
-            if let timeByTrips = try? decoder.decode([TimeByTrip].self, from: timeByTripsData) {
-                Current.timeByTrips = timeByTrips
+        remoteConfig.checkTimesUpdate { updateStatus in
+            if updateStatus == false {
+                if let timeByTripsData = UserDefaults.standard.object(forKey: self.timeByTripKey) as? Data{
+                    let decoder = JSONDecoder()
+                    if let timeByTrips = try? decoder.decode([TimeByTrip].self, from: timeByTripsData) {
+                        Current.timeByTrips = timeByTrips
+                    }
+                    return
+                }
             }
-            return
         }
         dispatchGroup.enter()
         firebaseClient.getTimeByTrip { timeByTrips in
@@ -101,15 +108,25 @@ private extension LoadingViewController {
             }
             self.dispatchGroup.leave()
         }
+        remoteConfig.checkTimesUpdate { updateStatus in
+            if updateStatus == true{
+                self.remoteConfig.resetTimesUpdateStatus()
+            }
+        }
     }
     
     func loadAllTripsByStation() {
-        if let tripByStationsData = UserDefaults.standard.object(forKey: tripByStationKey) as? Data {
-            let decoder = JSONDecoder()
-            if let tripByStations = try? decoder.decode([TripByStations].self, from: tripByStationsData) {
-                Current.tripByStations = tripByStations
+        remoteConfig.checkTripsUpdate { updateStatus in
+            if updateStatus == false {
+                if let tripByStationsData = UserDefaults.standard.object(forKey: self.tripByStationKey) as? Data {
+                    let decoder = JSONDecoder()
+                    if let tripByStations = try? decoder.decode([TripByStations].self, from: tripByStationsData) {
+                        Current.tripByStations = tripByStations
+                    }
+                    return
+                }
             }
-            return        }
+        }
         dispatchGroup.enter()
         firebaseClient.getTripByStation{ tripByStations in
             Current.tripByStations = tripByStations
@@ -121,6 +138,11 @@ private extension LoadingViewController {
                 print("Unable to Encode (\(error))")
             }
             self.dispatchGroup.leave()
+        }
+        remoteConfig.checkTimesUpdate { updateStatus in
+            if updateStatus == true{
+                self.remoteConfig.resetTripsUpdateStatus()
+            }
         }
     }
   

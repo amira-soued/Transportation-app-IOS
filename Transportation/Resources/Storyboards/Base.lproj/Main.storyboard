@@ -182,7 +182,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fms-hl-ddD">
-                                <rect key="frame" x="0.0" y="201" width="413" height="661"/>
+                                <rect key="frame" x="0.0" y="201" width="414" height="661"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5A-m3-L4P">
@@ -238,7 +238,7 @@
                             <constraint firstItem="jxC-9K-ge8" firstAttribute="top" secondItem="W5A-m3-L4P" secondAttribute="bottom" id="nAd-BA-0vY"/>
                             <constraint firstItem="jxC-9K-ge8" firstAttribute="trailing" secondItem="U5W-em-bV5" secondAttribute="trailing" id="oI2-xh-VG3"/>
                             <constraint firstItem="fms-hl-ddD" firstAttribute="top" secondItem="jxC-9K-ge8" secondAttribute="bottom" id="qhm-dA-u9R"/>
-                            <constraint firstItem="U5W-em-bV5" firstAttribute="trailing" secondItem="fms-hl-ddD" secondAttribute="trailing" constant="1" id="uLf-BW-CI3"/>
+                            <constraint firstItem="U5W-em-bV5" firstAttribute="trailing" secondItem="fms-hl-ddD" secondAttribute="trailing" id="uLf-BW-CI3"/>
                         </constraints>
                     </view>
                     <connections>
