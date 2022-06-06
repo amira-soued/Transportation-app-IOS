@@ -13,9 +13,9 @@ class LoadingViewController: UIViewController {
     let firebaseClient = FirebaseClient.shared
     let remoteConfig = RemoteConfigure()
     let stationKey = "stationKey"
-    let timeByTripKey = "timeByTripKey"
-    let tripByStationKey = "trpByStationKey"
     let imageKey = "imageKey"
+    let directionSousseKey = "directionSousseKey"
+    let directionMahdiaKey = "directionMahdiaKey"
     let dispatchGroup = DispatchGroup()
     
     @IBOutlet weak var loadingIndicatorView: NVActivityIndicatorView!
@@ -27,9 +27,10 @@ class LoadingViewController: UIViewController {
         loadingIndicatorView.color = .black
         loadingIndicatorView.startAnimating()
         loadAllStations()
-        loadAllTimesByTrip()
-        loadAllTripsByStation()
+        loadDirectionMahdiaTrips()
+        loadDirectionSousseTrips()
         loadImageUrl()
+    
         loadingImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         dispatchGroup.notify(queue: .main) {
             self.didFinishLoadingData()
@@ -84,65 +85,50 @@ private extension LoadingViewController {
         }
     }
     
-    func loadAllTimesByTrip() {
-        remoteConfig.checkTimesUpdate { updateStatus in
-            if updateStatus == false {
-                if let timeByTripsData = UserDefaults.standard.object(forKey: self.timeByTripKey) as? Data{
-                    let decoder = JSONDecoder()
-                    if let timeByTrips = try? decoder.decode([TimeByTrip].self, from: timeByTripsData) {
-                        Current.timeByTrips = timeByTrips
-                    }
-                    return
-                }
+    func loadDirectionSousseTrips(){
+        if let tripsToSousseData = UserDefaults.standard.object(forKey: self.directionSousseKey) as? Data {
+            let decoder = JSONDecoder()
+            if let tripsToSousse = try? decoder.decode([TripsByStation].self, from: tripsToSousseData) {
+                Current.directionSousseTrips = tripsToSousse
+                print("current\(Current.directionSousseTrips)")
             }
+            return
         }
         dispatchGroup.enter()
-        firebaseClient.getTimeByTrip { timeByTrips in
-            Current.timeByTrips = timeByTrips
+        firebaseClient.getDirectionSousseTrips { tripsByStation in
+            Current.directionSousseTrips = tripsByStation
             do {
                 let encoder = JSONEncoder()
-                let data = try encoder.encode(timeByTrips)
-                UserDefaults.standard.set(data, forKey: self.timeByTripKey)
+                let data = try encoder.encode(tripsByStation)
+                UserDefaults.standard.set(data, forKey: self.directionSousseKey)
+                print("current\(Current.directionSousseTrips)")
             } catch {
                 print("Unable to Encode (\(error))")
             }
             self.dispatchGroup.leave()
-        }
-        remoteConfig.checkTimesUpdate { updateStatus in
-            if updateStatus == true{
-                self.remoteConfig.resetTimesUpdateStatus()
-            }
         }
     }
     
-    func loadAllTripsByStation() {
-        remoteConfig.checkTripsUpdate { updateStatus in
-            if updateStatus == false {
-                if let tripByStationsData = UserDefaults.standard.object(forKey: self.tripByStationKey) as? Data {
-                    let decoder = JSONDecoder()
-                    if let tripByStations = try? decoder.decode([TripByStations].self, from: tripByStationsData) {
-                        Current.tripByStations = tripByStations
-                    }
-                    return
-                }
+    func loadDirectionMahdiaTrips(){
+        if let tripsToMahdiaData = UserDefaults.standard.object(forKey: self.directionMahdiaKey) as? Data {
+            let decoder = JSONDecoder()
+            if let tripsToMahdia = try? decoder.decode([TripsByStation].self, from: tripsToMahdiaData) {
+                Current.directionMahdiaTrips = tripsToMahdia
             }
+            return
         }
         dispatchGroup.enter()
-        firebaseClient.getTripByStation{ tripByStations in
-            Current.tripByStations = tripByStations
+        firebaseClient.getDirectionMahdiaTrips { tripsByStation in
+            Current.directionMahdiaTrips = tripsByStation
             do {
                 let encoder = JSONEncoder()
-                let data = try encoder.encode(tripByStations)
-                UserDefaults.standard.set(data, forKey: self.tripByStationKey)
+                let data = try encoder.encode(tripsByStation)
+                UserDefaults.standard.set(data, forKey: self.directionMahdiaKey)
+                print("current\(Current.directionMahdiaTrips)")
             } catch {
                 print("Unable to Encode (\(error))")
             }
             self.dispatchGroup.leave()
-        }
-        remoteConfig.checkTimesUpdate { updateStatus in
-            if updateStatus == true{
-                self.remoteConfig.resetTripsUpdateStatus()
-            }
         }
     }
   

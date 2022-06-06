@@ -33,7 +33,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     var searchedEndStation : Station?
     
     let allStationsArray: [Station] = Current.stations
-    
+    var tripsByDirection = [TripsByStation]()
     override func viewDidLoad() { 
         super.viewDidLoad()
         
@@ -111,14 +111,15 @@ private extension StationViewController {
         getAllAvailableTrips()
     }
     
-    func getPossibleTrips(with date: Date, from trips: [Trip]) -> [Trip] {
+    func getPossibleTrips(with date: Date, from trips: [String:String]) -> [String:String] {
         let dateFormatter = DateFormatter()
-        var availableTrips = [Trip]()
+        var availableTrips = [String:String]()
         dateFormatter.dateFormat = "HH:mm"
         let timeString = dateFormatter.string(from: date)
         for trip in trips {
-            if trip.tripTime > timeString {
-                availableTrips.append(trip)
+            if trip.value > timeString {
+                let newKey = trip.key
+                availableTrips[newKey] = trip.value
             }
         }
         return availableTrips
@@ -139,42 +140,72 @@ private extension StationViewController {
             startTextField.becomeFirstResponder()
         }
     }
+    
+    func getDirection(startStation : Station , endStation : Station)-> String{
+        var startIndex = 0
+        var endIndex = 0
+        var direction : String
+        for stationId in directionList{
+            if startStation.Id == stationId{
+                startIndex = directionList.firstIndex(of: stationId) ?? 0
+            }
+            if endStation.Id == stationId{
+                 endIndex = directionList.firstIndex(of: stationId) ?? 0
+            }
+        }
+        if startIndex < endIndex{
+            direction = "toSousse"
+        } else {
+            direction = "toMahdia"
+        }
+        return direction
+    }
 
     func getAllAvailableTrips() {
         cells.removeAll()
         guard let startStation = startStation, let endStation = endStation else { return }
-        var tripResults = [Trip]()
+        var tripResults = [String:String]()
         let trip = RecentTrip(start: startStation, finish:endStation)
         historyManager.addTrip(searchedTrip: trip)
-        
-        for trip in Current.tripByStations {
-            if trip.id == startStation.Id {
+        if getDirection(startStation: startStation, endStation: endStation) == "toSousse"{
+            tripsByDirection = Current.directionSousseTrips
+        } else {
+            if getDirection(startStation: startStation, endStation: endStation) == "toMahdia"{
+                tripsByDirection = Current.directionMahdiaTrips
+            }
+        }
+        for trip in tripsByDirection {
+            if trip.stationId == startStation.Id {
                 tripResults = trip.trips
             }
         }
-        let sortedTrips = tripResults.sorted {
-            $0.tripTime < $1.tripTime
+        let sortedTripsArray = tripResults.sorted {
+            $0.key < $1.value
+        }
+        var sortedTrips = [String:String]()
+        for sortedTrip in sortedTripsArray{
+            sortedTrips[sortedTrip.key] = sortedTrip.value
         }
         let startDate = Date()
         let nearestTrips = getPossibleTrips(with: startDate, from: sortedTrips)
-        for eachTrip in nearestTrips {
-            var timeResults = [Time]()
-            for time in Current.timeByTrips{
-                if eachTrip.tripId == time.tripId{
-                    timeResults = time.times
+        for trip in nearestTrips {
+            var timeResults = ""
+            for times in tripsByDirection{
+                if times.stationId == endStation.Id{
+                    let tripTimes = times.trips
+                    for time in tripTimes {
+                        if trip.key == time.key{
+                            timeResults = time.value
+                        }
+                    }
                 }
             }
-            let endTimeIndex = timeResults.firstIndex { time in
-                time.stationId == endStation.Id
-            }
-            if let index = endTimeIndex {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "HH:mm"
-                if let endDate = dateFormatter.date(from: timeResults[index].time),
-                   let nearestTripDate = dateFormatter.date(from: eachTrip.tripTime) {
-                    let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
-                    cells.append(cell)
-                }
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
+            if let endDate = dateFormatter.date(from: timeResults),
+               let nearestTripDate = dateFormatter.date(from: trip.value) {
+                let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
+                cells.append(cell)
             }
         }
     }

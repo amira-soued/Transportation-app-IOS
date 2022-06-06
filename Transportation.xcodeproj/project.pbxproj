@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2AD8093527D5599200ADA238 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8093327D5599200ADA238 /* SearchResultTableViewCell.swift */; };
 		2AD8093627D5599200ADA238 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */; };
-		5208495827D2252600030D8B /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5208495727D2252600030D8B /* Time.swift */; };
 		520DFDAE2802FCE5006BEF68 /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DFDAD2802FCE5006BEF68 /* HistoryManager.swift */; };
 		5228BB28280EDDAC00F7CCBE /* RecentTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */; };
 		5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259527AACA6800E34480 /* StationCoordinator.swift */; };
@@ -46,7 +45,6 @@
 		2AD8093327D5599200ADA238 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Transportation.debug.xcconfig"; path = "Target Support Files/Pods-Transportation/Pods-Transportation.debug.xcconfig"; sourceTree = "<group>"; };
-		5208495727D2252600030D8B /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		520DFDAD2802FCE5006BEF68 /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
 		5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTrip.swift; sourceTree = "<group>"; };
 		5239259527AACA6800E34480 /* StationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCoordinator.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				5291ABA427985F90000C8F2D /* Station.swift */,
-				5208495727D2252600030D8B /* Time.swift */,
 				52DA0A9627C8F1F0008C2A83 /* Trip.swift */,
 				5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */,
 			);
@@ -383,7 +380,6 @@
 				52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */,
 				52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */,
 				2AD8093527D5599200ADA238 /* SearchResultTableViewCell.swift in Sources */,
-				5208495827D2252600030D8B /* Time.swift in Sources */,
 				52A9DB95283264B000AC3827 /* RemoteConfig.swift in Sources */,
 				52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */,
 				524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */,

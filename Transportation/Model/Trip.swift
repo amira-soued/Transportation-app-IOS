@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct Trip: Codable{
-    let tripTime : String
-    let tripId: String
+struct TripsByStation : Codable{
+    let stationId : String
+    let trips : [String:String]
 }
 
-struct TripByStations: Codable{
-    let id: String
-    let trips: [Trip]
-}

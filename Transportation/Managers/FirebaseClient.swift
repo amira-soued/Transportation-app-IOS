@@ -34,49 +34,47 @@ class FirebaseClient{
             }
         }
     }
-  
-    func getTripByStation(completion: @escaping([TripByStations])-> Void){
-        database.collection("Trip by station").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                var tripsByStations = [TripByStations]()
-                let documents = querySnapshot?.documents ?? []
-                for document in documents {
-                    let data = document.data()
-                    var trips = [Trip]()
-                    if let documentsData = data as? [String: String] {
-                        trips = documentsData.map { key, value -> Trip in
-                            let trip = Trip(tripTime: key, tripId: value)
-                            return trip
-                        }
-                    }
-                    tripsByStations.append(TripByStations(id: document.documentID, trips: trips))
-                }
-                completion(tripsByStations)
-            }
-        }
-    }
     
-    func getTimeByTrip(completion: @escaping([TimeByTrip])-> Void){
-        database.collection("Time by trip").getDocuments() { (querySnapshot, error) in
-            guard error == nil, let documents = querySnapshot?.documents  else {
+    func getDirectionSousseTrips(completion: @escaping([TripsByStation])-> Void){
+        database.collection("trinoo-staging").document("Mahdia-Sousse").getDocument { (document, error) in
+            var trips = [TripsByStation]()
+            guard let document = document, error == nil
+            else{
                 completion([])
                 return
             }
-            var timeByTrips = [TimeByTrip]()
-            for document in documents {
-                let data = document.data()
-                var times = [Time]()
-                if let documentsData = data as? [String: String?] {
-                    times = documentsData.map { key, value -> Time in
-                        let time = Time(stationId: key, time: value ?? "")
-                        return time
-                    }
+            let dataDescription = document.data()
+            if let data = dataDescription as?  [String: [String:String]]{
+                for tripData in data{
+                    let Id = tripData.key
+                    let tripId = tripData.value
+                    let trip = TripsByStation(stationId: Id, trips: tripId)
+                    trips.append(trip)
                 }
-                timeByTrips.append(TimeByTrip(tripId: document.documentID, times: times))
             }
-            completion(timeByTrips)
+            completion(trips)
         }
     }
+    
+    func getDirectionMahdiaTrips(completion: @escaping([TripsByStation])-> Void){
+        database.collection("trinoo-staging").document("Sousse-Mahdia").getDocument { (document, error) in
+            var trips = [TripsByStation]()
+            guard let document = document, error == nil
+            else{
+                completion([])
+                return
+            }
+            let dataDescription = document.data()
+            if let data = dataDescription as?  [String: [String:String]]{
+                for tripData in data{
+                    let Id = tripData.key
+                    let tripId = tripData.value
+                    let trip = TripsByStation(stationId: Id, trips: tripId)
+                    trips.append(trip)
+                }
+            }
+            completion(trips)
+        }
+    }
+ 
 }
