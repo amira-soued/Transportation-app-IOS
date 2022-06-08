@@ -35,6 +35,7 @@
 		52BE9BB32826DA5200923211 /* Environement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE9BB22826DA5200923211 /* Environement.swift */; };
 		52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */; };
 		52C2082327FFBFD80030904B /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */; };
+		52C836C02850B64F006107F4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C836BF2850B64F006107F4 /* Constant.swift */; };
 		52DA0A9727C8F1F0008C2A83 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DA0A9627C8F1F0008C2A83 /* Trip.swift */; };
 		52F1A076278C31D800F9E57C /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1A075278C31D800F9E57C /* StationViewController.swift */; };
 		52F6C0472811711400EE8F81 /* Loading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F6C0462811711400EE8F81 /* Loading.storyboard */; };
@@ -71,6 +72,7 @@
 		52BE9BB22826DA5200923211 /* Environement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environement.swift; sourceTree = "<group>"; };
 		52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		52C836BF2850B64F006107F4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		52DA0A9627C8F1F0008C2A83 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		52F1A075278C31D800F9E57C /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
 		52F6C0462811711400EE8F81 /* Loading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Loading.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				5291ABA427985F90000C8F2D /* Station.swift */,
+				52C836BF2850B64F006107F4 /* Constant.swift */,
 				52DA0A9627C8F1F0008C2A83 /* Trip.swift */,
 				5228BB27280EDDAC00F7CCBE /* RecentTrip.swift */,
 			);
@@ -391,6 +394,7 @@
 				5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */,
 				52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */,
 				5291ABA527985F90000C8F2D /* Station.swift in Sources */,
+				52C836C02850B64F006107F4 /* Constant.swift in Sources */,
 				5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */,
 				52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */,
 			);

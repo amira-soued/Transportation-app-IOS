@@ -16,7 +16,7 @@ class FirebaseClient{
     private init() {}
     
     func getStations(_ completion: @escaping ([Station]) -> Void) {
-        database.collection("Stations").addSnapshotListener { querySnapshot, err in
+        database.collection(stationsCollection).addSnapshotListener { querySnapshot, err in
             if let error = err {
                 print(error)
                 completion([])
@@ -36,7 +36,7 @@ class FirebaseClient{
     }
     
     func getDirectionSousseTrips(completion: @escaping([TripsByStation])-> Void){
-        database.collection("trinoo-staging").document("Mahdia-Sousse").getDocument { (document, error) in
+        database.collection(trinooCollection).document(sousseDocument).getDocument { (document, error) in
             var trips = [TripsByStation]()
             guard let document = document, error == nil
             else{
@@ -57,7 +57,7 @@ class FirebaseClient{
     }
     
     func getDirectionMahdiaTrips(completion: @escaping([TripsByStation])-> Void){
-        database.collection("trinoo-staging").document("Sousse-Mahdia").getDocument { (document, error) in
+        database.collection(trinooCollection).document(mahdiaDocument).getDocument { (document, error) in
             var trips = [TripsByStation]()
             guard let document = document, error == nil
             else{

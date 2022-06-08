@@ -30,7 +30,6 @@ class LoadingViewController: UIViewController {
         loadDirectionMahdiaTrips()
         loadDirectionSousseTrips()
         loadImageUrl()
-    
         loadingImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         dispatchGroup.notify(queue: .main) {
             self.didFinishLoadingData()
@@ -90,7 +89,6 @@ private extension LoadingViewController {
             let decoder = JSONDecoder()
             if let tripsToSousse = try? decoder.decode([TripsByStation].self, from: tripsToSousseData) {
                 Current.directionSousseTrips = tripsToSousse
-                print("current\(Current.directionSousseTrips)")
             }
             return
         }
@@ -101,7 +99,6 @@ private extension LoadingViewController {
                 let encoder = JSONEncoder()
                 let data = try encoder.encode(tripsByStation)
                 UserDefaults.standard.set(data, forKey: self.directionSousseKey)
-                print("current\(Current.directionSousseTrips)")
             } catch {
                 print("Unable to Encode (\(error))")
             }
@@ -124,7 +121,6 @@ private extension LoadingViewController {
                 let encoder = JSONEncoder()
                 let data = try encoder.encode(tripsByStation)
                 UserDefaults.standard.set(data, forKey: self.directionMahdiaKey)
-                print("current\(Current.directionMahdiaTrips)")
             } catch {
                 print("Unable to Encode (\(error))")
             }

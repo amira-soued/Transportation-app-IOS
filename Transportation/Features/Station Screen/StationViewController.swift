@@ -111,16 +111,18 @@ private extension StationViewController {
         getAllAvailableTrips()
     }
     
-    func getPossibleTrips(with date: Date, from trips: [String:String]) -> [String:String] {
+    func getPossibleTrips(with date: Date, from trips: [(String,String)]) -> [(String,String)] {
         let dateFormatter = DateFormatter()
-        var availableTrips = [String:String]()
+        var availableTrips = [(String,String)]()
         dateFormatter.dateFormat = "HH:mm"
         let timeString = dateFormatter.string(from: date)
-        for trip in trips {
-            if trip.value > timeString {
-                let newKey = trip.key
-                availableTrips[newKey] = trip.value
+        for i in 0...trips.count-1{
+            if trips[i].1 > timeString {
+                availableTrips.append((trips[i].0, trips[i].1))
             }
+        }
+        if availableTrips.isEmpty {
+                availableTrips = trips
         }
         return availableTrips
     }
@@ -154,9 +156,9 @@ private extension StationViewController {
             }
         }
         if startIndex < endIndex{
-            direction = "toSousse"
+            direction = Sousse
         } else {
-            direction = "toMahdia"
+            direction = Mahdia
         }
         return direction
     }
@@ -167,10 +169,10 @@ private extension StationViewController {
         var tripResults = [String:String]()
         let trip = RecentTrip(start: startStation, finish:endStation)
         historyManager.addTrip(searchedTrip: trip)
-        if getDirection(startStation: startStation, endStation: endStation) == "toSousse"{
+        if getDirection(startStation: startStation, endStation: endStation) == Sousse{
             tripsByDirection = Current.directionSousseTrips
         } else {
-            if getDirection(startStation: startStation, endStation: endStation) == "toMahdia"{
+            if getDirection(startStation: startStation, endStation: endStation) == Mahdia{
                 tripsByDirection = Current.directionMahdiaTrips
             }
         }
@@ -179,22 +181,22 @@ private extension StationViewController {
                 tripResults = trip.trips
             }
         }
-        let sortedTripsArray = tripResults.sorted {
-            $0.key < $1.value
-        }
-        var sortedTrips = [String:String]()
-        for sortedTrip in sortedTripsArray{
-            sortedTrips[sortedTrip.key] = sortedTrip.value
+        var resultList = [(String,String)]()
+        for result in tripResults{
+            resultList.append(result)
         }
         let startDate = Date()
-        let nearestTrips = getPossibleTrips(with: startDate, from: sortedTrips)
-        for trip in nearestTrips {
+        let nearestTrips = getPossibleTrips(with: startDate, from: resultList)
+        let sortedResults = nearestTrips.sorted {
+            $0.0 < $1.0
+        }
+        for trip in sortedResults {
             var timeResults = ""
             for times in tripsByDirection{
                 if times.stationId == endStation.Id{
                     let tripTimes = times.trips
                     for time in tripTimes {
-                        if trip.key == time.key{
+                        if trip.0 == time.key{
                             timeResults = time.value
                         }
                     }
@@ -203,7 +205,7 @@ private extension StationViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "HH:mm"
             if let endDate = dateFormatter.date(from: timeResults),
-               let nearestTripDate = dateFormatter.date(from: trip.value) {
+               let nearestTripDate = dateFormatter.date(from: trip.1) {
                 let cell = Cell.searchResult(start: nearestTripDate, end: endDate)
                 cells.append(cell)
             }
