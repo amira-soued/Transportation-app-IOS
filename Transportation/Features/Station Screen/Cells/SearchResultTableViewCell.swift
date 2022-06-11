@@ -20,12 +20,15 @@ class SearchResultTableViewCell: UITableViewCell {
     func setupCell(startTime: Date, endTime: Date){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
+        
         let startTimeString = dateFormatter.string(from: startTime)
         let endTimeString = dateFormatter.string(from: endTime)
-        timeLabel.text = startTimeString + " - " + endTimeString
+        timeLabel.text = startTimeString + " -> " + endTimeString
 
         let durationTime = endTime.timeIntervalSinceReferenceDate - startTime.timeIntervalSinceReferenceDate
         let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        formatter.zeroFormattingBehavior = .dropAll
         formatter.allowedUnits = [.hour, .minute]
         let durationString = formatter.string(from: durationTime)
         durationLabel.text = durationString
