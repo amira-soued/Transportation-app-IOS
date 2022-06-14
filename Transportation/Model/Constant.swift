@@ -9,8 +9,8 @@ import Foundation
 
 let Mahdia = "toMahdia"
 let Sousse = "toSousse"
-let stationsCollection = "Stations"
-let trinooCollection = "trinoo-staging"
+let stationsDocument = "Stations"
+let productionCollection = "Production"
 let mahdiaDocument = "Sousse-Mahdia"
 let sousseDocument = "Mahdia-Sousse"
 

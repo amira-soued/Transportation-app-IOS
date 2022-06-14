@@ -49,7 +49,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     @IBAction func textFieldDidChange(_ sender: UITextField) {
         let searchText  = sender.text ?? ""
         cells = allStationsArray.compactMap { station in
-            if station.name.range(of: searchText, options: .caseInsensitive) != nil {
+            if station.name.range(of: searchText, options: .caseInsensitive) != nil || station.city.range(of: searchText, options: .caseInsensitive) != nil {
                 return .stationCell(station)
             }
             return nil

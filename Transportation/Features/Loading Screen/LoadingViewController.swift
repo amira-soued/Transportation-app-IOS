@@ -26,11 +26,11 @@ class LoadingViewController: UIViewController {
         loadingIndicatorView.type = .ballClipRotatePulse
         loadingIndicatorView.color = .black
         loadingIndicatorView.startAnimating()
+        loadingImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         loadAllStations()
         loadDirectionMahdiaTrips()
         loadDirectionSousseTrips()
         loadImageUrl()
-        loadingImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         dispatchGroup.notify(queue: .main) {
             self.didFinishLoadingData()
         }
@@ -92,6 +92,7 @@ private extension LoadingViewController {
             } catch {
                 print("Unable to Encode (\(error))")
             }
+            print("station: \(Current.stations)")
             self.dispatchGroup.leave()
         }
     }

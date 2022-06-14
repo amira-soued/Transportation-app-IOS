@@ -14,29 +14,30 @@ class FirebaseClient{
     public static let shared = FirebaseClient()
     
     private init() {}
-    
-    func getStations(_ completion: @escaping ([Station]) -> Void) {
-        database.collection(stationsCollection).addSnapshotListener { querySnapshot, err in
-            if let error = err {
-                print(error)
+     
+    func getStations(_ completion: @escaping ([Station]) -> Void){
+        database.collection(productionCollection).document(stationsDocument).getDocument { (document, error) in
+            var stations = [Station]()
+            guard let document = document, error == nil
+            else{
                 completion([])
-            } else {
-                let documents = querySnapshot?.documents ?? []
-                let stations: [Station] = documents.compactMap { document in
-                    if let id = document["ID"] as? String,
-                       let name = document["name"] as? String,
-                       let city = document["city"] as? String {
-                        return Station(Id: id, name: name, city: city)
-                    }
-                    return nil
-                }
-                completion(stations)
+                return
             }
+            let dataDescription = document.data()
+            if let data = dataDescription as?  [String: [String]]{
+                for stationData in data{
+                    let Id = stationData.key
+                    let stationInfo = stationData.value
+                    let station = Station(Id: Id, name: stationInfo.first ?? "", city: stationInfo.last ?? "")
+                    stations.append(station)
+                }
+            }
+            completion(stations)
         }
     }
     
     func getDirectionSousseTrips(completion: @escaping([TripsByStation])-> Void){
-        database.collection(trinooCollection).document(sousseDocument).getDocument { (document, error) in
+        database.collection(productionCollection).document(sousseDocument).getDocument { (document, error) in
             var trips = [TripsByStation]()
             guard let document = document, error == nil
             else{
@@ -57,7 +58,7 @@ class FirebaseClient{
     }
     
     func getDirectionMahdiaTrips(completion: @escaping([TripsByStation])-> Void){
-        database.collection(trinooCollection).document(mahdiaDocument).getDocument { (document, error) in
+        database.collection(productionCollection).document(mahdiaDocument).getDocument { (document, error) in
             var trips = [TripsByStation]()
             guard let document = document, error == nil
             else{
