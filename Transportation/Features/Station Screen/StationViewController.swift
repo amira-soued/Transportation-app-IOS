@@ -56,6 +56,19 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         }
         tableView.reloadData()
     }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+            textField.text = ""
+        if textField == startTextField {
+            startStation = nil
+        }
+        if textField == endTextField {
+            endStation = nil
+        }
+        cells.removeAll()
+        tableView.reloadData()
+            return true
+    }
   
     @IBAction func backToMainScreen(_ sender: Any) {
         let coordinator = StationCoordinator(navigationController: navigationController)
@@ -133,6 +146,7 @@ private extension StationViewController {
         if endStation == nil {
             endTextField.becomeFirstResponder()
         }
+       
     }
 
     func setEndStation(_ station: Station) {
@@ -141,6 +155,7 @@ private extension StationViewController {
         if startStation == nil {
             startTextField.becomeFirstResponder()
         }
+        
     }
     
     func getDirection(startStation : Station , endStation : Station)-> String{
