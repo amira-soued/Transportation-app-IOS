@@ -16,12 +16,12 @@
 		524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */; };
 		524CD9D52812C53C00E78512 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 524CD9D42812C53C00E78512 /* SDWebImage */; };
 		524CD9D82812EAF700E78512 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 524CD9D72812EAF700E78512 /* NVActivityIndicatorView */; };
-		5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */; };
 		5291AB9F27981B2D000C8F2D /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */; };
 		5291ABA527985F90000C8F2D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5291ABA427985F90000C8F2D /* Station.swift */; };
 		5296650C2821A0B30004E77C /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296650B2821A0B30004E77C /* UIImageView + Extension.swift */; };
 		5297F57927FDA3E7001B9AF2 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5297F57727FDA3E7001B9AF2 /* StationTableViewCell.swift */; };
 		5297F57A27FDA3E7001B9AF2 /* StationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5297F57827FDA3E7001B9AF2 /* StationTableViewCell.xib */; };
+		529D3D592869F9BE001D0C7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529D3D582869F9BE001D0C7F /* GoogleService-Info.plist */; };
 		52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EDE2788464100D984E9 /* AppDelegate.swift */; };
 		52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EE02788464100D984E9 /* SceneDelegate.swift */; };
 		52A40EE62788464100D984E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A40EE42788464100D984E9 /* Main.storyboard */; };
@@ -51,12 +51,12 @@
 		5239259527AACA6800E34480 /* StationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCoordinator.swift; sourceTree = "<group>"; };
 		524CD9CE2812AC8400E78512 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
-		5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
 		5291ABA427985F90000C8F2D /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		5296650B2821A0B30004E77C /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		5297F57727FDA3E7001B9AF2 /* StationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		5297F57827FDA3E7001B9AF2 /* StationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationTableViewCell.xib; sourceTree = "<group>"; };
+		529D3D582869F9BE001D0C7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52A40EDB2788464100D984E9 /* Transportation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transportation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52A40EDE2788464100D984E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52A40EE02788464100D984E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,7 +191,7 @@
 				5296650D2821A6310004E77C /* Resources */,
 				5296650A2821A08C0004E77C /* Extension */,
 				52A40EEF2788464200D984E9 /* Info.plist */,
-				5291AB9A2796D3A0000C8F2D /* GoogleService-Info.plist */,
+				529D3D582869F9BE001D0C7F /* GoogleService-Info.plist */,
 			);
 			path = Transportation;
 			sourceTree = "<group>";
@@ -316,10 +316,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C2082327FFBFD80030904B /* SearchHistoryTableViewCell.xib in Resources */,
+				529D3D592869F9BE001D0C7F /* GoogleService-Info.plist in Resources */,
 				5297F57A27FDA3E7001B9AF2 /* StationTableViewCell.xib in Resources */,
 				52A40EEE2788464200D984E9 /* LaunchScreen.storyboard in Resources */,
 				2AD8093627D5599200ADA238 /* SearchResultTableViewCell.xib in Resources */,
-				5291AB9B2796D3A0000C8F2D /* GoogleService-Info.plist in Resources */,
 				52A40EEB2788464200D984E9 /* Assets.xcassets in Resources */,
 				52A40EE62788464100D984E9 /* Main.storyboard in Resources */,
 				52F6C0472811711400EE8F81 /* Loading.storyboard in Resources */,
@@ -543,9 +543,10 @@
 			baseConfigurationReference = 2DECE5C1C3B2AB770AB746A2 /* Pods-Transportation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3448VTPAXF;
+				DEVELOPMENT_TEAM = 3HT7RUT642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Transportation/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Trinoo;
@@ -561,8 +562,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.houcem.Transportation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amira.trinoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Trinoo iOS app store";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -574,9 +576,10 @@
 			baseConfigurationReference = 6262082C8211B54EAB41A65A /* Pods-Transportation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3448VTPAXF;
+				DEVELOPMENT_TEAM = 3HT7RUT642;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Transportation/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Trinoo;
@@ -592,8 +595,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.houcem.Transportation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amira.trinoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Trinoo iOS app store";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

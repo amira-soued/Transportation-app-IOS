@@ -10,7 +10,7 @@ import Foundation
 let Mahdia = "toMahdia"
 let Sousse = "toSousse"
 let stationsDocument = "Stations"
-let productionCollection = "Production"
+let productionCollection = "Development"
 let mahdiaDocument = "Sousse-Mahdia"
 let sousseDocument = "Mahdia-Sousse"
 

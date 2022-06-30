@@ -42,7 +42,7 @@ private extension LoadingViewController {
     func loadImageUrl(){
         if let urlString = UserDefaults.standard.string(forKey: self.imageKey){
             Current.imageUrlString = urlString
-//            print("image url \(Current.imageUrlString)")
+            print("image url \(Current.imageUrlString)")
             remoteConfig.checkImageUrlUpdate { updateStatus in
                 if updateStatus == false{
                     return
@@ -58,7 +58,7 @@ private extension LoadingViewController {
                         self.dispatchGroup.leave()
                     }
                 }
-            }
+           }
             return
         }
         dispatchGroup.enter()
