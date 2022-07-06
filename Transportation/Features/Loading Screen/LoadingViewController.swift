@@ -145,5 +145,7 @@ private extension LoadingViewController {
         loadingIndicatorView.stopAnimating()
         let mainScreenCoordinator = MainScreenCoordinator(navigationController: self.navigationController!)
         mainScreenCoordinator.start()
+        navigationController?.isNavigationBarHidden = true
+
     }
 }

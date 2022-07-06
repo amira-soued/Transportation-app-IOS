@@ -21,6 +21,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var reverseStationsButton: UIButton!
     var cells: [Cell] = []
  
     var isFromTo: Bool = true
@@ -34,9 +35,9 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     
     let allStationsArray: [Station] = Current.stations
     var tripsByDirection = [TripsByStation]()
+    
     override func viewDidLoad() { 
         super.viewDidLoad()
-        
         setupView()
         setupTableView()
         setupHistorySearch()
@@ -74,6 +75,18 @@ class StationViewController: UIViewController, UITextFieldDelegate {
         let coordinator = StationCoordinator(navigationController: navigationController)
         coordinator.dismissStationScreen()
     }
+    
+    @IBAction func reverseDirection(_ sender: Any) {
+        let station = startStation
+        startStation = endStation
+        endStation = station
+        let stationText = startTextField.text
+        startTextField.text = endTextField.text
+        endTextField.text = stationText
+        getAllAvailableTrips()
+        tableView.reloadData()
+    }
+    
 }
 
 extension StationViewController : UIScrollViewDelegate{
@@ -91,7 +104,8 @@ extension StationViewController : UIScrollViewDelegate{
 
 private extension StationViewController {
     func setupView() {
-        navigationController?.isNavigationBarHidden = true
+      navigationController?.isNavigationBarHidden = true
+//      self.navigationItem.setHidesBackButton(true, animated: false)
         startTextField.delegate = self
         endTextField.delegate = self
         stationScreenStackView.layer.cornerRadius = 10
@@ -100,6 +114,17 @@ private extension StationViewController {
         } else {
             startTextField.becomeFirstResponder()
         }
+        reverseStationsButton.layer.masksToBounds = true
+        reverseStationsButton.setTitle("", for: .normal)
+        let screenWidth = UIScreen.main.bounds.width
+        let xPostion:CGFloat = screenWidth - 80
+        let yPostion:CGFloat = 35
+        let buttonWidth:CGFloat = 50
+        let buttonHeight:CGFloat = 50
+                
+        reverseStationsButton.frame = CGRect(x:xPostion, y:yPostion, width:buttonWidth, height:buttonHeight)
+        reverseStationsButton.layer.cornerRadius = buttonWidth/2
+        reverseStationsButton.isHidden = true
     }
     
     func setupTableView() {
@@ -146,7 +171,10 @@ private extension StationViewController {
         if endStation == nil {
             endTextField.becomeFirstResponder()
         }
-       
+        if startTextField.text == ""{
+            startStation = nil
+            reverseStationsButton.isHidden = true
+        }
     }
 
     func setEndStation(_ station: Station) {
@@ -155,7 +183,10 @@ private extension StationViewController {
         if startStation == nil {
             startTextField.becomeFirstResponder()
         }
-        
+        if endTextField.text == ""{
+            endStation = nil
+            reverseStationsButton.isHidden = true
+        }
     }
     
     func getDirection(startStation : Station , endStation : Station)-> String{
@@ -181,6 +212,7 @@ private extension StationViewController {
     func getAllAvailableTrips() {
         cells.removeAll()
         guard let startStation = startStation, let endStation = endStation else { return }
+        reverseStationsButton.isHidden = false
         var tripResults = [String:String]()
         let trip = RecentTrip(start: startStation, finish:endStation)
         historyManager.addTrip(searchedTrip: trip)
@@ -226,6 +258,7 @@ private extension StationViewController {
             }
         }
     }
+    
 }
 
 extension StationViewController : UITableViewDelegate, UITableViewDataSource{
@@ -235,7 +268,7 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

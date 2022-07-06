@@ -8,7 +8,7 @@
 import Foundation
 
 struct HistoryManager {
-    private let capacity = 4
+    private let capacity = 3
     private let Key = "recent trips"
   
     func addTrip(searchedTrip : RecentTrip){
@@ -40,7 +40,6 @@ struct HistoryManager {
         } else {
         return trips ?? []
         }
-        
     }
 }
 

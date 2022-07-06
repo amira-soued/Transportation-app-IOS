@@ -36,6 +36,6 @@ class MainScreenCoordinator: Coordinator{
         coordinator.recentDestinationStation = finish
         coordinator.start()
         
-        self.navigationController.isToolbarHidden = true
+//        self.navigationController.isToolbarHidden = true
     }
 }
