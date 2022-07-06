@@ -23,6 +23,8 @@ class MainScreenViewController: UIViewController {
         super.viewDidLoad()
         mainScreenImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         homeScreenStackView.layer.cornerRadius = 10
+        toButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
+        fromButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorColor = .clear

@@ -23,6 +23,8 @@ class SearchHistoryTableViewCell: UITableViewCell {
     func setupHistoryCell(start: String, finish: String){
         fromHistorySearchLabel.text = start
         toHistorySearchLabel.text = finish
+        fromHistorySearchLabel.font = UIFont(name: "Roboto-Regular", size: 20)
+        toHistorySearchLabel.font = UIFont(name: "Roboto-Regular", size: 20)
     }
     
 } 

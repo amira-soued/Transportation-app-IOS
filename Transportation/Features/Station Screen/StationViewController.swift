@@ -108,6 +108,8 @@ private extension StationViewController {
 //      self.navigationItem.setHidesBackButton(true, animated: false)
         startTextField.delegate = self
         endTextField.delegate = self
+        startTextField.font = UIFont(name: "Roboto-Medium", size: 18)
+        endTextField.font = UIFont(name: "Roboto-Medium", size: 18)
         stationScreenStackView.layer.cornerRadius = 10
         if isFromTo{
             endTextField.becomeFirstResponder()

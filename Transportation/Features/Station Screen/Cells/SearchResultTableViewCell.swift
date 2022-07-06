@@ -24,7 +24,7 @@ class SearchResultTableViewCell: UITableViewCell {
         let startTimeString = dateFormatter.string(from: startTime)
         let endTimeString = dateFormatter.string(from: endTime)
         timeLabel.text = startTimeString + " -> " + endTimeString
-
+        timeLabel.font = UIFont(name: "Roboto-Medium", size: 20)
         let durationTime = endTime.timeIntervalSinceReferenceDate - startTime.timeIntervalSinceReferenceDate
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .abbreviated
@@ -32,5 +32,6 @@ class SearchResultTableViewCell: UITableViewCell {
         formatter.allowedUnits = [.hour, .minute]
         let durationString = formatter.string(from: durationTime)
         durationLabel.text = durationString
+        durationLabel.font = UIFont(name: "Roboto-Light", size: 18)
     }
 }

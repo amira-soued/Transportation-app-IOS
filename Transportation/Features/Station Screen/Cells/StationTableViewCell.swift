@@ -19,7 +19,9 @@ class StationTableViewCell: UITableViewCell {
 
     func setCell(stationName : String?, cityName : String?){
         stationNameLabel.text = stationName
+        stationNameLabel.font = UIFont(name: "Roboto-Medium", size: 20)
         cityNameLabel.text = cityName
+        cityNameLabel.font = UIFont(name: "Roboto-Regular", size: 15)
     }
     
 }
