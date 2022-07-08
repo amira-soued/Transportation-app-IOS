@@ -15,14 +15,16 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var fromButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mainScreenLogo: UIImageView!
     
     let historyManager = HistoryManager()
     var recentSearchedTrips = [RecentTrip]()
-    
+    var historySectionName = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         mainScreenImageView.setImage(url: Current.imageUrlString, placeholder: "metro")
         homeScreenStackView.layer.cornerRadius = 10
+        mainScreenLogo.layer.cornerRadius = 5
         toButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
         fromButton.titleLabel?.font = UIFont(name: "Roboto-Regular", size: 18)
         tableView.dataSource = self
@@ -30,6 +32,8 @@ class MainScreenViewController: UIViewController {
         tableView.separatorColor = .clear
         tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0)
         tableView.register(UINib(nibName: "SearchHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchHistoryTableViewCell")
+        let historySectionLocalization = NSLocalizedString("historySectionName", comment: "")
+        historySectionName = historySectionLocalization
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,7 +54,7 @@ class MainScreenViewController: UIViewController {
 extension MainScreenViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Recent searches"
+        return historySectionName
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -75,5 +79,6 @@ extension MainScreenViewController : UITableViewDataSource, UITableViewDelegate{
         let mainScreenCoordinator = MainScreenCoordinator(navigationController: navigationController!)
         mainScreenCoordinator.showHistorySearch(historySearch: recentSearch, start: startStation, finish: finishStation)
     }
-  
 }
+
+

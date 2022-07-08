@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="train-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eL6-JZ-jph">
-                        <rect key="frame" x="16" y="33" width="30" height="30"/>
+                        <rect key="frame" x="16" y="23" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eL6-JZ-jph" secondAttribute="height" id="AcX-Ot-uIb"/>
                             <constraint firstAttribute="width" constant="30" id="u0x-sZ-5Hz"/>
@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-Sw-pIg">
-                        <rect key="frame" x="16" y="8" width="42" height="25"/>
+                        <rect key="frame" x="16" y="-2" width="42" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="8Gx-C7-M4K"/>
                         </constraints>
@@ -39,14 +39,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="BJf-5f-LJb">
+                        <rect key="frame" x="237.5" y="29" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="BJf-5f-LJb" secondAttribute="height" multiplier="1:1" id="c0l-GA-z48"/>
+                            <constraint firstAttribute="width" constant="20" id="mna-cU-cxu"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="BJf-5f-LJb" firstAttribute="centerY" secondItem="4xU-zV-QxS" secondAttribute="centerY" id="07x-4Y-Slk"/>
                     <constraint firstItem="eL6-JZ-jph" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0qt-yt-IQi"/>
                     <constraint firstItem="uZa-Sw-pIg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9TD-RL-k8f"/>
                     <constraint firstAttribute="trailing" secondItem="4xU-zV-QxS" secondAttribute="trailing" constant="16" id="IrQ-Pv-cpZ"/>
                     <constraint firstAttribute="bottom" secondItem="4xU-zV-QxS" secondAttribute="bottom" constant="5" id="O8b-SK-YnQ"/>
                     <constraint firstItem="4xU-zV-QxS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="TLS-9U-Fst"/>
-                    <constraint firstAttribute="bottom" secondItem="eL6-JZ-jph" secondAttribute="bottom" constant="15" id="fRe-FG-5U5"/>
+                    <constraint firstItem="4xU-zV-QxS" firstAttribute="leading" secondItem="BJf-5f-LJb" secondAttribute="trailing" constant="5" id="dkz-Ts-fbT"/>
+                    <constraint firstAttribute="bottom" secondItem="eL6-JZ-jph" secondAttribute="bottom" constant="25" id="fRe-FG-5U5"/>
                     <constraint firstItem="eL6-JZ-jph" firstAttribute="top" secondItem="uZa-Sw-pIg" secondAttribute="bottom" id="h5X-Aj-ile"/>
                     <constraint firstItem="4xU-zV-QxS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uZa-Sw-pIg" secondAttribute="trailing" constant="20" id="xIn-uu-dkp"/>
                 </constraints>
@@ -60,6 +69,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="clock" width="519" height="498"/>
         <image name="train-icon" width="200" height="200"/>
     </resources>
 </document>

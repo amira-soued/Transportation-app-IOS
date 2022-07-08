@@ -73,7 +73,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="To: Destination station">
+                                                <state key="normal" title="To: Arrival station">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -88,7 +88,7 @@
                                     <constraint firstAttribute="height" constant="101" id="Awx-8k-Mr3"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork-1" translatesAutoresizingMaskIntoConstraints="NO" id="5ce-1G-RTW">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-App-20x20" translatesAutoresizingMaskIntoConstraints="NO" id="5ce-1G-RTW">
                                 <rect key="frame" x="187" y="44" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="6cW-vl-gPb"/>
@@ -115,6 +115,7 @@
                         <outlet property="headerTopConstraint" destination="Yfc-tM-wSv" id="g3v-CA-ZIw"/>
                         <outlet property="homeScreenStackView" destination="ynW-KB-9Mj" id="odx-Y1-kgw"/>
                         <outlet property="mainScreenImageView" destination="wna-8K-5pJ" id="R2l-mh-pcF"/>
+                        <outlet property="mainScreenLogo" destination="5ce-1G-RTW" id="WBq-qJ-6uJ"/>
                         <outlet property="tableView" destination="K7T-dy-xQ4" id="xwE-mk-P9M"/>
                         <outlet property="toButton" destination="Hmz-ua-ahr" id="RIp-42-AGC"/>
                     </connections>
@@ -148,12 +149,18 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="From:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRf-CA-4Ie">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Qov-h2-Uu8"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="address-level2"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                                <color key="value" systemColor="systemRedColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="textFieldDidChange:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="Nt4-B9-NLs"/>
                                                         </connections>
@@ -164,12 +171,18 @@
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="To:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zqU-xv-g94">
                                                         <rect key="frame" x="0.0" y="51" width="354" height="50"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="vVy-VI-cR8"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                                <color key="value" systemColor="systemYellowColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="textFieldDidChange:" destination="aKJ-SP-Bc0" eventType="editingChanged" id="5JP-dH-CS1"/>
                                                         </connections>
@@ -203,6 +216,11 @@
                                     <constraint firstItem="DqO-bh-6hQ" firstAttribute="leading" secondItem="jxC-9K-ge8" secondAttribute="leading" constant="10" id="wAd-Bk-sFj"/>
                                     <constraint firstAttribute="trailing" secondItem="DqO-bh-6hQ" secondAttribute="trailing" constant="10" id="yW9-y0-tYX"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                        <color key="value" systemColor="systemPinkColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fms-hl-ddD">
                                 <rect key="frame" x="0.0" y="251" width="414" height="611"/>
@@ -278,10 +296,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon-App-20x20" width="20" height="20"/>
         <image name="PIC" width="150" height="200"/>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.up.arrow.down" catalog="system" width="128" height="98"/>
-        <image name="iTunesArtwork-1" width="512" height="512"/>
         <image name="metro" width="853" height="1280"/>
         <namedColor name="Gray color">
             <color red="0.19215686274509805" green="0.19215686274509805" blue="0.19215686274509805" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -291,6 +309,15 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

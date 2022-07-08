@@ -35,9 +35,19 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     
     let allStationsArray: [Station] = Current.stations
     var tripsByDirection = [TripsByStation]()
-    
+    var startPlaceholder = ""
+    var endPlaceholder = ""
+
     override func viewDidLoad() { 
         super.viewDidLoad()
+        let startPlaceholderLocalization = NSLocalizedString("startPlaceholder", comment: "")
+        startPlaceholder = startPlaceholderLocalization
+        let endPlaceholderLocalization = NSLocalizedString("endPlaceholder", comment: "")
+        endPlaceholder = endPlaceholderLocalization
+        startTextField.attributedPlaceholder = NSAttributedString(string: startPlaceholder,
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        endTextField.attributedPlaceholder = NSAttributedString(string: endPlaceholder,
+                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         setupView()
         setupTableView()
         setupHistorySearch()
@@ -56,6 +66,16 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             return nil
         }
         tableView.reloadData()
+        if startTextField.text == ""{
+            startStation = nil
+            reverseStationsButton.isHidden = true
+            startTextField.font = UIFont(name: "Roboto-Light", size: 18)
+        }
+        if endTextField.text == ""{
+            endStation = nil
+            reverseStationsButton.isHidden = true
+            endTextField.font = UIFont(name: "Roboto-Light", size: 18)
+        }
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -105,11 +125,18 @@ extension StationViewController : UIScrollViewDelegate{
 private extension StationViewController {
     func setupView() {
       navigationController?.isNavigationBarHidden = true
-//      self.navigationItem.setHidesBackButton(true, animated: false)
         startTextField.delegate = self
         endTextField.delegate = self
-        startTextField.font = UIFont(name: "Roboto-Medium", size: 18)
-        endTextField.font = UIFont(name: "Roboto-Medium", size: 18)
+        if startTextField.text?.isEmpty == true {
+            startTextField.font = UIFont(name: "Roboto-Light", size: 18)
+        } else {
+            startTextField.font = UIFont(name: "Roboto-Medium", size: 18)
+        }
+        if endTextField.text?.isEmpty == true {
+            endTextField.font = UIFont(name: "Roboto-Light", size: 18)
+        } else {
+            endTextField.font = UIFont(name: "Roboto-Medium", size: 18)
+        }
         stationScreenStackView.layer.cornerRadius = 10
         if isFromTo{
             endTextField.becomeFirstResponder()
@@ -173,10 +200,7 @@ private extension StationViewController {
         if endStation == nil {
             endTextField.becomeFirstResponder()
         }
-        if startTextField.text == ""{
-            startStation = nil
-            reverseStationsButton.isHidden = true
-        }
+        startTextField.font = UIFont(name: "Roboto-Medium", size: 18)
     }
 
     func setEndStation(_ station: Station) {
@@ -185,10 +209,7 @@ private extension StationViewController {
         if startStation == nil {
             startTextField.becomeFirstResponder()
         }
-        if endTextField.text == ""{
-            endStation = nil
-            reverseStationsButton.isHidden = true
-        }
+        endTextField.font = UIFont(name: "Roboto-Medium", size: 18)
     }
     
     func getDirection(startStation : Station , endStation : Station)-> String{
@@ -270,7 +291,7 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
