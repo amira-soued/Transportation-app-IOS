@@ -10,15 +10,16 @@ class MainScreenCoordinator: Coordinator{
 
     var childCoordinators: [Coordinator] = []
     var navigationController : UINavigationController
+    
     init(navigationController: UINavigationController){
-                self.navigationController = navigationController
-            }
+        self.navigationController = navigationController
+    }
     
     func start(){
         guard let viewController = UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
-                    return
-                }
+            .instantiateViewController(withIdentifier: "MainScreenViewController") as? MainScreenViewController else {
+            return
+        }
         self.navigationController.setViewControllers([viewController], animated: false)
     }
     
@@ -35,7 +36,5 @@ class MainScreenCoordinator: Coordinator{
         coordinator.recentDepartureStation = start
         coordinator.recentDestinationStation = finish
         coordinator.start()
-        
-//        self.navigationController.isToolbarHidden = true
     }
 }

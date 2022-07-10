@@ -20,8 +20,10 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var endTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var headerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var reverseStationsButton: UIButton!
+
     var cells: [Cell] = []
  
     var isFromTo: Bool = true
@@ -35,18 +37,13 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     
     let allStationsArray: [Station] = Current.stations
     var tripsByDirection = [TripsByStation]()
-    var startPlaceholder = ""
-    var endPlaceholder = ""
 
     override func viewDidLoad() { 
         super.viewDidLoad()
-        let startPlaceholderLocalization = NSLocalizedString("startPlaceholder", comment: "")
-        startPlaceholder = startPlaceholderLocalization
-        let endPlaceholderLocalization = NSLocalizedString("endPlaceholder", comment: "")
-        endPlaceholder = endPlaceholderLocalization
-        startTextField.attributedPlaceholder = NSAttributedString(string: startPlaceholder,
+        headerLabel.text = "stations_screen_header_text".localized()
+        startTextField.attributedPlaceholder = NSAttributedString(string: "stations_screen_start_placeholder".localized(),
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        endTextField.attributedPlaceholder = NSAttributedString(string: endPlaceholder,
+        endTextField.attributedPlaceholder = NSAttributedString(string: "stations_screen_finish_placeholder".localized(),
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         setupView()
         setupTableView()
@@ -318,6 +315,8 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
                 setEndStation(station)
             }
           getAllAvailableTrips()
+            startTextField.resignFirstResponder()
+            endTextField.resignFirstResponder()
         case .searchResult:
             break
         }

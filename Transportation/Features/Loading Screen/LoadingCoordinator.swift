@@ -9,15 +9,16 @@ import UIKit
 class LoadingCoordinator : Coordinator{
     var childCoordinators: [Coordinator] = []
     var navigationController : UINavigationController
+
     init(navigationController: UINavigationController){
-                self.navigationController = navigationController
-            }
+        self.navigationController = navigationController
+    }
     
     func start(){
         guard let viewController = UIStoryboard(name: "Loading", bundle: nil)
-                .instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else {
-                    return
-                }
+            .instantiateViewController(withIdentifier: "LoadingViewController") as? LoadingViewController else {
+            return
+        }
         self.navigationController.setViewControllers([viewController], animated: false)
     }
 }
