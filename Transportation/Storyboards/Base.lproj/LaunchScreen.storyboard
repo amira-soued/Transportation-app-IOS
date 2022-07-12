@@ -17,27 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iTunesArtwork" translatesAutoresizingMaskIntoConstraints="NO" id="OFr-XO-wMd">
-                                <rect key="frame" x="162" y="398" width="90" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="5cv-Cw-5gy"/>
-                                    <constraint firstAttribute="width" constant="90" id="Rtp-fo-9rU"/>
-                                </constraints>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="trinoo" textAlignment="center" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="x1F-gC-OPk">
                                 <rect key="frame" x="168.5" y="498" width="77" height="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start icon" translatesAutoresizingMaskIntoConstraints="NO" id="4en-41-7nT">
+                                <rect key="frame" x="157" y="398" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="OCN-V1-V0c"/>
+                                    <constraint firstAttribute="height" constant="100" id="ZVS-7H-e24"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
                         <constraints>
-                            <constraint firstItem="OFr-XO-wMd" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="3P2-Mu-udd"/>
-                            <constraint firstItem="OFr-XO-wMd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gtW-5b-yXe"/>
+                            <constraint firstItem="4en-41-7nT" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1w8-0Q-oFA"/>
+                            <constraint firstItem="4en-41-7nT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="C15-fA-b2K"/>
                             <constraint firstItem="x1F-gC-OPk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="huF-Xf-S49"/>
-                            <constraint firstItem="x1F-gC-OPk" firstAttribute="top" secondItem="OFr-XO-wMd" secondAttribute="bottom" id="yC2-6S-i2H"/>
+                            <constraint firstItem="x1F-gC-OPk" firstAttribute="top" secondItem="4en-41-7nT" secondAttribute="bottom" id="jBc-gg-xVc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,7 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iTunesArtwork" width="1024" height="1024"/>
+        <image name="start icon" width="167" height="167"/>
         <systemColor name="secondarySystemFillColor">
             <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

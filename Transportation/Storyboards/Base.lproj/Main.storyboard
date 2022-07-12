@@ -52,7 +52,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="UmP-ih-Gfq"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name=".SFNS-Regular" family=".SF NS" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="From: Departure station">
                                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,7 +157,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="Qov-h2-Uu8"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="address-level2"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
@@ -198,10 +198,13 @@
                                         </subviews>
                                         <color key="backgroundColor" name="Gray color"/>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGs-8X-oXo">
-                                        <rect key="frame" x="294" y="67" width="50" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGs-8X-oXo">
+                                        <rect key="frame" x="330" y="37" width="50" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="CGs-8X-oXo" secondAttribute="height" multiplier="1:1" id="5er-He-ve4"/>
+                                            <constraint firstAttribute="height" constant="50" id="N8C-FJ-c8w"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="arrow.up.arrow.down" catalog="system">
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,10 +217,12 @@
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstItem="DqO-bh-6hQ" firstAttribute="top" secondItem="jxC-9K-ge8" secondAttribute="top" constant="10" id="4kr-DI-tCt"/>
+                                    <constraint firstAttribute="bottom" secondItem="CGs-8X-oXo" secondAttribute="bottom" constant="44" id="Beh-TZ-mKF"/>
                                     <constraint firstAttribute="height" constant="131" id="ExX-Vd-Vm5"/>
                                     <constraint firstAttribute="bottom" secondItem="DqO-bh-6hQ" secondAttribute="bottom" constant="20" id="n4E-rw-KKa"/>
                                     <constraint firstItem="DqO-bh-6hQ" firstAttribute="leading" secondItem="jxC-9K-ge8" secondAttribute="leading" constant="10" id="wAd-Bk-sFj"/>
                                     <constraint firstAttribute="trailing" secondItem="DqO-bh-6hQ" secondAttribute="trailing" constant="10" id="yW9-y0-tYX"/>
+                                    <constraint firstAttribute="trailing" secondItem="CGs-8X-oXo" secondAttribute="trailing" constant="34" id="zGs-VK-Unc"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">

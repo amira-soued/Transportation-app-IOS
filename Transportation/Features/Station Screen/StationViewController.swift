@@ -74,19 +74,6 @@ class StationViewController: UIViewController, UITextFieldDelegate {
             endTextField.font = UIFont(name: "Roboto-Light", size: 18)
         }
     }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-            textField.text = ""
-        if textField == startTextField {
-            startStation = nil
-        }
-        if textField == endTextField {
-            endStation = nil
-        }
-        cells.removeAll()
-        tableView.reloadData()
-            return true
-    }
   
     @IBAction func backToMainScreen(_ sender: Any) {
         let coordinator = StationCoordinator(navigationController: navigationController)
@@ -109,7 +96,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
 extension StationViewController : UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
-        if offset > 111 {
+        if offset > 0 {
             return
         }
         if offset <= 0 {
@@ -142,14 +129,7 @@ private extension StationViewController {
         }
         reverseStationsButton.layer.masksToBounds = true
         reverseStationsButton.setTitle("", for: .normal)
-        let screenWidth = UIScreen.main.bounds.width
-        let xPostion:CGFloat = screenWidth - 80
-        let yPostion:CGFloat = 35
-        let buttonWidth:CGFloat = 50
-        let buttonHeight:CGFloat = 50
-                
-        reverseStationsButton.frame = CGRect(x:xPostion, y:yPostion, width:buttonWidth, height:buttonHeight)
-        reverseStationsButton.layer.cornerRadius = buttonWidth/2
+        reverseStationsButton.layer.cornerRadius = 25
         reverseStationsButton.isHidden = true
     }
     
@@ -170,8 +150,10 @@ private extension StationViewController {
         endStation = searchedEndStation
         startTextField.text = startStation?.name
         startTextField.resignFirstResponder()
+        startTextField.font = UIFont(name: "Roboto-Medium", size: 18)
         endTextField.text = endStation?.name
         endTextField.resignFirstResponder()
+        endTextField.font = UIFont(name: "Roboto-Medium", size: 18)
         getAllAvailableTrips()
     }
     
@@ -315,8 +297,6 @@ extension StationViewController : UITableViewDelegate, UITableViewDataSource{
                 setEndStation(station)
             }
           getAllAvailableTrips()
-            startTextField.resignFirstResponder()
-            endTextField.resignFirstResponder()
         case .searchResult:
             break
         }
