@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchHistoryTableViewCell" rowHeight="102" id="KGk-i7-Jjw" customClass="SearchHistoryTableViewCell" customModule="Transportation" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="102"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Rab-V1-dW1">
+                        <rect key="frame" x="4" y="8" width="347" height="70"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PIC white" translatesAutoresizingMaskIntoConstraints="NO" id="xVs-qt-tao">
+                                <rect key="frame" x="0.0" y="0.0" width="40" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="mbo-EQ-rme"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="KP7-t1-cX5">
+                                <rect key="frame" x="40" y="20" width="307" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSJ-iR-lcK">
+                                        <rect key="frame" x="10" y="0.0" width="287" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Bzp-Z1-Njr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIz-eh-K6l">
+                                        <rect key="frame" x="10" y="25" width="287" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="zBo-Z3-zkG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UIz-eh-K6l" secondAttribute="trailing" constant="10" id="4m7-wc-Po2"/>
+                                    <constraint firstItem="UIz-eh-K6l" firstAttribute="leading" secondItem="KP7-t1-cX5" secondAttribute="leading" constant="10" id="9su-TF-ufZ"/>
+                                    <constraint firstItem="nSJ-iR-lcK" firstAttribute="leading" secondItem="KP7-t1-cX5" secondAttribute="leading" constant="10" id="A7z-ih-UHu"/>
+                                    <constraint firstItem="UIz-eh-K6l" firstAttribute="top" secondItem="nSJ-iR-lcK" secondAttribute="bottom" id="BgU-nq-HJe"/>
+                                    <constraint firstAttribute="bottom" secondItem="UIz-eh-K6l" secondAttribute="bottom" id="eqx-aZ-NX6"/>
+                                    <constraint firstAttribute="trailing" secondItem="nSJ-iR-lcK" secondAttribute="trailing" constant="10" id="sKi-Fj-L21"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="73D-N5-opG"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Rab-V1-dW1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="3IQ-NT-5Gw"/>
+                    <constraint firstAttribute="trailing" secondItem="Rab-V1-dW1" secondAttribute="trailing" constant="4" id="Ade-Mo-2FP"/>
+                    <constraint firstAttribute="bottom" secondItem="Rab-V1-dW1" secondAttribute="bottom" constant="8" id="VMu-T8-8FG"/>
+                    <constraint firstItem="Rab-V1-dW1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="WWB-Ci-MKg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="containerStackView" destination="Rab-V1-dW1" id="JJ1-oA-xno"/>
+                <outlet property="fromHistorySearchLabel" destination="nSJ-iR-lcK" id="JZF-99-VXv"/>
+                <outlet property="toHistorySearchLabel" destination="UIz-eh-K6l" id="sZ4-ac-Mti"/>
+            </connections>
+            <point key="canvasLocation" x="185" y="123"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="PIC white" width="150" height="200"/>
+    </resources>
+</document>

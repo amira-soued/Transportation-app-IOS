@@ -6,8 +6,9 @@
 //
 
 import Foundation
-struct Trip{
-    var tripTime : String?
-    var tripID: String?
+
+struct TripsByStation : Codable{
+    let stationId : String
+    let trips : [String:String]
 }
 

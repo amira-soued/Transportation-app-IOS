@@ -6,16 +6,9 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
-struct Station {
-    var name : String?
-    var city : String?
-    var ID : String?
-
-    init(ID : String?, name : String?, city : String?) {
-        self.ID = ID
-        self.name = name
-        self.city = city
-    }
+struct Station: Codable {
+    let Id : String
+    let name : String
+    let city : String
 }

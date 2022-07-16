@@ -1,0 +1,15 @@
+/*
+  Localizable.strings
+  Transportation
+
+  Created by MacBook Pro on 07/07/2022.
+
+*/
+
+"main_screen_history_section_name" = "Recherches récentes" ;
+"main_screen_start_placeholder_text" = "De: station de départ ..." ;
+"main_screen_finish_placeholder_text" = "A: station d'arrivée ..." ;
+
+"stations_screen_start_placeholder" = "Entrer votre station de départ";
+"stations_screen_finish_placeholder" = "Entrer votre station d'arrivée";
+"stations_screen_header_text" = "Où allez-vous ?";

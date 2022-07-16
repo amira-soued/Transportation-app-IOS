@@ -18,8 +18,8 @@ class NavigationManager{
     
     func start(){
         navigationController = UINavigationController()
-        let mainScreenCoordinator = MainScreenCoordinator(navigationController: navigationController!)
-        mainScreenCoordinator.start()
+        let loadingCoordinator = LoadingCoordinator(navigationController: navigationController!)
+        loadingCoordinator.start()
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }

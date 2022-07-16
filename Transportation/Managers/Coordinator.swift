@@ -11,6 +11,7 @@ protocol Coordinator : AnyObject {
     func start()
     func childDidFinish(childCoordinator: Coordinator)
 }
+
 extension Coordinator {
     func childDidFinish(childCoordinator: Coordinator) {
         if let index = childCoordinators.firstIndex(where: {
