@@ -81,12 +81,8 @@ class StationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func reverseDirection(_ sender: Any) {
-        let station = startStation
-        startStation = endStation
-        endStation = station
-        let stationText = startTextField.text
-        startTextField.text = endTextField.text
-        endTextField.text = stationText
+        (startStation,endStation) = (endStation,startStation)
+        (startTextField.text, endTextField.text) = (endTextField.text, startTextField.text)
         getAllAvailableTrips()
         tableView.reloadData()
     }
