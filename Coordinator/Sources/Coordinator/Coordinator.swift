@@ -6,14 +6,14 @@
 //
 
 import Foundation
-protocol Coordinator : AnyObject {
+public protocol Coordinator : AnyObject {
     var childCoordinators : [Coordinator] { get set }
     func start()
     func childDidFinish(childCoordinator: Coordinator)
 }
 
 extension Coordinator {
-    func childDidFinish(childCoordinator: Coordinator) {
+    public func childDidFinish(childCoordinator: Coordinator) {
         if let index = childCoordinators.firstIndex(where: {
             (coordinator: Coordinator) -> Bool in
             childCoordinator === coordinator

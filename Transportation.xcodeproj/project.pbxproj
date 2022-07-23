@@ -13,6 +13,7 @@
 		520216BE288BF51700C6174A /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 520216BD288BF51700C6174A /* Model */; };
 		520216C1288C0A1C00C6174A /* Environement in Frameworks */ = {isa = PBXBuildFile; productRef = 520216C0288C0A1C00C6174A /* Environement */; };
 		520216C4288C0C2200C6174A /* HistoryManager in Frameworks */ = {isa = PBXBuildFile; productRef = 520216C3288C0C2200C6174A /* HistoryManager */; };
+		520216C7288C12D400C6174A /* Coordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 520216C6288C12D400C6174A /* Coordinator */; };
 		5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259527AACA6800E34480 /* StationCoordinator.swift */; };
 		524CD9CF2812AC8400E78512 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9CE2812AC8400E78512 /* LoadingViewController.swift */; };
 		524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */; };
@@ -32,7 +33,6 @@
 		52A40EFA278865E700D984E9 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A40EF9278865E700D984E9 /* MainScreenViewController.swift */; };
 		52A9DB95283264B000AC3827 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A9DB94283264B000AC3827 /* RemoteConfig.swift */; };
 		52AE2533278F4F97008D86E3 /* MainScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */; };
-		52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BE3FFD27B16DE800777548 /* Coordinator.swift */; };
 		52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */; };
 		52C2082327FFBFD80030904B /* SearchHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */; };
 		52C836C02850B64F006107F4 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C836BF2850B64F006107F4 /* Constant.swift */; };
@@ -56,6 +56,7 @@
 		520216BC288BF38100C6174A /* Model */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Model; sourceTree = "<group>"; };
 		520216BF288C08D600C6174A /* Environement */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Environement; sourceTree = "<group>"; };
 		520216C2288C0BE300C6174A /* HistoryManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HistoryManager; sourceTree = "<group>"; };
+		520216C5288C12A800C6174A /* Coordinator */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Coordinator; sourceTree = "<group>"; };
 		5239259527AACA6800E34480 /* StationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCoordinator.swift; sourceTree = "<group>"; };
 		524CD9CE2812AC8400E78512 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		52A40EF9278865E700D984E9 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		52A9DB94283264B000AC3827 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		52AE2532278F4F97008D86E3 /* MainScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCoordinator.swift; sourceTree = "<group>"; };
-		52BE3FFD27B16DE800777548 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		52C2082027FFBFD80030904B /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		52C2082127FFBFD80030904B /* SearchHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryTableViewCell.xib; sourceTree = "<group>"; };
 		52C836BF2850B64F006107F4 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -101,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524CD9D52812C53C00E78512 /* SDWebImage in Frameworks */,
+				520216C7288C12D400C6174A /* Coordinator in Frameworks */,
 				524CD9D82812EAF700E78512 /* NVActivityIndicatorView in Frameworks */,
 				520216C1288C0A1C00C6174A /* Environement in Frameworks */,
 				520216BE288BF51700C6174A /* Model in Frameworks */,
@@ -190,6 +191,7 @@
 		52A40ED22788464100D984E9 = {
 			isa = PBXGroup;
 			children = (
+				520216C5288C12A800C6174A /* Coordinator */,
 				520216C2288C0BE300C6174A /* HistoryManager */,
 				520216BF288C08D600C6174A /* Environement */,
 				520216BC288BF38100C6174A /* Model */,
@@ -230,7 +232,6 @@
 			children = (
 				52A40EF627884A8000D984E9 /* NavigationManager.swift */,
 				5291AB9E27981B2D000C8F2D /* FirebaseClient.swift */,
-				52BE3FFD27B16DE800777548 /* Coordinator.swift */,
 				52A9DB94283264B000AC3827 /* RemoteConfig.swift */,
 			);
 			path = Managers;
@@ -311,6 +312,7 @@
 				520216BD288BF51700C6174A /* Model */,
 				520216C0288C0A1C00C6174A /* Environement */,
 				520216C3288C0C2200C6174A /* HistoryManager */,
+				520216C6288C12D400C6174A /* Coordinator */,
 			);
 			productName = Transportation;
 			productReference = 52A40EDB2788464100D984E9 /* Transportation.app */;
@@ -430,7 +432,6 @@
 				5296650C2821A0B30004E77C /* UIImageView + Extension.swift in Sources */,
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
 				52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */,
-				52BE3FFE27B16DE800777548 /* Coordinator.swift in Sources */,
 				2AD8093527D5599200ADA238 /* SearchResultTableViewCell.swift in Sources */,
 				52A9DB95283264B000AC3827 /* RemoteConfig.swift in Sources */,
 				524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */,
@@ -718,6 +719,10 @@
 		520216C3288C0C2200C6174A /* HistoryManager */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = HistoryManager;
+		};
+		520216C6288C12D400C6174A /* Coordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Coordinator;
 		};
 		524CD9D42812C53C00E78512 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
