@@ -6,8 +6,9 @@
 //
 
 import UIKit
-//import FirebaseFirestore
-
+import Model
+import Environement
+import HistoryManager
 enum Cell {
     case stationCell(Station)
     case searchResult(start: Date, end: Date)

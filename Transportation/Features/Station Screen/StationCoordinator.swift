@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Model
 class StationCoordinator : Coordinator{
     let navigationController : UINavigationController?
     init(navigationController : UINavigationController?) {

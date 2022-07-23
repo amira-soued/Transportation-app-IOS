@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 import UIKit
-
+import Model
 class FirebaseClient{
     private let database = Firestore.firestore()
     public static let shared = FirebaseClient()

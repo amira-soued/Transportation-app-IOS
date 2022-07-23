@@ -6,12 +6,15 @@
 //
 
 import Foundation
-
-struct HistoryManager {
-    private let capacity = 3
-    private let Key = "recent trips"
+import Model
+public struct HistoryManager {
+    public let capacity = 3
+    public let Key = "recent trips"
+    public init(){
+        
+    }
   
-    func addTrip(searchedTrip : RecentTrip){
+  public   func addTrip(searchedTrip : RecentTrip){
         var recentSearches: [RecentTrip] = getRecentTrips()
             if recentSearches.count < capacity {
                 recentSearches.insert(searchedTrip, at: 0)
@@ -30,7 +33,7 @@ struct HistoryManager {
             }
     }
    
-    func getRecentTrips() -> [RecentTrip] {
+   public func getRecentTrips() -> [RecentTrip] {
         var trips : [RecentTrip]?
         if let data = UserDefaults.standard.data(forKey: Key) {
             // Decode
