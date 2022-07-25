@@ -7,7 +7,7 @@
 
 import UIKit
 import Models
-
+import HistoryManager
 class MainScreenViewController: UIViewController {
   
     @IBOutlet weak var mainScreenImageView: UIImageView!

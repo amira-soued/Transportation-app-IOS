@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2A3C9002288E6D0C007754CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C9001288E6D0C007754CE /* Coordinator.swift */; };
-		2A3C9004288E6D11007754CE /* HistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C9003288E6D11007754CE /* HistoryManager.swift */; };
 		2A3C9006288E6D14007754CE /* Environement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A3C9005288E6D14007754CE /* Environement.swift */; };
 		2AC3DE26287B1BA9009681BB /* String + Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC3DE25287B1BA9009681BB /* String + Localized.swift */; };
 		2AD8093527D5599200ADA238 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD8093327D5599200ADA238 /* SearchResultTableViewCell.swift */; };
 		2AD8093627D5599200ADA238 /* SearchResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */; };
 		2AF9624D288E959B0027EB6A /* FirebaseClient in Frameworks */ = {isa = PBXBuildFile; productRef = 2AF9624C288E959B0027EB6A /* FirebaseClient */; };
 		2AF9624F288E959F0027EB6A /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = 2AF9624E288E959F0027EB6A /* Models */; };
+		520CEBE5288EC7AB00857364 /* HistoryManager in Frameworks */ = {isa = PBXBuildFile; productRef = 520CEBE4288EC7AB00857364 /* HistoryManager */; };
 		5239259627AACA6800E34480 /* StationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239259527AACA6800E34480 /* StationCoordinator.swift */; };
 		524CD9CF2812AC8400E78512 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9CE2812AC8400E78512 /* LoadingViewController.swift */; };
 		524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */; };
@@ -48,13 +48,13 @@
 
 /* Begin PBXFileReference section */
 		2A3C9001288E6D0C007754CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		2A3C9003288E6D11007754CE /* HistoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryManager.swift; sourceTree = "<group>"; };
 		2A3C9005288E6D14007754CE /* Environement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environement.swift; sourceTree = "<group>"; };
 		2AC3DE25287B1BA9009681BB /* String + Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Localized.swift"; sourceTree = "<group>"; };
 		2AD8093327D5599200ADA238 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		2AD8093427D5599200ADA238 /* SearchResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultTableViewCell.xib; sourceTree = "<group>"; };
 		2AF9624A288E8B4D0027EB6A /* Models */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Models; path = Packages/Models; sourceTree = "<group>"; };
 		2AF9624B288E945E0027EB6A /* FirebaseClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FirebaseClient; path = Packages/FirebaseClient; sourceTree = "<group>"; };
+		520CEBE3288EBCCE00857364 /* HistoryManager */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = HistoryManager; path = Transportation/HistoryManager; sourceTree = "<group>"; };
 		5239259527AACA6800E34480 /* StationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCoordinator.swift; sourceTree = "<group>"; };
 		524CD9CE2812AC8400E78512 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		524CD9D02812AD8800E78512 /* LoadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCoordinator.swift; sourceTree = "<group>"; };
@@ -95,6 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				524CD9D52812C53C00E78512 /* SDWebImage in Frameworks */,
+				520CEBE5288EC7AB00857364 /* HistoryManager in Frameworks */,
 				2AF9624D288E959B0027EB6A /* FirebaseClient in Frameworks */,
 				2AF9624F288E959F0027EB6A /* Models in Frameworks */,
 				524CD9D82812EAF700E78512 /* NVActivityIndicatorView in Frameworks */,
@@ -182,6 +183,7 @@
 		52A40ED22788464100D984E9 = {
 			isa = PBXGroup;
 			children = (
+				520CEBE3288EBCCE00857364 /* HistoryManager */,
 				2AF9624A288E8B4D0027EB6A /* Models */,
 				2AF9624B288E945E0027EB6A /* FirebaseClient */,
 				52A40EDD2788464100D984E9 /* Transportation */,
@@ -218,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				2A3C9005288E6D14007754CE /* Environement.swift */,
-				2A3C9003288E6D11007754CE /* HistoryManager.swift */,
 				2A3C9001288E6D0C007754CE /* Coordinator.swift */,
 				52A40EF627884A8000D984E9 /* NavigationManager.swift */,
 			);
@@ -280,6 +281,7 @@
 				524CD9D72812EAF700E78512 /* NVActivityIndicatorView */,
 				2AF9624C288E959B0027EB6A /* FirebaseClient */,
 				2AF9624E288E959F0027EB6A /* Models */,
+				520CEBE4288EC7AB00857364 /* HistoryManager */,
 			);
 			productName = Transportation;
 			productReference = 52A40EDB2788464100D984E9 /* Transportation.app */;
@@ -356,7 +358,6 @@
 				52A40EDF2788464100D984E9 /* AppDelegate.swift in Sources */,
 				5296650C2821A0B30004E77C /* UIImageView + Extension.swift in Sources */,
 				52A40EE12788464100D984E9 /* SceneDelegate.swift in Sources */,
-				2A3C9004288E6D11007754CE /* HistoryManager.swift in Sources */,
 				52C2082227FFBFD80030904B /* SearchHistoryTableViewCell.swift in Sources */,
 				2AD8093527D5599200ADA238 /* SearchResultTableViewCell.swift in Sources */,
 				524CD9D12812AD8800E78512 /* LoadingCoordinator.swift in Sources */,
@@ -641,6 +642,10 @@
 		2AF9624E288E959F0027EB6A /* Models */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Models;
+		};
+		520CEBE4288EC7AB00857364 /* HistoryManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HistoryManager;
 		};
 		524CD9D42812C53C00E78512 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

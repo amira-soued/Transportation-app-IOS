@@ -8,7 +8,7 @@
 import UIKit
 import Models
 import FirebaseClient
-
+import HistoryManager
 enum Cell {
     case stationCell(Station)
     case searchResult(start: Date, end: Date)
