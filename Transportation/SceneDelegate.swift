@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseClient
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-        FirebaseApp.configure()
+        FirebaseConfiguration.configure()
         navigationManager = NavigationManager(window: window, navigationController: navigationController)
         navigationManager?.start()
         window?.makeKeyAndVisible()

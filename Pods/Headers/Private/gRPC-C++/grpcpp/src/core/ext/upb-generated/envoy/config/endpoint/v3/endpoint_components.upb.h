@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-C++/src/core/ext/upb-generated/envoy/config/endpoint/v3/endpoint_components.upb.h

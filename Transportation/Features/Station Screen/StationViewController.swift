@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import Model
-import Environement
-import HistoryManager
+import Models
+import FirebaseClient
+
 enum Cell {
     case stationCell(Station)
     case searchResult(start: Date, end: Date)
@@ -29,7 +29,7 @@ class StationViewController: UIViewController, UITextFieldDelegate {
  
     var isFromTo: Bool = true
     var historySearch : Bool = false
-    let firebaseClient = FirebaseClient.shared
+    let firebaseClient = FireStoreClient.shared
     var historyManager = HistoryManager()
     var startStation: Station?
     var endStation: Station?

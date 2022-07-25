@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-C++/src/core/ext/upbdefs-generated/envoy/config/trace/v3/http_tracer.upbdefs.h

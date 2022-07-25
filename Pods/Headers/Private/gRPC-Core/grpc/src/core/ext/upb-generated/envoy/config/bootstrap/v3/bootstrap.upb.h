@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-Core/src/core/ext/upb-generated/envoy/config/bootstrap/v3/bootstrap.upb.h

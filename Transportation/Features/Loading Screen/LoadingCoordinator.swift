@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Coordinator
+
 class LoadingCoordinator : Coordinator{
     var childCoordinators: [Coordinator] = []
     var navigationController : UINavigationController

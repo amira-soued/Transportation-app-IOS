@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Model
-import Coordinator
+import Models
+
 class MainScreenCoordinator: Coordinator{
 
     var childCoordinators: [Coordinator] = []

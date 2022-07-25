@@ -1,1 +1,0 @@
-../../../../../../../../../../../gRPC-C++/src/core/ext/upb-generated/xds/core/v3/resource.upb.h

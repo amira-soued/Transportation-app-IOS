@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-C++/src/core/ext/upbdefs-generated/envoy/config/core/v3/proxy_protocol.upbdefs.h

@@ -6,9 +6,8 @@
 //
 
 import UIKit
-import Model
-import Environement
-import HistoryManager
+import Models
+
 class MainScreenViewController: UIViewController {
   
     @IBOutlet weak var mainScreenImageView: UIImageView!

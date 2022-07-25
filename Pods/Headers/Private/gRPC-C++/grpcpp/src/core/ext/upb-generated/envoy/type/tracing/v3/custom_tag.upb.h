@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-C++/src/core/ext/upb-generated/envoy/type/tracing/v3/custom_tag.upb.h

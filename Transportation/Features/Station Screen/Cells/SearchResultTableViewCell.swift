@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Model
+
 class SearchResultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLabel: UILabel!

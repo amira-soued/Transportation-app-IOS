@@ -1,6 +1,0 @@
-framework module Pods_Transportation {
-  umbrella header "Pods-Transportation-umbrella.h"
-
-  export *
-  module * { export * }
-}

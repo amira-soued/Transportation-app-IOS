@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-C++/src/core/ext/upb-generated/envoy/type/metadata/v3/metadata.upb.h

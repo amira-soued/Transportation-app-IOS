@@ -7,12 +7,12 @@
 
 import UIKit
 import NVActivityIndicatorView
-import FirebaseAnalytics
-import Model
-import Environement
+import Models
+import FirebaseClient
+
 class LoadingViewController: UIViewController {
-    let firebaseClient = FirebaseClient.shared
-    let remoteConfig = RemoteConfigure()
+    let firebaseClient = FireStoreClient.shared
+    let remoteConfig = RemoteConfigClient.shared
     let stationKey = "stationKey"
     let imageKey = "imageKey"
     let directionSousseKey = "directionSousseKey"

@@ -1,1 +1,0 @@
-../../../../../../../../../../../../gRPC-C++/src/core/ext/upb-generated/envoy/config/metrics/v3/stats.upb.h

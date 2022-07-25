@@ -1,1 +1,0 @@
-../../../../../../../../../../../gRPC-C++/src/core/ext/upbdefs-generated/envoy/type/v3/semantic_version.upbdefs.h
