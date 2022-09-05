@@ -175,6 +175,8 @@ private extension StationViewController {
         startStation = station
         if endStation == nil {
             endTextField.becomeFirstResponder()
+        } else {
+            startTextField.resignFirstResponder()
         }
         startTextField.font = UIFont(name: "Roboto-Medium", size: 18)
     }
@@ -184,6 +186,8 @@ private extension StationViewController {
         endStation = station
         if startStation == nil {
             startTextField.becomeFirstResponder()
+        } else {
+            endTextField.resignFirstResponder()
         }
         endTextField.font = UIFont(name: "Roboto-Medium", size: 18)
     }
