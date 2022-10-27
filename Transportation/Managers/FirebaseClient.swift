@@ -6,62 +6,76 @@
 //
 
 import Foundation
-import FirebaseFirestore
 import Firebase
-
+import UIKit
+import Model
 class FirebaseClient{
-    let database = Firestore.firestore()
+    private let database = Firestore.firestore()
+    public static let shared = FirebaseClient()
     
-    func getStations(_ completion: @escaping ([Station]) -> Void) {
-        database.collection("Stations").addSnapshotListener { querySnapshot, err in
-                if let error = err {
-                    print(error)
-                    completion([])
-                } else {
-                    let documents = querySnapshot?.documents ?? []
-                    let stations: [Station] = documents.map { document in
-                        let id = document["ID"] as? String
-                        let name = document["name"] as? String
-                        let city = document["city"] as? String
-                        return Station(ID: id, name: name, city: city)
-                    }
-                    completion(stations)
-                }
-            }
-    }
-
-    func getDepartureTrips(documentID: String, operation: @escaping([Trip])-> Void){
-        var trips = [Trip]()
-        let docRef = database.collection("Trip by station").document(documentID)
-        docRef.getDocument { snapshot , error in
-            guard let data = snapshot?.data(), error == nil else {
-                return
-            }
-            for tripData in data{
-                let tripName = tripData.value
-                let tripTime = tripData.key
-                trips.append(Trip(tripTime: tripTime , tripID: tripName as? String ?? ""))
-            }
-            operation(trips)
-        }
-    }
-    
-    func getArrivalTime(documentID : String){
-        let docRef = database.collection("Time by trip").document(documentID)
-        docRef.getDocument { snapshot , error in
-            guard let data = snapshot?.data(), error == nil else {
-                return
-            }
-            let destinationResults = data
-            for result in destinationResults{
-                let station = result.key
-                let destinationTime = result.value as? String
-                if station == documentID{
-                let arrivalStationID = station
-                let arrivalTime = destinationTime
-                }
-            }
-        }
-    }
+    private init() {}
      
+    func getStations(_ completion: @escaping ([Station]) -> Void){
+        database.collection(productionCollection).document(stationsDocument).getDocument { (document, error) in
+            var stations = [Station]()
+            guard let document = document, error == nil
+            else{
+                completion([])
+                return
+            }
+            let dataDescription = document.data()
+            if let data = dataDescription as?  [String: [String]]{
+                for stationData in data{
+                    let Id = stationData.key
+                    let stationInfo = stationData.value
+                    let station = Station(Id: Id, name: stationInfo.first ?? "", city: stationInfo.last ?? "")
+                    stations.append(station)
+                }
+            }
+            completion(stations)
+        }
+    }
+    
+    func getDirectionSousseTrips(completion: @escaping([TripsByStation])-> Void){
+        database.collection(productionCollection).document(sousseDocument).getDocument { (document, error) in
+            var trips = [TripsByStation]()
+            guard let document = document, error == nil
+            else{
+                completion([])
+                return
+            }
+            let dataDescription = document.data()
+            if let data = dataDescription as?  [String: [String:String]]{
+                for tripData in data{
+                    let Id = tripData.key
+                    let tripId = tripData.value
+                    let trip = TripsByStation(stationId: Id, trips: tripId)
+                    trips.append(trip)
+                }
+            }
+            completion(trips)
+        }
+    }
+    
+    func getDirectionMahdiaTrips(completion: @escaping([TripsByStation])-> Void){
+        database.collection(productionCollection).document(mahdiaDocument).getDocument { (document, error) in
+            var trips = [TripsByStation]()
+            guard let document = document, error == nil
+            else{
+                completion([])
+                return
+            }
+            let dataDescription = document.data()
+            if let data = dataDescription as?  [String: [String:String]]{
+                for tripData in data{
+                    let Id = tripData.key
+                    let tripId = tripData.value
+                    let trip = TripsByStation(stationId: Id, trips: tripId)
+                    trips.append(trip)
+                }
+            }
+            completion(trips)
+        }
+    }
+ 
 }
